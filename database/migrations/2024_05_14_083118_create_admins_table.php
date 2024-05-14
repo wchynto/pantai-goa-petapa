@@ -11,20 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->uuid()->primary();
+            $table->string('name', 50);
             $table->string('email', 50)->unique();
-            $table->string('no_telpon', 13)->unique();
             $table->string('password', 100);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->foreignUuid('pengunjung_id')->constrained('pengunjungs', 'uuid')->cascadeOnUpdate()->restrictOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
 
-        Schema::create('user_sessions', function (Blueprint $table) {
+        Schema::create('admin_sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
+            $table->foreignUuid('admin_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
@@ -37,7 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('user_sessions');
+        Schema::dropIfExists('admins');
+        Schema::dropIfExists('admin_sessions');
     }
 };

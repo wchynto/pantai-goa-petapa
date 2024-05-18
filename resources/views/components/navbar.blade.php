@@ -1,10 +1,10 @@
 <nav class="bg-white border-gray-200 dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b-2">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="{{ asset('images/logo.png') }}" class="h-8" alt="Pantai Goa Petapa Logo" />
+      <img src="{{ asset('images/logo-navbar.png') }}" class="h-8" alt="Pantai Goa Petapa Logo" />
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pantai Goa Petapa</span>
     </a>
-    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+    <div class="flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
       <button id="theme-toggle" type="button"
         class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -24,7 +24,7 @@
         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
         data-dropdown-placement="bottom">
         <span class="sr-only">Open user menu</span>
-        <img class="w-8 h-8 rounded-full" src="{{ asset('images/default-profile.svg') }}" alt="User Photo">
+        <img class="w-8 h-8 rounded-full" src="{{ asset('images/default-profile.png') }}" alt="User Photo">
       </button>
       <!-- Dropdown menu -->
       <div
@@ -65,20 +65,16 @@
       <ul
         class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
-          <a href="/"
-            class="{{ request()->is('/') ? 'text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500' : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' }} block rounded py-2 px-3 md:p-0">Home</a>
+          <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
         </li>
         <li>
-          <a href="/ticket"
-            class="{{ request()->is('ticket') ? 'text-white bg-blue-700 md:text-blue-700 md:dark:text-blue-500 md:bg-transparent' : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' }} block rounded py-2 px-3 md:p-0">Ticket</a>
+          <x-nav-link href="/ticket" :active="request()->is('ticket')">Ticket</x-nav-link>
         </li>
         <li>
-          <a href="/about"
-            class="{{ request()->is('about') ? 'text-white bg-blue-700 md:text-blue-700 md:dark:text-blue-500 md:bg-transparent' : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' }} block rounded py-2 px-3 md:p-0">About</a>
+          <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
         </li>
         <li>
-          <a href="/contact"
-            class="{{ request()->is('contact') ? 'text-white bg-blue-700 md:text-blue-700 md:dark:text-blue-500 md:bg-transparent' : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' }} block rounded py-2 px-3 md:p-0">Contact</a>
+          <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
         </li>
       </ul>
     </div>

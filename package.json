@@ -6,6 +6,7 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "apexcharts": "^3.29.0",
         "autoprefixer": "^10.4.19",
         "axios": "^1.6.4",
         "flowbite": "^2.3.0",

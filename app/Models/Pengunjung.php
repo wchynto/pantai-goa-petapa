@@ -40,7 +40,7 @@ class Pengunjung extends Model
      */
     public function user()
     {
-        return $this->hasOne(User::class, 'user_id', 'uuid');
+        return $this->hasOne(User::class, 'pengunjung_uuid', 'uuid');
     }
 
     /**
@@ -50,16 +50,16 @@ class Pengunjung extends Model
      */
     public function guest()
     {
-        return $this->hasOne(Guest::class, 'guest_id', 'uuid');
+        return $this->hasOne(Guest::class, 'pengunjung_uuid', 'uuid');
     }
 
     /**
      * Relationship to transaksi
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function transaksi()
     {
-        return $this->belongsToMany(Transaksi::class, 'transaksi_id', 'uuid');
+        return $this->hasMany(Transaksi::class, 'pengunjung_uuid', 'uuid');
     }
 }

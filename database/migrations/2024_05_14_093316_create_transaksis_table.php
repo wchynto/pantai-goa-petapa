@@ -18,8 +18,8 @@ return new class extends Migration
             $table->bigInteger('total_bayar');
             $table->date('tanggal_transaksi');
             $table->string('snap_token', 100)->nullable();
-            $table->foreignUuid ('status_transaksi_id')->constrained('status_transaksis', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignUuid ('pengunjung_id')->constrained('pengunjungs', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->enum('status', ['pending', 'success', 'expired', 'canceled'])->default('pending');
+            $table->foreignUuid('pengunjung_uuid')->constrained('pengunjungs', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

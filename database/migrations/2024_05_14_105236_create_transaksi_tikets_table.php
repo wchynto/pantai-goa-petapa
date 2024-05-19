@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('no_tiket', 10)->unique();
             $table->integer('jumlah_penumpang')->nullable();
             $table->date('expire_in')->nullable();
-            $table->foreignUuid('status_tiket_id')->constrained('status_tikets', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignUuid('transaksi_id')->constrained('transaksis', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignUuid('tiket_id')->constrained('tikets', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->enum('status', ['active', 'expired', 'canceled', 'used'])->default('active');
+            $table->foreignUuid('transaksi_uuid')->constrained('transaksis', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('tiket_uuid')->constrained('tikets', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

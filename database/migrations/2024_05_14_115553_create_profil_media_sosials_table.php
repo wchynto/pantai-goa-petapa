@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('profil_media_sosials', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->string('keterangan', 50);
-            $table->foreignUuid('profil_id')->constrained('profils', 'uuid')->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreignUuid('media_sosial_id')->constrained('media_sosials', 'uuid')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignUuid('profil_uuid')->constrained('profils', 'uuid')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignUuid('media_sosial_uuid')->constrained('media_sosials', 'uuid')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }

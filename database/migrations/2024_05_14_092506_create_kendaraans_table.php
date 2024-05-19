@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kendaraans', function (Blueprint $table) {
             $table->uuid()->primary();
-            $table->string('keterangan', 50)->unique();
+            $table->string('keterangan', 50);
             $table->timestamps();
         });
     }

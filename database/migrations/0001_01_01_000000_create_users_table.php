@@ -17,14 +17,14 @@ return new class extends Migration
             $table->string('no_telpon', 13)->unique();
             $table->string('password', 100);
             $table->timestamp('email_verified_at')->nullable();
-            $table->foreignUuid('pengunjung_id')->constrained('pengunjungs', 'uuid')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignUuid('pengunjung_uuid')->constrained('pengunjungs', 'uuid')->cascadeOnUpdate()->restrictOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
 
         Schema::create('user_sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
+            $table->foreignId('user_uuid')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');

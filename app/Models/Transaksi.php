@@ -19,7 +19,10 @@ class Transaksi extends Model
         'total_harga',
         'total_bayar',
         'tanggal_transaksi',
-        'snap_token'
+        'snap_token',
+        'status',
+        'status_transaksi_uuid',
+        'pengunjung_uuid',
     ];
 
     /**
@@ -38,32 +41,22 @@ class Transaksi extends Model
     }
 
     /**
-     * Relationship to transaksi_tiket
+     * Relationship to tiket
      *
      * @return \illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function transaksiTiket()
+    public function tiket()
     {
-        return $this->belongsToMany(TransaksiTiket::class, 'transaksi_id', 'uuid');
-    }
-
-    /**
-     * Relationship to status_transaksi
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function statusTransaksi()
-    {
-        return $this->belongsToMany(StatusTransaksi::class, 'status_transaksi_id', 'uuid');
+        return $this->belongsToMany(Tiket::class, 'transaksi_tikets', 'transaksi_uuid')->withPivot('jumlah_penumpang', 'tiket_uuid', 'transaksi_uuid')->using(TransaksiTiket::class);
     }
 
     /**
      * Relationship to pengunjung
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function pengunjung()
     {
-        return $this->belongsToMany(Pengunjung::class, 'pengunjung_id', 'uuid');
+        return $this->belongsTo(Pengunjung::class, 'pengunjung_uuid', 'uuid');
     }
 }

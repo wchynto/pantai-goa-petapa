@@ -33,13 +33,8 @@ class MediaSosial extends Model
         });
     }
 
-    /**
-     * Relationship to profil_media_sosial
-     *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function profil_media_sosial()
+    public function profil()
     {
-        return $this->belongsToMany(Profil::class, 'profil_media_sosial', 'media_sosial_id', 'profil_id');
+        return $this->belongsToMany(Profil::class, 'profil_media_sosials', 'media_sosial_uuid', 'profil_uuid')->withPivot(['keterangan', 'media_sosial_uuid', 'profil_uuid'])->using(ProfilMediaSosial::class);
     }
 }

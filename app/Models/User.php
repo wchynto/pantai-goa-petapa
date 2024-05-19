@@ -21,7 +21,7 @@ class User extends Authenticatable
         'no_telpon',
         'email',
         'password',
-        'pegunjung_id'
+        'pegunjung_uuid'
     ];
 
     /**
@@ -68,6 +68,16 @@ class User extends Authenticatable
      */
     public function pengunjung()
     {
-        return $this->belongsTo(Pengunjung::class, 'pengunjung_id', 'uuid');
+        return $this->belongsTo(Pengunjung::class, 'pengunjung_uuid', 'uuid');
+    }
+
+    /**
+     * Relationship to komentar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function komentar()
+    {
+        return $this->belongsToMany(Postingan::class, 'komentars', 'user_uuid', 'postingan_uuid')->withPivot(['body', 'user_uuid', 'postingan_uuid'])->using(Komentar::class);
     }
 }

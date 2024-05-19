@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('komentars', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->text('body');
-            $table->foreignUuid('user_id')->constrained('users', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignUuid('postingan_id')->constrained('postingans', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('user_uuid')->constrained('users', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('postingan_uuid')->constrained('postingans', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -7,6 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ $title }}</title>
   <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -26,14 +31,14 @@
   <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
 
     <x-admin.sidebar></x-admin.sidebar>
-    
+
     <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
       <main>
         {{ $slot }}
       </main>
       <x-admin.footer></x-admin.footer>
     </div>
-  
+
   </div>
 </body>
 

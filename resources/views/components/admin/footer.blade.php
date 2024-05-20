@@ -1,7 +1,7 @@
 <footer
   class="p-4 my-6 mx-4 bg-white rounded-lg shadow sm:flex sm:items-center sm:justify-between sm:p-6 xl:p-8 dark:bg-gray-800">
   <p class="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
-    &copy; {{ date('Y') }} <a href="/dashboard" class="hover:underline" target="_blank">Pantai Goa Petapa</a>. All
+    &copy; {{ date('Y') }} <a href="/" class="hover:underline" target="_blank">Pantai Goa Petapa</a>. All
     rights reserved.
   </p>
   <div class="flex space-x-6 justify-center">

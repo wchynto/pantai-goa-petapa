@@ -11,15 +11,12 @@ class TransaksiTiketTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test column in table.
+     * The function tests if a database table has the expected columns in a PHP Laravel application.
      *
      * @return void
      */
     public function test_has_expected_columns(): void
     {
-        /**
-         * Asserts that the `transaksi_tikets` table has the specified columns.
-         */
         $this->assertTrue(
             Schema::hasColumns('transaksi_tikets', [
                 'uuid',

@@ -7,11 +7,19 @@ use App\Models\Pengunjung;
 use App\Models\Postingan;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 class PostinganTest extends TestCase
 {
+    use RefreshDatabase;
+
+    /**
+     * The function tests if a table named 'postingans' has the expected columns.
+     *
+     * @return void
+     */
     public function test_has_expected_columns(): void
     {
         $this->assertTrue(
@@ -25,6 +33,11 @@ class PostinganTest extends TestCase
         );
     }
 
+    /**
+     * The function tests if a "Postingan" model has a belongs to relationship with a "Kategori" model.
+     *
+     * @return void
+     */
     public function test_has_belongs_to_kategori(): void
     {
         $kategori = Kategori::factory()->create();
@@ -38,6 +51,11 @@ class PostinganTest extends TestCase
         $this->assertEquals($kategori->uuid, $postingan->kategori_uuid);
     }
 
+    /**
+     * The function tests the relationship between a posting and comments in a many-to-many relationship.
+     *
+     * @return void
+     */
     public function test_has_many_to_many_user(): void
     {
         $kategori = Kategori::factory()->create();

@@ -2,7 +2,7 @@
   <div class="container xl:max-w-screen-xl">
     <div class="sm:flex sm:items-center sm:justify-between p-4 antialiased">
       <p class="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
-        &copy; Created by <a href="#" class="hover:underline" target="_blank">Pantai Goa Petapa</a>. All
+        &copy; {{ date('Y') }} <a href="/" class="hover:underline" target="_blank">Pantai Goa Petapa</a>. All
         rights reserved.
       </p>
       <div class="flex justify-center items-center space-x-1">

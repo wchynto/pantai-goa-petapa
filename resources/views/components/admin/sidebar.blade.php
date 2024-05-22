@@ -7,7 +7,7 @@
       <div class="flex-1 px-3 space-y-1 bg-white dark:bg-gray-800">
         <ul class="pb-2 space-y-2 border-b-2 border-b-gray-200 dark:border-b-gray-700">
           <li>
-            <a href="{{ url('/dashboard') }}"
+            <a href="{{ url('/admin/dashboard') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -21,7 +21,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('/sales') }}"
+            <a href="{{ url('/admin/sales') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -34,7 +34,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('/tickets') }}"
+            <a href="{{ url('/admin/tickets') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -47,7 +47,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('/blog') }}"
+            <a href="{{ url('/admin/blog') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -60,7 +60,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('/report') }}"
+            <a href="{{ url('/admin/report') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"

@@ -36,10 +36,10 @@ class Kendaraan extends Model
     /**
      * Relationship to tiket
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tiket()
     {
-        return $this->hasMany(Tiket::class, 'kendaraan_id', 'uuid');
+        return $this->hasMany(Tiket::class, 'kendaraan_uuid', 'uuid');
     }
 }

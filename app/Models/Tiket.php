@@ -18,7 +18,7 @@ class Tiket extends Model
     protected $fillable = [
         'keterangan',
         'harga',
-        'kendaraan_id',
+        'kendaraan_uuid',
     ];
 
     /**
@@ -38,20 +38,20 @@ class Tiket extends Model
     /**
      * Relationship to kendaraan
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function kendaraan()
     {
-        return $this->belongsTo(Kendaraan::class, 'kendaraan_id', 'uuid');
+        return $this->belongsTo(Kendaraan::class, 'kendaraan_uuid', 'uuid');
     }
 
     /**
-     * Relationship to transaksi_tiket
+     * Relationship to transaksi
      *
      * @return \illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function transaksiTiket()
+    public function transaksi()
     {
-        return $this->belongsToMany(TransaksiTiket::class, 'tiket_id', 'uuid');
+        return $this->belongsToMany(Transaksi::class, 'transaksi_tikets', 'tiket_uuid')->withPivot('jumlah_penumpang', 'transaksi_uuid', 'tiket_uuid')->using(TransaksiTiket::class);
     }
 }

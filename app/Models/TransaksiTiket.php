@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Str;
 
-class TransaksiTiket extends Model
+class TransaksiTiket extends Pivot
 {
     use HasFactory;
 
@@ -17,9 +17,9 @@ class TransaksiTiket extends Model
      */
     protected $fillable = [
         'jumlah_penumpang',
-        'status_tiket_id',
-        'transaksi_id',
-        'tiket_id'
+        'status',
+        'transaksi_uuid',
+        'tiket_uuid'
     ];
 
     /**
@@ -34,36 +34,7 @@ class TransaksiTiket extends Model
         static::creating(function ($model) {
             $model->{$model->getKeyName()} = (string) Str::uuid();
             $model->no_tiket = strtotime(date('Y-m-d')) + $model->count();
+            $model->expire_in = date('Y-m-d H:i:s', strtotime('+3 day'));
         });
-    }
-
-    /**
-     * Relationship to tiket
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function tiket()
-    {
-        $this->belongsToMany(Tiket::class, 'tiket_id', 'uuid');
-    }
-
-    /**
-     * Relationship to transaksi
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function transaksi()
-    {
-        $this->belongsToMany(Transaksi::class, 'transaksi_id', 'uuid');
-    }
-
-    /**
-     * Relationship to status_tiket
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function statusTiket()
-    {
-        $this->belongsToMany(StatusTiket::class, 'status_tiket_id', 'uuid');
     }
 }

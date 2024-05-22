@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid()->primary();
             $table->string('keterangan', 50);
             $table->integer('harga');
-            $table->foreignUuid('kendaraan_id')->constrained('kendaraans', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('kendaraan_uuid')->constrained('kendaraans', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

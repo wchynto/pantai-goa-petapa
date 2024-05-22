@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Str;
 
-class ProfilMediaSosial extends Model
+class ProfilMediaSosial extends Pivot
 {
     use HasFactory;
 
@@ -16,9 +16,9 @@ class ProfilMediaSosial extends Model
      * @var array
      */
     protected $fillable = [
-        'alamat',
-        'profil_id',
-        'media_sosial_id',
+        'keterangan',
+        'profil_uuid',
+        'media_sosial_uuid',
     ];
 
     /**
@@ -33,15 +33,5 @@ class ProfilMediaSosial extends Model
         static::creating(function ($model) {
             $model->{$model->getKeyName()} = (string) Str::uuid();
         });
-    }
-
-    /**
-     * Relationship to profil
-     *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function profil()
-    {
-        return $this->belongsToMany(Profil::class, 'profil_media_sosial', 'profil_id', 'media_sosial_id');
     }
 }

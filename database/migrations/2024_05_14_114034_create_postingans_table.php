@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('judul', 50);
             $table->string('thumbnail', 50);
             $table->text('body');
-            $table->foreignUuid('kategori_id')->constrained('kategoris', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('kategori_uuid')->constrained('kategoris', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -11,13 +11,13 @@ class Guest extends Model
     use HasFactory;
 
     /**
- * The attributes that are mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'no_telpon',
-        'pengunjung_id',
+        'no_telepon',
+        'pengunjung_uuid',
     ];
 
     /**
@@ -41,6 +41,6 @@ class Guest extends Model
      */
     public function pengunjung()
     {
-        return $this->belongsTo(Pengunjung::class, 'pengunjung_id', 'uuid');
+        return $this->belongsTo(Pengunjung::class, 'pengunjung_uuid', 'uuid');
     }
 }

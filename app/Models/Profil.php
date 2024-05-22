@@ -46,6 +46,11 @@ class Profil extends Model
      */
     public function profil()
     {
-        return $this->belongsToMany(Profil::class, 'profil_media_sosial', 'profil_id', 'media_sosial_id');
+        return $this->belongsToMany(Profil::class, 'profil_media_sosial', 'profil_uuid', 'media_sosial_uuid');
+    }
+
+    public function mediaSosial()
+    {
+        return $this->belongsToMany(MediaSosial::class, 'profil_media_sosials', 'profil_uuid', 'media_sosial_uuid')->withPivot(['keterangan', 'profil_uuid', 'media_sosial_uuid'])->using(ProfilMediaSosial::class);
     }
 }

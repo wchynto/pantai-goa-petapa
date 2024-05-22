@@ -19,7 +19,7 @@ class Postingan extends Model
         'judul',
         'thumbnail',
         'body',
-        'kategori_id'
+        'kategori_uuid'
     ];
 
     /**
@@ -43,7 +43,7 @@ class Postingan extends Model
      */
     public function komentar()
     {
-        return $this->belongsToMany(Komentar::class, 'postingan_id', 'uuid');
+        return $this->belongsToMany(User::class, 'komentars', 'postingan_uuid', 'user_uuid')->withPivot(['body', 'user_uuid', 'postingan_uuid'])->using(Komentar::class);
     }
 
     /**
@@ -53,6 +53,6 @@ class Postingan extends Model
      */
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class, 'kategori_id', 'uuid');
+        return $this->belongsTo(Kategori::class, 'kategori_uuid', 'uuid');
     }
 }

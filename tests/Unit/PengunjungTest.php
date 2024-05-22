@@ -7,11 +7,19 @@ use App\Models\Pengunjung;
 use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 class PengunjungTest extends TestCase
 {
+    use RefreshDatabase;
+
+    /**
+     * The function tests if a database table has the expected columns.
+     *
+     * @return void
+     */
     public function test_has_expected_columns(): void
     {
         $this->assertTrue(Schema::hasColumns('pengunjungs', [
@@ -20,20 +28,16 @@ class PengunjungTest extends TestCase
         ]));
     }
 
+    /**
+     * The function tests the relationship between a Pengunjung and User model in a one-to-many
+     * relationship.
+     *
+     * @return void
+     */
     public function test_has_one_to_many_user(): void
     {
-        /**
-         * Create pengunjung
-         *
-         * @var Pengunjung
-         */
         $pegunjung = Pengunjung::factory()->create();
 
-        /**
-         * Create user
-         *
-         * @var User
-         */
         $user = User::factory()->create([
             'pengunjung_uuid' => $pegunjung->uuid
         ]);
@@ -43,20 +47,16 @@ class PengunjungTest extends TestCase
         $this->assertEquals($pegunjung->uuid, $user->pengunjung_uuid);
     }
 
+    /**
+     * The function tests the relationship between a Pengunjung (visitor) and its associated Guest in a
+     * one-to-many relationship.
+     *
+     * @return void
+     */
     public function test_has_one_to_many_guest(): void
     {
-        /**
-         * Create pengunjung
-         *
-         * @var Pengunjung
-         */
         $pegunjung = Pengunjung::factory()->create();
 
-        /**
-         * Create guest
-         *
-         * @var Guest
-         */
         $guest = Guest::factory()->create([
             'pengunjung_uuid' => $pegunjung->uuid
         ]);
@@ -66,20 +66,16 @@ class PengunjungTest extends TestCase
         $this->assertEquals($pegunjung->uuid, $guest->pengunjung_uuid);
     }
 
+    /**
+     * The function tests the relationship between a Pengunjung (visitor) and their Transaksi
+     * (transactions) in a PHP application.
+     *
+     * @return void
+     */
     public function test_has_one_to_many_transaksi(): void
     {
-        /**
-         * Create pengunjung
-         *
-         * @var Pengunjung
-         */
         $pegunjung = Pengunjung::factory()->create();
 
-        /**
-         * Create transaksi
-         *
-         * @var Transaksi
-         */
         $transaksi = Transaksi::factory()->create([
             'total_harga' => 100000,
             'total_bayar' => 100000,

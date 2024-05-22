@@ -16,7 +16,7 @@ class Guest extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'no_telpon',
+        'no_telepon',
         'pengunjung_uuid',
     ];
 

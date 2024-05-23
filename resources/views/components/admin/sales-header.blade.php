@@ -21,22 +21,22 @@
                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                 clip-rule="evenodd"></path>
             </svg>
-            <a href="{{ url('admin/sales') }}"
-              class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">Sales</a>
+            <a href="{{ url('admin/penjualan') }}"
+              class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">Penjualan</a>
           </div>
         </li>
       </ol>
     </nav>
-    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Sales Transactions</h1>
+    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Transaksi Penjualan</h1>
   </div>
   <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
     <div class="flex items-center mb-4 sm:mb-0">
       <form class="sm:pr-3" action="#" method="GET">
-        <label for="transactions-search" class="sr-only">Search</label>
+        <label for="transactions-search" class="sr-only">Cari</label>
         <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
           <input type="text" name="email" id="transactions-search"
             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            placeholder="Search for transactions">
+            placeholder="Cari transaksi...">
         </div>
       </form>
     </div>
@@ -45,7 +45,7 @@
       type="button" data-drawer-target="drawer-create-transaction-default"
       data-drawer-show="drawer-create-transaction-default" aria-controls="drawer-create-transaction-default"
       data-drawer-placement="right">
-      Add new transaction
+      Tambah Transaksi Baru
     </button>
   </div>
 </div>

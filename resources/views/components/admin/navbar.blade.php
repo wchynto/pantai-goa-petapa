@@ -19,7 +19,8 @@
         </button>
         <a href="{{ url('/admin/dashboard') }}" class="flex ml-2 md:mr-24">
           <img src="/images/logo-navbar.png" class="h-8 mr-3" alt="Pantai Goa Petapa Logo" />
-          <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Pantai Goa Petapa</span>
+          <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Pantai Goa
+            Petapa</span>
         </a>
       </div>
       <div class="flex items-center">
@@ -215,19 +216,9 @@
                   role="menuitem">Dashboard</a>
               </li>
               <li>
-                <a href="#"
+                <a href="{{ url('/logout') }}"
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                  role="menuitem">Settings</a>
-              </li>
-              <li>
-                <a href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                  role="menuitem">Earnings</a>
-              </li>
-              <li>
-                <a href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                  role="menuitem">Sign out</a>
+                  role="menuitem">Keluar</a>
               </li>
             </ul>
           </div>

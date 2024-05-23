@@ -18,7 +18,7 @@ class UserSessionController extends Controller
     public function viewRegister()
     {
         try {
-            return view('sign-up', ['title' => 'Register - Pantai Goa Petapa']);
+            return view('register', ['title' => 'Register - Pantai Goa Petapa']);
         } catch (\Exception $e) {
             abort(500);
         }

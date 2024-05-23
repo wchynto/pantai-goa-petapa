@@ -21,7 +21,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('/admin/sales') }}"
+            <a href="{{ url('/admin/penjualan') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -30,11 +30,11 @@
                   d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span class="ml-3" sidebar-toggle-item>Sales</span>
+              <span class="ml-3" sidebar-toggle-item>Penjualan</span>
             </a>
           </li>
           <li>
-            <a href="{{ url('/admin/tickets') }}"
+            <a href="{{ url('/admin/tiket') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -43,7 +43,7 @@
                   d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm2.5 3a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6.207.293a1 1 0 00-1.414 0l-6 6a1 1 0 101.414 1.414l6-6a1 1 0 000-1.414zM12.5 10a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span class="ml-3" sidebar-toggle-item>Tickets</span>
+              <span class="ml-3" sidebar-toggle-item>Tiket</span>
             </a>
           </li>
           <li>
@@ -60,7 +60,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('/admin/report') }}"
+            <a href="{{ url('/admin/laporan') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -68,7 +68,7 @@
                 <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
               </svg>
-              <span class="ml-3" sidebar-toggle-item>Report</span>
+              <span class="ml-3" sidebar-toggle-item>Laporan</span>
             </a>
           </li>
         </ul>

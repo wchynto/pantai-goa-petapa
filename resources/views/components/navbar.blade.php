@@ -37,17 +37,15 @@
         <ul class="py-2" aria-labelledby="user-menu-button">
           <li>
             <a href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Setting</a>
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Pengaturan</a>
           </li>
           <li>
             <a href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">History
-              Orders</a>
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Riwayat Pemesanan</a>
           </li>
           <li>
             <a href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-              out</a>
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
           </li>
         </ul>
       </div>
@@ -68,13 +66,13 @@
           <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
         </li>
         <li>
-          <x-nav-link href="/ticket" :active="request()->is('ticket')">Ticket</x-nav-link>
+          <x-nav-link href="/tiket" :active="request()->is('tiket')">Tiket</x-nav-link>
         </li>
         <li>
-          <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
+          <x-nav-link href="/tentang" :active="request()->is('tentang')">Tentang</x-nav-link>
         </li>
         <li>
-          <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+          <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
         </li>
       </ul>
     </div>

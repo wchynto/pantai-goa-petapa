@@ -97,7 +97,7 @@ class GuestRepository extends BaseRepository implements GuestRepositoryInterface
      */
     public function updateGuest($data, $uuid)
     {
-        return $this->model->where('uuid', $uuid)->update($data);
+        return $this->model->find($uuid)->update($data);
     }
 
     /**
@@ -112,6 +112,6 @@ class GuestRepository extends BaseRepository implements GuestRepositoryInterface
      */
     public function deleteGuest($uuid)
     {
-        return $this->model->where('uuid', $uuid)->delete();
+        return $this->model->find($uuid)->delete();
     }
 }

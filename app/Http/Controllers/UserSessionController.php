@@ -9,7 +9,16 @@ class UserSessionController extends Controller
     public function viewLogin()
     {
         try {
-            return view('');
+            return view('login', ['title' => 'Login - Pantai Goa Petapa']);
+        } catch (\Exception $e) {
+            abort(500);
+        }
+    }
+
+    public function viewRegister()
+    {
+        try {
+            return view('sign-up', ['title' => 'Register - Pantai Goa Petapa']);
         } catch (\Exception $e) {
             abort(500);
         }

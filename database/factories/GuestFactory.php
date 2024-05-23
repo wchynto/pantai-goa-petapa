@@ -17,7 +17,7 @@ class GuestFactory extends Factory
     public function definition(): array
     {
         return [
-            'no_telpon' => $this->faker->e164PhoneNumber('id_ID'),
+            'no_telepon' => $this->faker->e164PhoneNumber('id_ID'),
         ];
     }
 }

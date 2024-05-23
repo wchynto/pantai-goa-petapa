@@ -98,7 +98,7 @@ class PengunjungRepository extends BaseRepository implements PengunjungRepositor
      */
     public function updatePengunjung($data, $uuid)
     {
-        return $this->model->where('uuid', $uuid)->update($data);
+        return $this->model->find($uuid)->update($data);
     }
 
     /**

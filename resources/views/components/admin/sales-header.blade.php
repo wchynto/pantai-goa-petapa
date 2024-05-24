@@ -42,10 +42,12 @@
     </div>
     <button id="createTransactionButton"
       class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-      type="button" data-drawer-target="drawer-create-transaction-default"
-      data-drawer-show="drawer-create-transaction-default" aria-controls="drawer-create-transaction-default"
-      data-drawer-placement="right">
+      type="button" data-modal-target="add-transaction-modal" data-modal-toggle="add-transaction-modal">
       Tambah Transaksi Baru
     </button>
   </div>
 </div>
+
+<x-admin.add-transaction-modal></x-admin.add-transaction-modal>
+
+<x-admin.add-user-modal></x-admin.add-user-modal>

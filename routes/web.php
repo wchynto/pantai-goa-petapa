@@ -26,6 +26,18 @@ Route::get('/sign-up', function () {
   return view('sign-up', ['title' => 'Sign Up - Pantai Goa Petapa']);
 });
 
+Route::get('/order', function () {
+  return view('order', ['title' => 'Order - Pantai Goa Petapa']);
+});
+
+Route::get('/confirmation-order', function () {
+  return view('confirmation-order', ['title' => 'Confirmation Order - Pantai Goa Petapa']);
+});
+
+Route::get('/payment', function () {
+  return view('payment', ['title' => 'Payment - Pantai Goa Petapa']);
+});
+
 // Admin routes
 Route::get('/dashboard', function () {
   return view('dashboard');

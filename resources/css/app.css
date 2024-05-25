@@ -1,3 +1,5 @@
+@import "./select2-custom.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

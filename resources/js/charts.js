@@ -18,7 +18,7 @@ const getMainChartOptions = () => {
     return {
         series: [
             {
-                name: "Users",
+                name: "Members",
                 data: [30, 40, 25, 50, 49, 21, 70],
                 color: '#1A56DB'
             },
@@ -92,13 +92,13 @@ const getMainChartOptions = () => {
         },
         xaxis: {
             categories: [
-                "01 Feb",
-                "02 Feb",
-                "03 Feb",
-                "04 Feb",
-                "05 Feb",
-                "06 Feb",
-                "07 Feb",
+                "04 Mei",
+                "05 Mei",
+                "06 Mei",
+                "07 Mei",
+                "08 Mei",
+                "09 Mei",
+                "10 Mei",
             ],
             labels: {
                 style: {

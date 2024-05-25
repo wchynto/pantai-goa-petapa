@@ -1,30 +1,28 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserSessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-  return view('home', ['title' => 'Home - Pantai Goa Petapa']);
+    return view('home', ['title' => 'Home - Pantai Goa Petapa']);
 });
 
-Route::get('/ticket', function () {
-  return view('ticket', ['title' => 'Ticket - Pantai Goa Petapa']);
+Route::get('/tiket', function () {
+    return view('tiket', ['title' => 'Tiket - Pantai Goa Petapa']);
 });
 
-Route::get('/about', function () {
-  return view('about', ['title' => 'About - Pantai Goa Petapa']);
+Route::get('/tentang', function () {
+    return view('tentang', ['title' => 'Tentang - Pantai Goa Petapa']);
 });
 
-Route::get('/contact', function () {
-  return view('contact', ['title' => 'Contact - Pantai Goa Petapa']);
+Route::get('/kontak', function () {
+    return view('kontak', ['title' => 'Kontak - Pantai Goa Petapa']);
 });
 
-Route::get('/login', function () {
-  return view('login', ['title' => 'Login - Pantai Goa Petapa']);
-});
+Route::get('/login', [UserSessionController::class, 'viewLogin']);
 
-Route::get('/sign-up', function () {
-  return view('sign-up', ['title' => 'Sign Up - Pantai Goa Petapa']);
-});
+Route::get('/register', [UserSessionController::class, 'viewRegister']);
 
 Route::get('/order', function () {
   return view('order', ['title' => 'Order - Pantai Goa Petapa']);
@@ -39,6 +37,8 @@ Route::get('/payment', function () {
 });
 
 // Admin routes
-Route::get('/dashboard', function () {
-  return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/admin/dashboard', DashboardController::class);
+
+Route::get('/admin/penjualan', function () {
+    return view('/admin/penjualan', ['title' => 'Penjualan Admin - Pantai Goa Petapa']);
+});

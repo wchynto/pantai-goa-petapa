@@ -18,11 +18,11 @@ class ProfilFactory extends Factory
     {
         return [
             'nama' => 'Pantai Goa Petapa',
-            'deskripsi' => $this->faker->paragraph(3),
+            'deskripsi' => fake()->paragraph(3),
             'logo' => 'logo.png',
             'email' => 'pantai_goapetapa@gmail.com',
             'alamat' => 'Bangkalan',
-            'no_telepon' => $this->faker->e164PhoneNumber('id_ID'),
+            'no_telepon' => fake()->e164PhoneNumber('id_ID'),
         ];
     }
 }

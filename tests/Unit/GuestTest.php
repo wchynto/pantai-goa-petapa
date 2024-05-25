@@ -23,7 +23,7 @@ class GuestTest extends TestCase
         $this->assertTrue(
             Schema::hasColumns('guests', [
                 'uuid',
-                'no_telpon',
+                'no_telepon',
                 'pengunjung_uuid',
             ]),
         );

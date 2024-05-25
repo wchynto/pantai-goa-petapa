@@ -98,7 +98,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function updateUser($data, $uuid)
     {
-        return $this->model->where('uuid', $uuid)->update($data);
+        return $this->model->find($uuid)->update($data);
     }
 
     /**
@@ -112,6 +112,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function deleteUser($uuid)
     {
-        return $this->model->where('uuid', $uuid)->delete();
+        return $this->model->find($uuid)->delete();
     }
 }

@@ -212,7 +212,7 @@
                             <div class="col-span-2">
                               <label for="nama"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                                Pengunjung</label>
+                                pengunjung</label>
                               <div class="w-full flex gap-4">
                                 <input type="text"
                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -230,7 +230,7 @@
                                       <select id="tiket-1" name="tiket[]"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required>
-                                        <option value="" selected="">Select tiket</option>
+                                        <option value="" selected="">Pilih tiket</option>
                                         <option value="tiket-1" {{ $tiket[0] == 'Pejalan Kaki' ? 'selected' : '' }}>
                                           Pejalan Kaki</option>
                                         <option value="tiket-2" {{ $tiket[0] == 'Sepeda' ? 'selected' : '' }}>

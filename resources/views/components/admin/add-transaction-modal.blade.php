@@ -27,7 +27,7 @@
               Pengunjung</label>
             <div class="w-full flex gap-4">
               <select id="nama" name="nama" style="width: 90%" required>
-                <option value="" selected="">Pilih Pengunjung</option>
+                <option value="" selected="">Pilih pengunjung</option>
                 <option value="pengunjung-620">Alice Johnson</option>
                 <option value="pengunjung-619">Bob Smith</option>
                 <option value="pengunjung-618">Charlie Brown</option>
@@ -56,7 +56,7 @@
                     <select id="tiket-1" name="tiket[]"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                       required>
-                      <option value="" selected="">Select tiket</option>
+                      <option value="" selected="">Pilih tiket</option>
                       <option value="tiket-1">Pejalan Kaki</option>
                       <option value="tiket-2">Sepeda</option>
                       <option value="tiket-3">Sepeda Motor</option>

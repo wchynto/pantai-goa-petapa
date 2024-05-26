@@ -32,7 +32,7 @@ class UserSessionController extends Controller
             if (auth()->attempt($credentials)) {
                 $request->session()->regenerate();
 
-                return redirect()->intended('');
+                return redirect()->intended('/');
             }
 
             return back()->with('error', 'Email atau password salah')->with($request->only('email'));

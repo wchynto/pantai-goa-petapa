@@ -8,7 +8,7 @@
             <div class="w-1/6">
               <img src="{{ asset('images/logo_pantai-goa-petapa_147x147.png') }}" alt="Hero Pantai Goa Petapa">
             </div>
-            <div class="py-2 px-5 text-right">
+            <div class="py-1 px-5 text-right">
               <h1 class="text-lg font-bold leading-tight tracking-tight text-blue-900 md:text-lg dark:text-blue-900">Pantai Goa Petapa</h1>
               <p class="text-gray-400">Enjoy the beauty of nature and<br>sooting sound of the waves<br>that calm your soul</p>
             </div>
@@ -17,7 +17,7 @@
             <img src="{{ asset('images/hp-login.png') }}" alt="Hero Pantai Goa Petapa">
           </div>
         </div>
-        <div class="w-1/2 pt-16">
+        <div class="w-1/2 pt-14 pb-6">
           <div class="flex flex-col items-center justify-center md:h-screen lg:py-0 mt-0">
             <div class="w-full bg-slate-200 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -47,7 +47,7 @@
                   <button type="submit" class="w-full text-gray-100 hover:underline bg-blue-900 shadow border-gray-300 hover:bg-blue-600 focus:border-blue-600 block focus:outline-none focus:ring-blue-600 font-medium rounded-lg sm:text-sm px-5 p-2.5 text-center  dark:bg-blue-900 dark:focus:ring-blue-800 dark:hover:bg-blue-600 dark:hover:text-white">Sign in</button>
                   <button type="submit" class="w-full flex items-center justify-center text-gray-900 bg-white shadow border-blue-900 hover:bg-blue-600 hover:text-white focus:border-blue-900 focus:outline-none focus:ring-blue-900 font-medium rounded-lg sm:text-sm px-5 py-2.5 text-center dark:bg-white dark:hover:bg-blue-600 dark:hover:text-white dark:focus:ring-primary-800"><img src="{{ asset('images/google.png') }}" width="20" alt="">&ensp;&emsp;Sign in with Google</button>                  
                   <p class="text-sm text-center font-light text-gray-500 dark:text-gray-400">
-                    Don’t have an account yet? <a href="#" class="font-medium text-gray-600 hover:underline dark:text-primary-500">Sign up</a>
+                    Don’t have an account yet? <a href="register" class="font-medium text-gray-600 hover:underline dark:text-primary-500">Sign up</a>
                   </p>
                 </form><br><br>
               </div>

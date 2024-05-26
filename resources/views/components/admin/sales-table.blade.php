@@ -6,7 +6,7 @@
           'tanggal_transaksi' => '10 Mei 2024',
           'nama_pengunjung' => 'Alice Johnson',
           'tiket' => [['Pejalan Kaki', 2], ['Sepeda', 1], ['Sepeda Motor', 1], ['Mobil', 1]],
-          'total harga' => 'Rp15.000',
+          'total harga' => '15000',
           'status' => 'success',
       ],
       [
@@ -15,7 +15,7 @@
           'tanggal_transaksi' => '09 Mei 2024',
           'nama_pengunjung' => 'Bob Smith',
           'tiket' => [['Pejalan Kaki', 1], ['Sepeda', 1]],
-          'total harga' => 'Rp20.000',
+          'total harga' => '20000',
           'status' => 'pending',
       ],
       [
@@ -24,7 +24,7 @@
           'tanggal_transaksi' => '08 Mei 2024',
           'nama_pengunjung' => 'Charlie Brown',
           'tiket' => [['Sepeda Motor', 2]],
-          'total harga' => 'Rp30.000',
+          'total harga' => '30000',
           'status' => 'success',
       ],
       [
@@ -33,7 +33,7 @@
           'tanggal_transaksi' => '07 Mei 2024',
           'nama_pengunjung' => 'Diana Prince',
           'tiket' => [['Mobil', 2]],
-          'total harga' => 'Rp20.000',
+          'total harga' => '20000',
           'status' => 'success',
       ],
       [
@@ -42,7 +42,7 @@
           'tanggal_transaksi' => '06 Mei 2024',
           'nama_pengunjung' => 'Eve Adams',
           'tiket' => [['Pejalan Kaki', 1]],
-          'total harga' => 'Rp10.000',
+          'total harga' => '10000',
           'status' => 'expired',
       ],
       [
@@ -51,7 +51,7 @@
           'tanggal_transaksi' => '05 Mei 2024',
           'nama_pengunjung' => 'Frank White',
           'tiket' => [['Sepeda', 1], ['Sepeda Motor', 1]],
-          'total harga' => 'Rp15.000',
+          'total harga' => '15000',
           'status' => 'success',
       ],
       [
@@ -60,7 +60,7 @@
           'tanggal_transaksi' => '04 Mei 2024',
           'nama_pengunjung' => 'Grace Lee',
           'tiket' => [['Pejalan Kaki', 1]],
-          'total harga' => 'Rp5.000',
+          'total harga' => '5000',
           'status' => 'success',
       ],
       [
@@ -69,7 +69,7 @@
           'tanggal_transaksi' => '03 Mei 2024',
           'nama_pengunjung' => 'Hank Green',
           'tiket' => [['Sepeda Motor', 1]],
-          'total harga' => 'Rp12.000',
+          'total harga' => '12000',
           'status' => 'success',
       ],
       [
@@ -78,7 +78,7 @@
           'tanggal_transaksi' => '02 Mei 2024',
           'nama_pengunjung' => 'Ivy Blue',
           'tiket' => [['Mobil', 1]],
-          'total harga' => 'Rp10.000',
+          'total harga' => '10000',
           'status' => 'canceled',
       ],
       [
@@ -87,11 +87,10 @@
           'tanggal_transaksi' => '01 Mei 2024',
           'nama_pengunjung' => 'Jack Black',
           'tiket' => [['Pejalan Kaki', 1], ['Sepeda', 1], ['Sepeda Motor', 1], ['Mobil', 1]],
-          'total harga' => 'Rp5.000',
+          'total harga' => '5000',
           'status' => 'success',
       ],
   ];
-
 @endphp
 
 <div class="flex flex-col mt-6">
@@ -140,7 +139,7 @@
                   {{ $item['nama_pengunjung'] }}
                 </td>
                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                  {{ $item['total harga'] }}
+                  Rp{{ number_format($item['total harga'], 0, ',', '.') }}
                 </td>
                 <td class="p-4 whitespace-nowrap">
                   @if ($item['status'] == 'success')
@@ -162,7 +161,7 @@
                 </td>
                 <td class="p-4 whitespace-nowrap">
                   {{-- Detail Button --}}
-                  <a href="{{ url('admin/sales/' . $item['transaksi_id']) }}"
+                  <a href="{{ url('admin/penjualan/' . $item['transaksi_id']) }}"
                     class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 inline-block">
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                       height="24" fill="none" viewBox="0 0 24 24">
@@ -183,7 +182,7 @@
                         d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28" />
                     </svg>
                   </button>
-                  {{-- Edit Transksi Modal --}}
+                  {{-- Edit Transaksi Modal --}}
                   <div id="editTransaksiModal-{{ $item['transaksi_id'] }}" tabindex="-1" aria-hidden="true"
                     class="hidden overflow-y-auto overflow-x-hidden top-4 fixed md:top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                     <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
@@ -306,7 +305,7 @@
                         d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
                     </svg>
                   </button>
-                  {{-- Delete Transksi Modal --}}
+                  {{-- Delete Transaksi Modal --}}
                   <div
                     class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full"
                     id="deleteTransaksiModal-{{ $item['transaksi_id'] }}">

@@ -42,3 +42,7 @@ Route::get('/admin/dashboard', DashboardController::class);
 Route::get('/admin/penjualan', function () {
     return view('/admin/penjualan', ['title' => 'Penjualan Admin - Pantai Goa Petapa']);
 });
+
+Route::get('/admin/tiket', function () {
+    return view('/admin/tiket', ['title' => 'Tiket Admin - Pantai Goa Petapa']);
+});

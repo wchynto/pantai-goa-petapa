@@ -26,7 +26,7 @@
       ],
       [
           'pengunjung_id' => 'pengunjung-5',
-          'nama' => 'Rizky Ramadhan',
+          'nama' => 'Rizal Fauzi',
           'no_telepon' => '081543267890',
           'tipe' => 'member',
       ],

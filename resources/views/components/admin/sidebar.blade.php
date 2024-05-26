@@ -4,8 +4,8 @@
   <div
     class="relative flex flex-col flex-1 min-h-0 pt-0 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
-      <div class="flex-1 px-3 space-y-1 bg-white dark:bg-gray-800">
-        <ul class="pb-2 space-y-2 border-b-2 border-b-gray-200 dark:border-b-gray-700">
+      <div class="flex-1 px-3 space-y-1 bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+        <ul class="py-2 space-y-2">
           <li>
             <a href="{{ url('/admin/dashboard') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
@@ -20,6 +20,8 @@
               <span class="ml-3" sidebar-toggle-item>Dashboard</span>
             </a>
           </li>
+        </ul>
+        <ul class="py-2 space-y-2">
           <li>
             <a href="{{ url('/admin/penjualan') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
@@ -60,6 +62,8 @@
               <span class="ml-3" sidebar-toggle-item>Pengunjung</span>
             </a>
           </li>
+        </ul>
+        <ul class="py-2 space-y-2">
           <li>
             <a href="{{ url('/admin/postingan') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
@@ -73,6 +77,19 @@
               <span class="ml-3" sidebar-toggle-item>Postingan</span>
             </a>
           </li>
+          <li>
+            <a href="{{ url('/admin/kategori') }}"
+              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+              <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M5 3a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm14 18a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4ZM5 11a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H5Zm14 2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h4Z" />
+              </svg>
+              <span class="ml-3" sidebar-toggle-item>Kategori</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="py-2 space-y-2">
           <li>
             <a href="{{ url('/admin/laporan') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">

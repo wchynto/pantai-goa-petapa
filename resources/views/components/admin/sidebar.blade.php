@@ -61,7 +61,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('/admin/blog') }}"
+            <a href="{{ url('/admin/postingan') }}"
               class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
               <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -70,7 +70,7 @@
                   d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v7h-2l-1 2H8l-1-2H5V5z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span class="ml-3" sidebar-toggle-item>Blog</span>
+              <span class="ml-3" sidebar-toggle-item>Postingan</span>
             </a>
           </li>
           <li>

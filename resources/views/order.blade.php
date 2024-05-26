@@ -20,15 +20,15 @@
         </div></a>
       </div>
       <div class="flex items-center justify-center mx-auto">
-        <h1 class="text-l px-12">Order</h1>
-        <h1 class="text-l">Confirmation</h1>
-        <h1 class="text-l px-9">Payment</h1>
+        <h1 class="text-l px-14 font-semibold">Pesan</h1>
+        <h1 class="text-l">Konfirmasi</h1>
+        <h1 class="text-l px-8">Pembayaran</h1>
       </div>
 
       <div class="flex flex-col sm:flex-row pt-20 gap-10">
         {{-- SHOPPING CART --}}
-        <div class="w-3/4">
-          <h1 class="text-l mb-4">Shopping Cart</h1>
+        <div class="w-3/4 mb-8">
+          <h1 class="text-l mb-4 font-semibold">Keranjang belanja</h1>
           <div class="w-full bg-white border border-gray-200 shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 mb-4 rounded-lg">
             <div class="relative overflow-x-auto shadow-xl sm:rounded-lg mb-4">
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
@@ -94,10 +94,10 @@
             </div>
             <div class="mt-10 flex flex-col sm:flex-row">
               <div class="w-1/6">
-                <a href="tiket"><svg class="w-7 h-7 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10"><path stroke="currentColor" stroke-linecap="round" d="M13 5H1m0 0 4 4M1 5l4-4"/></svg>
+                <a href="tiket"><svg class="w-7 h-7 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10"><path stroke="currentColor" stroke-linecap="round" d="M13 5H1m0 0 4 4M1 5l4-4"/></svg>
               </div>
               <div class="">
-                <h1 class="text-lg leading-tight tracking-tight text-blue-900 md:text-lg dark:text-white"> Go Back</h1></a>
+                <h1 class="text-lg font-semibold leading-tight tracking-tight text-gray-900 md:text-lg dark:text-white"> Kembali</h1></a>
               </div>
             </div>
           </div>
@@ -105,8 +105,12 @@
 
         {{-- ORDER SUM --}}
         <div class="w-1/4">
-          <h1 class="text-l mb-4">Order Summary</h1>
-
+          <h1 class="text-l mb-4 font-semibold">Order Summary</h1>
+          <div class="w-full bg-white border border-gray-200 shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 mb-4 rounded-lg">
+            <h1 class="text-lg font-light leading-tight tracking-tight text-blue-950 md:text-lg dark:text-white">Total Payment</h1></a>
+            <h1 class="text-lg font-extrabold leading-tight tracking-tight text-blue-950 md:text-lg dark:text-white"> Rp16.000</h1></a>
+          </div>
+          <a href="confirmation-order"><button type="submit" class="w-full text-blue-950 hover bg-blue-200 shadow border-blue-900 hover:bg-blue-900 block focus:outline-none font-bold rounded-lg sm:text-sm px-5 p-2.5 text-center  dark:bg-blue-900 dark:text-white  dark:hover:bg-blue-200 dark:hover:text-blue-950 hover:text-white">Pesan Sekarang</button></a>
         </div>
       </div>
     </div>

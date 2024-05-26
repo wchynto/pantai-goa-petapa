@@ -3,16 +3,20 @@
   <section class="flex justify-center mt-16">
     <div class="container xl:max-w-screen-xl p-4">
       <div class="flex items-center justify-center">
-        <div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-gray-100 rounded-full dark:bg-blue-200">
+        <a href="order"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-200 rounded-full">
           <span class="text-2xl font-semibold text-white">1</span>
-        </div>
-        <hr class="w-12 h-1 my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
-        <div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-gray-100 rounded-full dark:bg-blue-200">
+        </div></a>
+
+        <hr class="w-12 h-1 my-4 bg-gray-700 border-0 rounded md:my-10">
+        
+        <a href="confirmation-order"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-200 rounded-full">
           <span class="text-2xl font-semibold text-white">2</span>
-        </div>
-        <hr class="w-12 h-1 my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
-        <div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-gray-100 rounded-full dark:bg-blue-900">
-          <span class="text-2xl font-semibold text-white dark:text-white">3</span>
+        </div></a>
+        
+        <hr class="w-12 h-1 my-4 bg-gray-700 border-0 rounded md:my-10">
+        
+        <div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-900 rounded-full">
+          <span class="text-2xl font-semibold text-white">3</span>
         </div>
       </div>
       <div class="flex items-center justify-center mx-auto">

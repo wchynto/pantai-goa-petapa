@@ -21,7 +21,7 @@ class User extends Authenticatable
         'no_telepon',
         'email',
         'password',
-        'pegunjung_uuid'
+        'pengunjung_uuid'
     ];
 
     /**

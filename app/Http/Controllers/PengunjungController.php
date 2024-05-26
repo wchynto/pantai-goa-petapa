@@ -60,7 +60,9 @@ class PengunjungController extends Controller
 
             $pengunjung = $this->pengunjungService->createPengunjung($data);
 
-            $data['pengunjung_id'] = $pengunjung->id;
+            $data['pengunjung_uuid'] = $pengunjung->uuid;
+
+            // dd($pengunjung, $data);
 
             if ($request->tipe == 'user') {
                 $this->userService->createUser($data);
@@ -70,6 +72,7 @@ class PengunjungController extends Controller
 
             return back()->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return back()->with('error',  $e->getMessage());
         }
     }

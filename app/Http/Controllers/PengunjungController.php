@@ -56,15 +56,11 @@ class PengunjungController extends Controller
     public function store(StorePengunjungRequest $request)
     {
         try {
-            $pengunjung = $this->pengunjungService->createPengunjung($request->all());
+            $data = $request->all();
 
-            $data = [
-                'nama' => $request->nama,
-                'email' => $request->email,
-                'password' => $request->password,
-                'no_telepon' => $request->no_telepon,
-                'pengunjung_id' => $pengunjung->id,
-            ];
+            $pengunjung = $this->pengunjungService->createPengunjung($data);
+
+            $data['pengunjung_id'] = $pengunjung->id;
 
             if ($request->tipe == 'user') {
                 $this->userService->createUser($data);

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\TransaksiService;
+use App\Services\KategoriService;
 use Illuminate\Http\Request;
 
-class TransaksiController extends Controller
+class KategoriController extends Controller
 {
-    protected $transaksiService;
+    protected $kategoriService;
 
     public function __construct()
     {
-        $this->transaksiService = new TransaksiService();
+        $this->kategoriService = new KategoriService();
     }
 
     /**
@@ -22,7 +22,7 @@ class TransaksiController extends Controller
         try {
             return view('', [
                 'title' => '',
-                'transaksi' => $this->transaksiService->getTransaksiAll(),
+                'kategori' => $this->kategoriService->getKategoriAll(),
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -49,7 +49,11 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         try {
+            $this->kategoriService->createKategori($request->all());
+
+            return back()->with('success', 'Data Kategori berhasil ditambahkan!');
         } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
     }
 
@@ -66,7 +70,14 @@ class TransaksiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try {
+            return view('', [
+                'title' => '',
+                'kategori' => $this->kategoriService->getKategoriByUuid($id),
+            ]);
+        } catch (\Exception $e) {
+            abort(500);
+        }
     }
 
     /**
@@ -74,7 +85,13 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $this->kategoriService->updateKategori($request->all(), $id);
+
+            return back()->with('success', 'Data Kategori berhasil diubah!');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     /**
@@ -82,6 +99,12 @@ class TransaksiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $this->kategoriService->deleteKategori($id);
+
+            return back()->with('success', 'Data Kategori berhasil dihapus!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data Kategori gagal dihapus!');
+        }
     }
 }

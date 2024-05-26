@@ -50,3 +50,7 @@ Route::get('/admin/tiket', function () {
 Route::get('/admin/pengunjung', function () {
   return view('/admin/pengunjung', ['title' => 'Pengunjung - Admin Pantai Goa Petapa']);
 });
+
+Route::get('/admin/postingan', function () {
+  return view('/admin/postingan', ['title' => 'Postingan - Admin Pantai Goa Petapa']);
+});

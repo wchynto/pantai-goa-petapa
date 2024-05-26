@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        return view('admin.dashboard', ['title' => 'Dashboard Admin - Pantai Goa Petapa']);
+        return view('admin.dashboard', ['title' => 'Dashboard - Admin Pantai Goa Petapa']);
     }
 }

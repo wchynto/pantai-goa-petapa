@@ -5,13 +5,15 @@
     <div class="grid gap-4">
       <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
         <!-- Card header -->
-        <x-admin.posts-header></x-admin.posts-header>
+        <x-admin.card-header title="Postingan" searchPlaceholder="Cari postingan..."
+          buttonUrl="{{ url('admin/postingan/tambah') }}"
+          buttonText="Tambah Postingan Baru"></x-admin.card-header>
 
         <!-- Table -->
         <x-admin.posts-table></x-admin.posts-table>
 
         <!-- Card Footer -->
-        <x-admin.posts-footer></x-admin.posts-footer>
+        <x-admin.card-footer :start="1" :end="10" :total="100"></x-admin.card-footer>
       </div>
     </div>
   </div>

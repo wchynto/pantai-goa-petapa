@@ -10,13 +10,13 @@
             Enjoy the beauty of nature and soothing sound of the waves
             that calm your soul</h1>
           <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#"
+            <a href="{{ url('tiket') }}"
               class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-700">
-              See Ticket
+              Lihat Tiket
             </a>
-            <a href="#"
+            <a href="{{ url('register') }}"
               class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-700">
-              Sign Up
+              Daftar
             </a>
           </div>
         </div>

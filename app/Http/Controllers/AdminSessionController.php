@@ -10,7 +10,7 @@ class AdminSessionController extends Controller
     public function viewLogin()
     {
         try {
-            return view('');
+            return view('admin.login', ['title' => 'Login - Admin Pantai Goa Petapa']);
         } catch (\Exception $e) {
             abort(500);
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Services\KategoriService;
 use Illuminate\Http\Request;
 

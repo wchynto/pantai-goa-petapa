@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('logo', 50);
             $table->string('email', 50);
-            $table->string('alamat', 50);
+            $table->string('alamat', 100);
             $table->string('no_telepon', 13);
             $table->timestamps();
         });

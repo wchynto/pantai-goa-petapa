@@ -21,14 +21,15 @@ class AdminSessionController extends Controller
         try {
             $credentials = $request->only('email', 'password');
 
-            if (auth()->attempt($credentials)) {
+            if (auth()->guard('web-admin')->attempt($credentials)) {
                 $request->session()->regenerate();
 
-                return redirect()->intended('');
+                return redirect()->intended(route('admin.dashboard'));
             }
 
             return back()->with('error', 'Email atau password salah')->with($request->only('email'));
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return back()->with('error', $e->getMessage())->with($request->only('email'));
         }
     }

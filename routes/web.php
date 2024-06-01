@@ -48,9 +48,9 @@ Route::group([
 ], function () {
   Route::get('dashboard', DashboardController::class)->name('admin.dashboard');
 
-  Route::get('penjualan', function () {
-    return view('/admin/penjualan', ['title' => 'Penjualan - Admin Pantai Goa Petapa']);
-  });
+    Route::get('penjualan', function () {
+        return view('/admin/penjualan', ['title' => 'Penjualan - Admin Pantai Goa Petapa']);
+    });
 
   Route::get('penjualan/tambah', function () {
     return view('/admin/tambah-penjualan', ['title' => 'Tambah Penjualan - Admin Pantai Goa Petapa']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 
 class UserSessionController extends Controller
@@ -24,7 +25,7 @@ class UserSessionController extends Controller
         }
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         try {
             $credentials = $request->only('email', 'password');

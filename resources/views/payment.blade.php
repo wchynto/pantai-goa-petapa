@@ -20,9 +20,9 @@
         </div>
       </div>
       <div class="flex items-center justify-center mx-auto">
-        <h1 class="text-l px-14 font-semibold">Pesan</h1>
+        <h1 class="text-l px-14">Pesan</h1>
         <h1 class="text-l">Konfirmasi</h1>
-        <h1 class="text-l px-8">Pembayaran</h1>
+        <h1 class="text-l px-8 font-semibold">Pembayaran</h1>
       </div>
     </div>
   </section>

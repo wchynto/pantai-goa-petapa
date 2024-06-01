@@ -93,13 +93,16 @@
               </table>
             </div>
             <div class="mt-10 flex flex-col sm:flex-row">
-              <div class="w-1/6">
-                <a href="tiket"><svg class="w-7 h-7 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10"><path stroke="currentColor" stroke-linecap="round" d="M13 5H1m0 0 4 4M1 5l4-4"/></svg>
-              </div>
-              <div class="">
-                <h1 class="text-lg font-semibold leading-tight tracking-tight text-gray-900 md:text-lg dark:text-white"> Kembali</h1></a>
+              <div class="w-1/6 flex items-center">
+                <a href="tiket" class="flex items-center">
+                  <svg class="w-7 h-7 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+                  </svg>
+                  <h1 class="text-lg font-semibold leading-tight tracking-tight text-gray-900 md:text-lg dark:text-white ml-2">Kembali</h1>
+                </a>
               </div>
             </div>
+            
           </div>
         </div>
 

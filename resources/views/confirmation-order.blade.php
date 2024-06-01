@@ -30,7 +30,7 @@
         {{-- KONFIRMASI PESANAN--}}
         <div class="w-full mb-8">
           <h1 class="text-l mb-4 font-semibold">Konfirmasi Pemesanan</h1>
-          <div class="w-full bg-blue-200 border border-gray-200 shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 mb-4 rounded-lg">
+          <div class="w-full bg-blue-200 border border-gray-200 shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 my-4 rounded-lg py-4">
             {{-- METODE PEMBAYARAN --}}
             <h1 class="text-l mb-4 font-semibold dark:text-white">Metode Pembayaran</h1>
             <div class="flex flex-col sm:flex-row gap-10">

@@ -39,34 +39,34 @@ Route::get('/payment', function () {
 
 // Admin routes
 Route::group([
-  'prefix' => 'admin',
-  'middleware' => ['admin']
+    'prefix' => 'admin',
+    //   'middleware' => ['admin']
 ], function () {
-  Route::get('dashboard', DashboardController::class)->name('admin.dashboard');
+    Route::get('dashboard', DashboardController::class)->name('admin.dashboard');
 
-  Route::get('penjualan', function () {
-    return view('/admin/penjualan', ['title' => 'Penjualan - Admin Pantai Goa Petapa']);
-  });
+    Route::get('penjualan', function () {
+        return view('/admin/penjualan', ['title' => 'Penjualan - Admin Pantai Goa Petapa']);
+    });
 
-  Route::get('tiket', function () {
-    return view('/admin/tiket', ['title' => 'Tiket - Admin Pantai Goa Petapa']);
-  });
+    Route::get('tiket', function () {
+        return view('/admin/tiket', ['title' => 'Tiket - Admin Pantai Goa Petapa']);
+    });
 
-  Route::get('pengunjung', function () {
-    return view('/admin/pengunjung', ['title' => 'Pengunjung - Admin Pantai Goa Petapa']);
-  });
+    Route::get('pengunjung', function () {
+        return view('/admin/pengunjung', ['title' => 'Pengunjung - Admin Pantai Goa Petapa']);
+    });
 
-  Route::get('postingan', function () {
-    return view('/admin/postingan', ['title' => 'Postingan - Admin Pantai Goa Petapa']);
-  });
+    Route::get('postingan', function () {
+        return view('/admin/postingan', ['title' => 'Postingan - Admin Pantai Goa Petapa']);
+    });
 
-  Route::get('kategori', function () {
-    return view('/admin/kategori', ['title' => 'Kategori - Admin Pantai Goa Petapa']);
-  });
+    Route::get('kategori', function () {
+        return view('/admin/kategori', ['title' => 'Kategori - Admin Pantai Goa Petapa']);
+    });
 
-  Route::get('laporan', function () {
-    return view('/admin/laporan', ['title' => 'Laporan - Admin Pantai Goa Petapa']);
-  });
+    Route::get('laporan', function () {
+        return view('/admin/laporan', ['title' => 'Laporan - Admin Pantai Goa Petapa']);
+    });
 });
 
 Route::resource('pengunjung', PengunjungController::class);

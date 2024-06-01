@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->string('email', 50)->unique();
-            $table->string('no_telepon', 13)->unique();
+            $table->string('no_telepon', 20)->unique();
             $table->string('password', 100);
             $table->timestamp('email_verified_at')->nullable();
             $table->foreignUuid('pengunjung_uuid')->constrained('pengunjungs', 'uuid')->cascadeOnUpdate()->restrictOnDelete();

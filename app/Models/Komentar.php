@@ -10,6 +10,8 @@ class Komentar extends Pivot
 {
     use HasFactory;
 
+    protected $table = 'komentars';
+
     /**
      * The attributes that are mass assignable.
      *

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->uuid()->primary();
-            $table->string('no_telepon', 13)->unique();
+            $table->string('no_telepon', 20)->unique();
             $table->foreignUuid('pengunjung_uuid')->constrained('pengunjungs', 'uuid')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });

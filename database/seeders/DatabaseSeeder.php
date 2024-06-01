@@ -15,29 +15,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            AdminSeeder::class,
+
             PengunjungSeeder::class,
             KendaraanSeeder::class,
             TiketSeeder::class,
             TransaksiSeeder::class,
 
-<<<<<<< HEAD
             KategoriSeeder::class,
             PostinganSeeder::class,
             KomentarSeeder::class,
 
             MediaSosialSeeder::class,
             ProfilSeeder::class,
-=======
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        Admin::factory()->create([
-            'nama' => 'Test Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('password'),
->>>>>>> 241c75617fa67d5aa05a35aeb73cff9c77a6f162
         ]);
     }
 }

@@ -17,7 +17,7 @@
             </div>
           </div>
         </div>
-        <div class="sm:w-2/3 lg:w-1/2">
+        <div class="sm:w-2/3 lg:w-1/2 my-10">
           <div class="flex flex-col items-center justify-center md:h-screen lg:py-0 mt-0">
             <div
               class="w-full bg-slate-200 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

@@ -2,7 +2,7 @@
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="{{ asset('images/logo-navbar.png') }}" class="h-8" alt="Pantai Goa Petapa Logo" />
-      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pantai Goa Petapa</span>
+      <span class="self-center text-lg sm:text-xl md:text-2xl font-semibold whitespace-nowrap dark:text-white">Pantai Goa Petapa</span>
     </a>
     <div class="flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
       <button id="theme-toggle" type="button"
@@ -41,10 +41,11 @@
           </li>
           <li>
             <a href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Riwayat Pemesanan</a>
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Riwayat
+              Pemesanan</a>
           </li>
           <li>
-            <a href="#"
+            <a href="{{ route('user.logout') }}"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
           </li>
         </ul>

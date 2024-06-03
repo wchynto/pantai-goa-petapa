@@ -11,6 +11,13 @@ class Admin extends Authenticatable
     use HasFactory;
 
     /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'uuid';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

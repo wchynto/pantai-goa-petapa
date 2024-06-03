@@ -15,5 +15,5 @@
     </div>
   </div>
 
-  <x-admin.add-user-modal></x-admin.add-user-modal>
+  <x-admin.add-visitor-modal></x-admin.add-visitor-modal>
 </x-admin.layout>

@@ -20,7 +20,7 @@
           'thumbnail' => 'nature',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
           'kategori' => $kategori[0]['nama'],
       ],
       [
@@ -28,7 +28,7 @@
           'thumbnail' => 'technology',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
           'kategori' => $kategori[1]['nama'],
       ],
       [
@@ -36,7 +36,8 @@
           'thumbnail' => 'food',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
+
           'kategori' => $kategori[2]['nama'],
       ],
       [
@@ -44,7 +45,8 @@
           'thumbnail' => 'fashion',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
+
           'kategori' => $kategori[3]['nama'],
       ],
       [
@@ -52,7 +54,8 @@
           'thumbnail' => 'nature',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
+
           'kategori' => $kategori[0]['nama'],
       ],
       [
@@ -60,7 +63,8 @@
           'thumbnail' => 'technology',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
+
           'kategori' => $kategori[1]['nama'],
       ],
       [
@@ -68,7 +72,8 @@
           'thumbnail' => 'food',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
+
           'kategori' => $kategori[2]['nama'],
       ],
       [
@@ -76,7 +81,8 @@
           'thumbnail' => 'fashion',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
+
           'kategori' => $kategori[3]['nama'],
       ],
       [
@@ -84,7 +90,8 @@
           'thumbnail' => 'nature',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
+
           'kategori' => $kategori[0]['nama'],
       ],
       [
@@ -92,7 +99,8 @@
           'thumbnail' => 'technology',
           'judul' => 'Lorem ipsum dolor sit amet',
           'body' =>
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.',
+              '<h1>Lorem ipsum dolor sit amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultrices ultricies. Nullam nec purus ut libero ultrices ultricies.</p>',
+
           'kategori' => $kategori[1]['nama'],
       ],
   ];
@@ -138,7 +146,7 @@
                   {{ $item['judul'] }}
                 </td>
                 <td class="p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
-                  {{ $item['body'] }}
+                  {{ Str::limit(strip_tags($item['body']), 100, '...') }}
                 </td>
                 <td class="p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
                   {{ $item['kategori'] }}

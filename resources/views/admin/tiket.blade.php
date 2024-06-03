@@ -5,7 +5,8 @@
     <div class="grid gap-4">
       <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
         <!-- Card header -->
-        <x-admin.card-header title="Daftar Tiket" breadcrumb="Tiket" searchPlaceholder="Cari tiket..." buttonUrl="{{ url('admin/tiket/tambah') }}"
+        <x-admin.card-header title="Daftar Tiket" breadcrumb="Tiket" breadcrumbUrl="{{ url('admin/tiket') }}"
+          searchPlaceholder="Cari tiket..." buttonUrl="{{ url('admin/tiket/tambah') }}"
           buttonText="Tambah Tiket Baru"></x-admin.card-header>
 
         <!-- Table -->

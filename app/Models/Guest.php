@@ -8,39 +8,39 @@ use Illuminate\Support\Str;
 
 class Guest extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'no_telepon',
-        'pengunjung_uuid',
-    ];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = [
+    'no_telepon',
+    'pengunjung_uuid',
+  ];
 
-    /**
-     * The booting method of the model
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
+  /**
+   * The booting method of the model
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
 
-        static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) Str::uuid();
-        });
-    }
+    static::creating(function ($model) {
+      $model->uuid = Str::uuid();
+    });
+  }
 
-    /**
-     * Relationship to pengunjung
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function pengunjung()
-    {
-        return $this->belongsTo(Pengunjung::class, 'pengunjung_uuid', 'uuid');
-    }
+  /**
+   * Relationship to pengunjung
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function pengunjung()
+  {
+    return $this->belongsTo(Pengunjung::class, 'pengunjung_uuid', 'uuid');
+  }
 }

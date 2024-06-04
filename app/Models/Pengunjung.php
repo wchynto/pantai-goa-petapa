@@ -29,7 +29,7 @@ class Pengunjung extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) Str::uuid();
+            $model->uuid = Str::uuid();
         });
     }
 

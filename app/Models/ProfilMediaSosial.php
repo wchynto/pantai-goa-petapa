@@ -8,30 +8,30 @@ use Illuminate\Support\Str;
 
 class ProfilMediaSosial extends Pivot
 {
-    use HasFactory;
+  use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'keterangan',
-        'profil_uuid',
-        'media_sosial_uuid',
-    ];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'keterangan',
+    'profil_uuid',
+    'media_sosial_uuid',
+  ];
 
-    /**
-     * The booting method of the model
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
+  /**
+   * The booting method of the model
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
 
-        static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) Str::uuid();
-        });
-    }
+    static::creating(function ($model) {
+      $model->uuid = Str::uuid();
+    });
+  }
 }

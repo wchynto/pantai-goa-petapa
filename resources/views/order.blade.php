@@ -9,13 +9,13 @@
 
         <hr class="w-12 h-1 my-4 bg-gray-700 border-0 rounded md:my-10">
         
-        <a href="confirmation-order"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-200 rounded-full">
+        <a href="confirmation-order"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
           <span class="text-2xl font-semibold text-white">2</span>
         </div></a>
 
         <hr class="w-12 h-1 my-4 bg-gray-700 border-0 rounded md:my-10">
 
-        <a href="payment"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-200 rounded-full">
+        <a href="payment"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
           <span class="text-2xl font-semibold text-white">3</span>
         </div></a>
       </div>
@@ -32,7 +32,7 @@
           <div class="w-full bg-white border border-gray-200 shadow-xl p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 mb-4 rounded-lg">
             <div class="relative overflow-x-auto shadow-xl sm:rounded-lg mb-4">
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
-                <thead class="text-xs text-gray-700 uppercase bg-blue-200 dark:bg-blue-900 dark:text-gray-300">
+                <thead class="text-xs text-gray-700 uppercase bg-blue-100 dark:bg-blue-900 dark:text-gray-300">
                   <tr>
                     <th scope="col" class="px-6 py-3 lg:text-sm">
                       Product

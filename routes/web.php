@@ -56,9 +56,7 @@ Route::group([
         return view('/admin/tiket', ['title' => 'Tiket - Admin Pantai Goa Petapa']);
     });
 
-    Route::get('pengunjung', function () {
-        return view('/admin/pengunjung', ['title' => 'Pengunjung - Admin Pantai Goa Petapa']);
-    });
+    Route::resource('pengunjung', PengunjungController::class);
 
     Route::get('postingan', function () {
         return view('/admin/postingan', ['title' => 'Postingan - Admin Pantai Goa Petapa']);

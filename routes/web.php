@@ -52,18 +52,40 @@ Route::group([
         return view('/admin/penjualan', ['title' => 'Penjualan - Admin Pantai Goa Petapa']);
     });
 
+    Route::get('penjualan/tambah', function () {
+        return view('/admin/tambah-penjualan', ['title' => 'Tambah Penjualan - Admin Pantai Goa Petapa']);
+    });
+
     Route::get('tiket', function () {
         return view('/admin/tiket', ['title' => 'Tiket - Admin Pantai Goa Petapa']);
     });
 
-    Route::resource('pengunjung', PengunjungController::class);
+    Route::get('tiket/tambah', function () {
+        return view('/admin/tambah-tiket', ['title' => 'Tambah Tiket - Admin Pantai Goa Petapa']);
+    });
+
+    Route::get('pengunjung', function () {
+        return view('/admin/pengunjung', ['title' => 'Pengunjung - Admin Pantai Goa Petapa']);
+    });
+
+    Route::get('pengunjung/tambah', function () {
+        return view('/admin/tambah-pengunjung', ['title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa']);
+    });
 
     Route::get('postingan', function () {
         return view('/admin/postingan', ['title' => 'Postingan - Admin Pantai Goa Petapa']);
     });
 
+    Route::get('postingan/tambah', function () {
+        return view('/admin/tambah-postingan', ['title' => 'Tambah Postingan - Admin Pantai Goa Petapa']);
+    });
+
     Route::get('kategori', function () {
         return view('/admin/kategori', ['title' => 'Kategori - Admin Pantai Goa Petapa']);
+    });
+
+    Route::get('kategori/tambah', function () {
+        return view('/admin/tambah-kategori', ['title' => 'Tambah Kategori - Admin Pantai Goa Petapa']);
     });
 
     Route::get('laporan', function () {

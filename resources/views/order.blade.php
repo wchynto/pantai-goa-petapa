@@ -20,28 +20,28 @@
         </div></a>
       </div>
       <div class="flex items-center justify-center mx-auto">
-        <h1 class="text-l px-14 font-semibold">Pesan</h1>
+        <h1 class="text-l px-14 font-bold">Pesan</h1>
         <h1 class="text-l">Konfirmasi</h1>
         <h1 class="text-l px-8">Pembayaran</h1>
       </div>
 
-      <div class="flex flex-col sm:flex-row pt-20 gap-10">
+      <div class="flex flex-row pt-20 gap-6 lg:gap-10">
         {{-- SHOPPING CART --}}
-        <div class="w-3/4 mb-8">
-          <h1 class="text-l mb-4 font-semibold">Keranjang belanja</h1>
-          <div class="w-full bg-white border border-gray-200 shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 mb-4 rounded-lg">
+        <div class="w-1/2 md:w-3/4 mb-8">
+          <h1 class="text-lg mb-4 font-semibold">Keranjang belanja</h1>
+          <div class="w-full bg-white border border-gray-200 shadow-xl p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 mb-4 rounded-lg">
             <div class="relative overflow-x-auto shadow-xl sm:rounded-lg mb-4">
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
                 <thead class="text-xs text-gray-700 uppercase bg-blue-200 dark:bg-blue-900 dark:text-gray-300">
                   <tr>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 lg:text-sm">
                       Product
                     </th>
-                    <th scope="col" class="px-6 py-3"></th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 lg:text-sm"></th>
+                    <th scope="col" class="px-6 py-3 lg:text-sm">
                       Quantity
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 lg:text-sm">
                       Subtotal
                     </th>
                   </tr>
@@ -51,13 +51,13 @@
                     <td class="px-6 py-4">
                       <img src="{{ asset('images/mobil.png') }}" alt="Tiket-mobil">
                     </td>
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">
                         Tiket Masuk Mobil
                     </th>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-xs md:text-base">
                         1
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-xs md:text-base">
                         Rp10.000
                     </td>
                   </tr>
@@ -65,13 +65,13 @@
                     <td class="px-6 py-4">
                       <img src="{{ asset('images/sepeda-motor.png') }}" alt="Tiket-sepeda-motor">
                     </td>
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">
                       Tiket Masuk Sepeda Motor
                     </th>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-xs md:text-base">
                       1
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-xs md:text-base">
                       Rp5.000
                     </td>
                   </tr>
@@ -79,38 +79,42 @@
                     <td class="px-6 py-4">
                       <img src="{{ asset('images/pejalan-kaki.png') }}" alt="Tiket-pejalan-kaki">
                     </td>
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-xs md:text-base">
                         Tiket Masuk Pejalan Kaki
                     </th>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-xs md:text-base">
                       1
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-xs md:text-base">
                       Rp1.000
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="mt-10 flex flex-col sm:flex-row">
-              <div class="w-1/6">
-                <a href="tiket"><svg class="w-7 h-7 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10"><path stroke="currentColor" stroke-linecap="round" d="M13 5H1m0 0 4 4M1 5l4-4"/></svg>
+
+            {{-- GO BACK --}}
+            <div class="mt-10 flex flex-row mx-4 lg:mx-0">
+              <div class="w-1/2 flex items-center">
+                <a href="tiket" class="flex items-center">
+                  <svg class="w-5 h-5 lg:w-5 lg:h-5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+                  </svg>
+                  <h1 class="text-base font-semibold leading-tight tracking-tight text-gray-900 md:text-lg dark:text-white ml-2">Kembali</h1>
+                </a>
               </div>
-              <div class="">
-                <h1 class="text-lg font-semibold leading-tight tracking-tight text-gray-900 md:text-lg dark:text-white"> Kembali</h1></a>
-              </div>
-            </div>
+            </div>    
           </div>
         </div>
 
         {{-- ORDER SUM --}}
-        <div class="w-1/4">
-          <h1 class="text-l mb-4 font-semibold">Order Summary</h1>
-          <div class="w-full bg-white border border-gray-200 shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 mb-4 rounded-lg">
-            <h1 class="text-lg font-light leading-tight tracking-tight text-blue-950 md:text-lg dark:text-white">Total Payment</h1></a>
-            <h1 class="text-lg font-extrabold leading-tight tracking-tight text-blue-950 md:text-lg dark:text-white"> Rp16.000</h1></a>
+        <div class="w-1/2 md:w-1/4 pe-3 md:pe-0">
+          <h1 class="text-lg font-semibold">Order Summary</h1>
+          <div class="w-full bg-white border border-gray-200 shadow-xl lg:p-6 p-4 dark:bg-gray-800 dark:border-gray-600 mb-6 rounded-lg my-6 lg:mt-4">
+            <h1 class="text-sm lg:text-lg font-light leading-tight tracking-tight text-blue-950 md:text-base dark:text-white mb-2">Total Payment</h1></a>
+            <h1 class="text-sm lg:text-lg font-extrabold leading-tight tracking-tight text-blue-950 md:text-base dark:text-white">Rp16.000</h1></a>
           </div>
-          <a href="confirmation-order"><button type="submit" class="w-full text-blue-950 hover bg-blue-200 shadow border-blue-900 hover:bg-blue-900 block focus:outline-none font-bold rounded-lg sm:text-sm px-5 p-2.5 text-center  dark:bg-blue-900 dark:text-white  dark:hover:bg-blue-200 dark:hover:text-blue-950 hover:text-white">Pesan Sekarang</button></a>
+          <a href="confirmation-order"><button type="submit" class="w-full text-white hover bg-blue-900 shadow border-blue-900 hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 p-3 text-center dark:bg-blue-900 dark:text-white  dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">Pesan Sekarang</button></a>
         </div>
       </div>
     </div>

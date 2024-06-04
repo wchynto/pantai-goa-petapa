@@ -8,51 +8,51 @@ use Illuminate\Support\Str;
 
 class Postingan extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'judul',
-        'thumbnail',
-        'body',
-        'kategori_uuid'
-    ];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'judul',
+    'thumbnail',
+    'body',
+    'kategori_uuid'
+  ];
 
-    /**
-     * The booting method of the model
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
+  /**
+   * The booting method of the model
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
 
-        static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) Str::uuid();
-        });
-    }
+    static::creating(function ($model) {
+      $model->uuid = Str::uuid();
+    });
+  }
 
-    /**
-     * Relationship to komentar
-     *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function komentar()
-    {
-        return $this->belongsToMany(User::class, 'komentars', 'postingan_uuid', 'user_uuid')->withPivot(['body', 'user_uuid', 'postingan_uuid'])->using(Komentar::class);
-    }
+  /**
+   * Relationship to komentar
+   *
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+   */
+  public function komentar()
+  {
+    return $this->belongsToMany(User::class, 'komentars', 'postingan_uuid', 'user_uuid')->withPivot(['body', 'user_uuid', 'postingan_uuid'])->using(Komentar::class);
+  }
 
-    /**
-     * Relationship to kategori
-     *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function kategori()
-    {
-        return $this->belongsTo(Kategori::class, 'kategori_uuid', 'uuid');
-    }
+  /**
+   * Relationship to kategori
+   *
+   * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function kategori()
+  {
+    return $this->belongsTo(Kategori::class, 'kategori_uuid', 'uuid');
+  }
 }

@@ -1,32 +1,3 @@
-@php
-    $data = [
-        [
-            'tiket_id' => 'tiket-1',
-            'kendaraan' => 'Pejalan Kaki',
-            'harga' => '1000',
-            'keterangan' => 'Tiket untuk pejalan kaki',
-        ],
-        [
-            'tiket_id' => 'tiket-2',
-            'kendaraan' => 'Sepeda',
-            'harga' => '2000',
-            'keterangan' => 'Tiket untuk sepeda',
-        ],
-        [
-            'tiket_id' => 'tiket-3',
-            'kendaraan' => 'Sepeda Motor',
-            'harga' => '5000',
-            'keterangan' => 'Tiket untuk sepeda motor',
-        ],
-        [
-            'tiket_id' => 'tiket-4',
-            'kendaraan' => 'Mobil',
-            'harga' => '10000',
-            'keterangan' => 'Tiket untuk mobil',
-        ],
-    ];
-@endphp
-
 <div class="flex flex-col mt-6">
     <div class="overflow-x-auto rounded-lg">
         <div class="inline-block min-w-full align-middle">
@@ -53,23 +24,23 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-gray-800">
-                        @foreach ($data as $item)
+                        @foreach ($tiket as $t)
                             <tr class="{{ $loop->even ? 'bg-gray-50 dark:bg-gray-700' : '' }}">
                                 <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $item['kendaraan'] }}
+                                    {{ $t->kendaraan->keterangan }}
                                 </td>
                                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    Rp{{ number_format($item['harga'], 0, ',', '.') }}
+                                    Rp{{ number_format($t->harga, 0, ',', '.') }}
                                 </td>
                                 <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $item['keterangan'] }}
+                                    {{ $t->keterangan }}
                                 </td>
                                 <td class="p-4 whitespace-nowrap">
                                     {{-- Edit Button --}}
                                     <button type="button"
                                         class="text-xs font-medium text-yellow-600 dark:text-yellow-400 hover:text-yellow-500 dark:hover:text-yellow-300"
-                                        data-modal-target="editTicketModal-{{ $item['tiket_id'] }}"
-                                        data-modal-toggle="editTicketModal-{{ $item['tiket_id'] }}">
+                                        data-modal-target="editTicketModal-{{ $t->uuid }}"
+                                        data-modal-toggle="editTicketModal-{{ $t->uuid }}">
                                         <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -78,7 +49,7 @@
                                         </svg>
                                     </button>
                                     {{-- Edit Tiket Modal --}}
-                                    <div id="editTicketModal-{{ $item['tiket_id'] }}" tabindex="-1" aria-hidden="true"
+                                    <div id="editTicketModal-{{ $t->uuid }}" tabindex="-1" aria-hidden="true"
                                         class="hidden overflow-y-auto overflow-x-hidden top-4 fixed md:top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
                                             <!-- Modal content -->
@@ -91,7 +62,7 @@
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                        data-modal-toggle="editTicketModal-{{ $item['tiket_id'] }}">
+                                                        data-modal-toggle="editTicketModal-{{ $t->uuid }}">
                                                         <svg class="w-3 h-3" aria-hidden="true"
                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 14 14">
@@ -103,26 +74,35 @@
                                                     </button>
                                                 </div>
                                                 <!-- Modal body -->
-                                                <form class="p-4 md:p-5" method="POST">
-                                                    <input type="hidden" name="tiket_id"
-                                                        value="{{ $item['tiket_id'] }}">
+                                                <form class="p-4 md:p-5" method="POST"
+                                                    action="{{ route('tiket.update', $t->uuid) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="tiket_id" value="{{ $t->uuid }}">
                                                     <div class="grid gap-4 mb-4 grid-cols-2">
                                                         <div class="col-span-2 sm:col-span-1">
                                                             <label for="kendaraan"
-                                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis
                                                                 Kendaraan</label>
-                                                            <input type="text" name="kendaraan" id="kendaraan"
-                                                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                                placeholder="Masukkan nama kendaraan"
-                                                                value="{{ $item['kendaraan'] }}" required>
+                                                            <select id="countries"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                name="kendaraan_uuid">
+                                                                <option selected disabled>Pilih jenis kendaraan</option>
+                                                                @foreach ($kendaraan as $k)
+                                                                    <option value="{{ $k->uuid }}"
+                                                                        {{ $t->kendaraan->keterangan == $k->keterangan ? 'selected' : '' }}>
+                                                                        {{ $k->keterangan }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                         <div class="col-span-2 sm:col-span-1">
                                                             <label for="harga"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga</label>
-                                                            <input type="number" name="harga" id="harga"
+                                                            <input type="text" name="harga" id="harga"
                                                                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                                 placeholder="Masukkan harga"
-                                                                value="{{ $item['harga'] }}" required>
+                                                                value="{{ $t->harga }}" required>
                                                         </div>
                                                         <div class="col-span-2">
                                                             <label for="keterangan"
@@ -130,7 +110,7 @@
                                                             <input type="text" name="keterangan" id="keterangan"
                                                                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                                 placeholder="Masukkan keterangan"
-                                                                value="{{ $item['keterangan'] }}" required>
+                                                                value="{{ $t->keterangan }}" required>
                                                         </div>
                                                     </div>
                                                     <button type="submit"
@@ -145,8 +125,8 @@
                                     {{-- Delete Button --}}
                                     <button
                                         class="text-xs font-medium text-red-600 dark:text-red-400 hover:text-red-500 dark:hover:text-red-300"
-                                        data-modal-target="deleteTicketModal-{{ $item['tiket_id'] }}"
-                                        data-modal-toggle="deleteTicketModal-{{ $item['tiket_id'] }}">
+                                        data-modal-target="deleteTicketModal-{{ $t->uuid }}"
+                                        data-modal-toggle="deleteTicketModal-{{ $t->uuid }}">
                                         <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round"
@@ -156,7 +136,7 @@
                                     </button>
                                     {{-- Delete Tiket Modal --}}
                                     <div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full"
-                                        id="deleteTicketModal-{{ $item['tiket_id'] }}">
+                                        id="deleteTicketModal-{{ $t->uuid }}">
                                         <div class="relative w-full h-full max-w-md px-4 md:h-auto">
                                             <!-- Modal content -->
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
@@ -164,7 +144,7 @@
                                                 <div class="flex justify-end p-2">
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
-                                                        data-modal-hide="deleteTicketModal-{{ $item['tiket_id'] }}">
+                                                        data-modal-hide="deleteTicketModal-{{ $t->uuid }}">
                                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
@@ -174,9 +154,12 @@
                                                     </button>
                                                 </div>
                                                 <!-- Modal body -->
-                                                <form class="p-4 md:p-5" method="POST">
+                                                <form class="p-4 md:p-5" method="POST"
+                                                    action="{{ route('tiket.destroy', $t->uuid) }}">
+                                                    @csrf
+                                                    @method('DELETE')
                                                     <input type="hidden" name="tiket_id"
-                                                        value="{{ $item['tiket_id'] }}">
+                                                        value="{{ $t->uuid }}">
                                                     <div class="p-6 pt-0 text-center">
                                                         <svg class="w-16 h-16 mx-auto text-red-600" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24"
@@ -196,7 +179,7 @@
                                                         </button>
                                                         <a href="#"
                                                             class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                                                            data-modal-hide="deleteTicketModal-{{ $item['tiket_id'] }}">
+                                                            data-modal-hide="deleteTicketModal-{{ $t->uuid }}">
                                                             No, cancel
                                                         </a>
                                                     </div>

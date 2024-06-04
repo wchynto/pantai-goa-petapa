@@ -30,7 +30,7 @@ class PengunjungController extends Controller
             $pengunjung = $this->pengunjungService->getPengunjungAll();
 
             return view('admin.pengunjung', [
-                'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
+                'pengunjung' => $pengunjung,
                 'title' => 'Pengunjung - Admin Pantai Goa Petapa'
             ]);
         } catch (\Exception $e) {

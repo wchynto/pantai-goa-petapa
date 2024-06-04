@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\UserSessionController;
 use App\Http\Controllers\AdminSessionController;
+use App\Http\Controllers\TiketController;
 
 // User routes
 Route::get('/', function () {
@@ -56,13 +57,7 @@ Route::group([
         return view('/admin/tambah-penjualan', ['title' => 'Tambah Penjualan - Admin Pantai Goa Petapa']);
     });
 
-    Route::get('tiket', function () {
-        return view('/admin/tiket', ['title' => 'Tiket - Admin Pantai Goa Petapa']);
-    });
-
-    Route::get('tiket/tambah', function () {
-        return view('/admin/tambah-tiket', ['title' => 'Tambah Tiket - Admin Pantai Goa Petapa']);
-    });
+    Route::resource('tiket', TiketController::class);
 
     Route::get('pengunjung', function () {
         return view('/admin/pengunjung', ['title' => 'Pengunjung - Admin Pantai Goa Petapa']);

@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTiketRequest;
 use App\Http\Requests\UpdateTiketRequest;
+use App\Services\KendaraanService;
 use App\Services\TiketService;
 
 class TiketController extends Controller
 {
     protected $tiketService;
+    protected $kendaraanService;
 
     public function __construct()
     {
         $this->tiketService = new TiketService();
+        $this->kendaraanService = new KendaraanService();
     }
 
     /**
@@ -21,9 +24,10 @@ class TiketController extends Controller
     public function index()
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.tiket', [
+                'title' => 'Tiket - Admin Pantai Goa Petapa',
                 'tiket' => $this->tiketService->getTiketAll(),
+                'kendaraan' => $this->kendaraanService->getKendaraanAll(),
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -36,8 +40,8 @@ class TiketController extends Controller
     public function create()
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.tambah-tiket', [
+                'title' => 'Tambah Tiket - Admin Pantai Goa Petapa',
             ]);
         } catch (\Exception $e) {
             abort(500);

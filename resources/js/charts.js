@@ -1,15 +1,15 @@
 import ApexCharts from "apexcharts";
 
-const getMainChartOptions = () => {
-    let mainChartColors = {};
+const getVisitorChartOptions = () => {
+    let visitorChartColors = {};
 
     if (document.documentElement.classList.contains("dark")) {
-        mainChartColors = {
+        visitorChartColors = {
             borderColor: "#374151",
             labelColor: "#9CA3AF",
         };
     } else {
-        mainChartColors = {
+        visitorChartColors = {
             borderColor: "#F3F4F6",
             labelColor: "#6B7280",
         };
@@ -20,19 +20,19 @@ const getMainChartOptions = () => {
             {
                 name: "Members",
                 data: [30, 40, 25, 50, 49, 21, 70],
-                color: '#1A56DB'
+                color: "#1A56DB",
             },
             {
                 name: "Guests",
                 data: [23, 12, 54, 61, 32, 56, 81],
-                color: '#FDBA8C'
+                color: "#FDBA8C",
             },
         ],
         chart: {
             type: "bar",
             height: "320px",
             fontFamily: "Inter, sans-serif",
-            foreColor: mainChartColors.labelColor,
+            foreColor: visitorChartColors.labelColor,
             toolbar: {
                 show: false,
             },
@@ -53,7 +53,7 @@ const getMainChartOptions = () => {
         },
         grid: {
             show: true,
-            borderColor: mainChartColors.borderColor,
+            borderColor: visitorChartColors.borderColor,
             strokeDashArray: 1,
             padding: {
                 left: 35,
@@ -84,7 +84,7 @@ const getMainChartOptions = () => {
             fontWeight: 500,
             fontFamily: "Inter, sans-serif",
             labels: {
-                colors: [mainChartColors.labelColor],
+                colors: [visitorChartColors.labelColor],
             },
             itemMargin: {
                 horizontal: 10,
@@ -102,7 +102,7 @@ const getMainChartOptions = () => {
             ],
             labels: {
                 style: {
-                    color: mainChartColors.labelColor,
+                    color: visitorChartColors.labelColor,
                     fontSize: "14px",
                     fontFamily: "Inter, sans-serif",
                 },
@@ -117,7 +117,7 @@ const getMainChartOptions = () => {
         yaxis: {
             labels: {
                 style: {
-                    color: mainChartColors.labelColor,
+                    color: visitorChartColors.labelColor,
                     fontSize: "14px",
                     fontFamily: "Inter, sans-serif",
                 },
@@ -129,263 +129,142 @@ const getMainChartOptions = () => {
     };
 };
 
-if (document.getElementById("main-chart")) {
+if (document.getElementById("visitor-statistics")) {
     const chart = new ApexCharts(
-        document.getElementById("main-chart"),
-        getMainChartOptions()
+        document.getElementById("visitor-statistics"),
+        getVisitorChartOptions()
     );
     chart.render();
 
     // init again when toggling dark mode
     document.addEventListener("dark-mode", function () {
-        chart.updateOptions(getMainChartOptions());
+        chart.updateOptions(getVisitorChartOptions());
     });
 }
 
-if (document.getElementById("new-products-chart")) {
-    const options = {
-        colors: ["#1A56DB", "#FDBA8C"],
-        series: [
-            {
-                name: "Quantity",
-                color: "#1A56DB",
-                data: [
-                    { x: "01 Feb", y: 170 },
-                    { x: "02 Feb", y: 180 },
-                    { x: "03 Feb", y: 164 },
-                    { x: "04 Feb", y: 145 },
-                    { x: "05 Feb", y: 194 },
-                    { x: "06 Feb", y: 170 },
-                    { x: "07 Feb", y: 155 },
-                ],
-            },
-        ],
+const getChartOptions = () => {
+    return {
+        series: [756, 1584],
+        colors: ["#1C64F2", "#16BDCA"],
         chart: {
-            type: "bar",
-            height: "140px",
-            fontFamily: "Inter, sans-serif",
-            foreColor: "#4B5563",
-            toolbar: {
-                show: false,
-            },
+            height: 320,
+            width: "100%",
+            type: "donut",
+        },
+        stroke: {
+            colors: ["transparent"],
+            lineCap: "",
         },
         plotOptions: {
-            bar: {
-                columnWidth: "90%",
-                borderRadius: 3,
-            },
-        },
-        tooltip: {
-            shared: false,
-            intersect: false,
-            style: {
-                fontSize: "14px",
-                fontFamily: "Inter, sans-serif",
-            },
-        },
-        states: {
-            hover: {
-                filter: {
-                    type: "darken",
-                    value: 1,
+            pie: {
+                donut: {
+                    labels: {
+                        show: true,
+                        name: {
+                            show: true,
+                            fontFamily: "Inter, sans-serif",
+                            offsetY: 20,
+                        },
+                        total: {
+                            showAlways: true,
+                            show: true,
+                            label: "Unique visitors",
+                            fontFamily: "Inter, sans-serif",
+                            formatter: function (w) {
+                                const sum = w.globals.seriesTotals.reduce(
+                                    (a, b) => {
+                                        return a + b;
+                                    },
+                                    0
+                                );
+                                return sum;
+                            },
+                        },
+                        value: {
+                            show: true,
+                            fontFamily: "Inter, sans-serif",
+                            offsetY: -20,
+                            formatter: function (value) {
+                                return value;
+                            },
+                        },
+                    },
+                    size: "80%",
                 },
             },
         },
-        stroke: {
-            show: true,
-            width: 5,
-            colors: ["transparent"],
-        },
         grid: {
-            show: false,
+            padding: {
+                top: -2,
+            },
         },
+        labels: ["Members", "Guests"],
         dataLabels: {
             enabled: false,
         },
         legend: {
-            show: false,
+            position: "bottom",
+            fontFamily: "Inter, sans-serif",
+        },
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return value;
+                },
+            },
         },
         xaxis: {
-            floating: false,
             labels: {
+                formatter: function (value) {
+                    return value;
+                },
+            },
+            axisTicks: {
                 show: false,
             },
             axisBorder: {
                 show: false,
             },
-            axisTicks: {
-                show: false,
-            },
-        },
-        yaxis: {
-            show: false,
-        },
-        fill: {
-            opacity: 1,
         },
     };
+};
 
+if (
+    document.getElementById("visitor-analytics") &&
+    typeof ApexCharts !== "undefined"
+) {
     const chart = new ApexCharts(
-        document.getElementById("new-products-chart"),
-        options
+        document.getElementById("visitor-analytics"),
+        getChartOptions()
     );
     chart.render();
 }
 
-if (document.getElementById("sales-by-category")) {
-    const options = {
-        colors: ["#1A56DB", "#FDBA8C"],
-        series: [
-            {
-                name: "Desktop PC",
-                color: "#1A56DB",
-                data: [
-                    { x: "01 Feb", y: 170 },
-                    { x: "02 Feb", y: 180 },
-                    { x: "03 Feb", y: 164 },
-                    { x: "04 Feb", y: 145 },
-                    { x: "05 Feb", y: 194 },
-                    { x: "06 Feb", y: 170 },
-                    { x: "07 Feb", y: 155 },
-                ],
-            },
-            {
-                name: "Phones",
-                color: "#FDBA8C",
-                data: [
-                    { x: "01 Feb", y: 120 },
-                    { x: "02 Feb", y: 294 },
-                    { x: "03 Feb", y: 167 },
-                    { x: "04 Feb", y: 179 },
-                    { x: "05 Feb", y: 245 },
-                    { x: "06 Feb", y: 182 },
-                    { x: "07 Feb", y: 143 },
-                ],
-            },
-            {
-                name: "Gaming/Console",
-                color: "#17B0BD",
-                data: [
-                    { x: "01 Feb", y: 220 },
-                    { x: "02 Feb", y: 194 },
-                    { x: "03 Feb", y: 217 },
-                    { x: "04 Feb", y: 279 },
-                    { x: "05 Feb", y: 215 },
-                    { x: "06 Feb", y: 263 },
-                    { x: "07 Feb", y: 183 },
-                ],
-            },
-        ],
-        chart: {
-            type: "bar",
-            height: "420px",
-            fontFamily: "Inter, sans-serif",
-            foreColor: "#4B5563",
-            toolbar: {
-                show: false,
-            },
-        },
-        plotOptions: {
-            bar: {
-                columnWidth: "90%",
-                borderRadius: 3,
-            },
-        },
-        tooltip: {
-            shared: true,
-            intersect: false,
-            style: {
-                fontSize: "14px",
-                fontFamily: "Inter, sans-serif",
-            },
-        },
-        states: {
-            hover: {
-                filter: {
-                    type: "darken",
-                    value: 1,
-                },
-            },
-        },
-        stroke: {
-            show: true,
-            width: 5,
-            colors: ["transparent"],
-        },
-        grid: {
-            show: false,
-        },
-        dataLabels: {
-            enabled: false,
-        },
-        legend: {
-            show: false,
-        },
-        xaxis: {
-            floating: false,
-            labels: {
-                show: false,
-            },
-            axisBorder: {
-                show: false,
-            },
-            axisTicks: {
-                show: false,
-            },
-        },
-        yaxis: {
-            show: false,
-        },
-        fill: {
-            opacity: 1,
-        },
-    };
-
-    const chart = new ApexCharts(
-        document.getElementById("sales-by-category"),
-        options
-    );
-    chart.render();
-}
-
-const getVisitorsChartOptions = () => {
-    let visitorsChartColors = {};
+const getSaleChartOptions = () => {
+    let saleChartColors = {};
 
     if (document.documentElement.classList.contains("dark")) {
-        visitorsChartColors = {
-            fillGradientShade: "dark",
-            fillGradientShadeIntensity: 0.45,
+        saleChartColors = {
+            borderColor: "#374151",
+            labelColor: "#9CA3AF",
+            opacityFrom: 0,
+            opacityTo: 0.15,
         };
     } else {
-        visitorsChartColors = {
-            fillGradientShade: "light",
-            fillGradientShadeIntensity: 1,
+        saleChartColors = {
+            borderColor: "#F3F4F6",
+            labelColor: "#6B7280",
+            opacityFrom: 0.45,
+            opacityTo: 0,
         };
     }
 
     return {
-        series: [
-            {
-                name: "Visitors",
-                data: [500, 590, 600, 520, 610, 550, 600],
-            },
-        ],
-        labels: [
-            "01 Feb",
-            "02 Feb",
-            "03 Feb",
-            "04 Feb",
-            "05 Feb",
-            "06 Feb",
-            "07 Feb",
-        ],
         chart: {
+            height: 420,
             type: "area",
-            height: "305px",
             fontFamily: "Inter, sans-serif",
-            sparkline: {
-                enabled: true,
-            },
+            foreColor: saleChartColors.labelColor,
             toolbar: {
                 show: false,
             },
@@ -393,251 +272,124 @@ const getVisitorsChartOptions = () => {
         fill: {
             type: "gradient",
             gradient: {
-                shade: visitorsChartColors.fillGradientShade,
-                shadeIntensity: visitorsChartColors.fillGradientShadeIntensity,
-            },
-        },
-        plotOptions: {
-            area: {
-                fillTo: "end",
-            },
-        },
-        theme: {
-            monochrome: {
                 enabled: true,
-                color: "#1A56DB",
+                opacityFrom: saleChartColors.opacityFrom,
+                opacityTo: saleChartColors.opacityTo,
             },
-        },
-        tooltip: {
-            style: {
-                fontSize: "14px",
-                fontFamily: "Inter, sans-serif",
-            },
-        },
-    };
-};
-
-const getSignupsChartOptions = () => {
-    let signupsChartColors = {};
-
-    if (document.documentElement.classList.contains("dark")) {
-        signupsChartColors = {
-            backgroundBarColors: [
-                "#374151",
-                "#374151",
-                "#374151",
-                "#374151",
-                "#374151",
-                "#374151",
-                "#374151",
-            ],
-        };
-    } else {
-        signupsChartColors = {
-            backgroundBarColors: [
-                "#E5E7EB",
-                "#E5E7EB",
-                "#E5E7EB",
-                "#E5E7EB",
-                "#E5E7EB",
-                "#E5E7EB",
-                "#E5E7EB",
-            ],
-        };
-    }
-
-    return {
-        series: [
-            {
-                name: "Users",
-                data: [1334, 2435, 1753, 1328, 1155, 1632, 1336],
-            },
-        ],
-        labels: [
-            "01 Feb",
-            "02 Feb",
-            "03 Feb",
-            "04 Feb",
-            "05 Feb",
-            "06 Feb",
-            "07 Feb",
-        ],
-        chart: {
-            type: "bar",
-            height: "140px",
-            foreColor: "#4B5563",
-            fontFamily: "Inter, sans-serif",
-            toolbar: {
-                show: false,
-            },
-        },
-        theme: {
-            monochrome: {
-                enabled: true,
-                color: "#1A56DB",
-            },
-        },
-        plotOptions: {
-            bar: {
-                columnWidth: "25%",
-                borderRadius: 3,
-                colors: {
-                    backgroundBarColors: signupsChartColors.backgroundBarColors,
-                    backgroundBarRadius: 3,
-                },
-            },
-            dataLabels: {
-                hideOverflowingLabels: false,
-            },
-        },
-        xaxis: {
-            floating: false,
-            labels: {
-                show: false,
-            },
-            axisBorder: {
-                show: false,
-            },
-            axisTicks: {
-                show: false,
-            },
-        },
-        tooltip: {
-            shared: true,
-            intersect: false,
-            style: {
-                fontSize: "14px",
-                fontFamily: "Inter, sans-serif",
-            },
-        },
-        states: {
-            hover: {
-                filter: {
-                    type: "darken",
-                    value: 0.8,
-                },
-            },
-        },
-        fill: {
-            opacity: 1,
-        },
-        yaxis: {
-            show: false,
-        },
-        grid: {
-            show: false,
         },
         dataLabels: {
             enabled: false,
         },
-        legend: {
-            show: false,
+        tooltip: {
+            style: {
+                fontSize: "14px",
+                fontFamily: "Inter, sans-serif",
+            },
         },
-    };
-};
-
-if (document.getElementById("week-signups-chart")) {
-    const chart = new ApexCharts(
-        document.getElementById("week-signups-chart"),
-        getSignupsChartOptions()
-    );
-    chart.render();
-
-    // init again when toggling dark mode
-    document.addEventListener("dark-mode", function () {
-        chart.updateOptions(getSignupsChartOptions());
-    });
-}
-
-const getTrafficChannelsChartOptions = () => {
-    let trafficChannelsChartColors = {};
-
-    if (document.documentElement.classList.contains("dark")) {
-        trafficChannelsChartColors = {
-            strokeColor: "#1f2937",
-        };
-    } else {
-        trafficChannelsChartColors = {
-            strokeColor: "#ffffff",
-        };
-    }
-
-    return {
-        series: [70, 5, 25],
-        labels: ["Desktop", "Tablet", "Phone"],
-        colors: ["#16BDCA", "#FDBA8C", "#1A56DB"],
-        chart: {
-            type: "donut",
-            height: 400,
+        grid: {
+            show: true,
+            borderColor: saleChartColors.borderColor,
+            strokeDashArray: 1,
+            padding: {
+                left: 35,
+                bottom: 15,
+            },
+        },
+        series: [
+            {
+                name: "Pendapatan",
+                data: [350000, 250000, 300000, 100000, 200000, 300000, 250000],
+                color: "#1A56DB",
+            },
+        ],
+        markers: {
+            size: 5,
+            strokeColors: "#ffffff",
+            hover: {
+                size: undefined,
+                sizeOffset: 3,
+            },
+        },
+        xaxis: {
+            categories: [
+                "04 Mei",
+                "05 Mei",
+                "06 Mei",
+                "07 Mei",
+                "08 Mei",
+                "09 Mei",
+                "10 Mei",
+            ],
+            labels: {
+                style: {
+                    colors: [saleChartColors.labelColor],
+                    fontSize: "14px",
+                    fontWeight: 500,
+                },
+            },
+            axisBorder: {
+                color: saleChartColors.borderColor,
+            },
+            axisTicks: {
+                color: saleChartColors.borderColor,
+            },
+            crosshairs: {
+                show: true,
+                position: "back",
+                stroke: {
+                    color: saleChartColors.borderColor,
+                    width: 1,
+                    dashArray: 10,
+                },
+            },
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: [saleChartColors.labelColor],
+                    fontSize: "14px",
+                    fontWeight: 500,
+                },
+                formatter: function (value) {
+                    return "Rp" + value.toLocaleString("id-ID");
+                },
+            },
+        },
+        legend: {
+            fontSize: "14px",
+            fontWeight: 500,
             fontFamily: "Inter, sans-serif",
-            toolbar: {
-                show: false,
+            labels: {
+                colors: [saleChartColors.labelColor],
+            },
+            itemMargin: {
+                horizontal: 10,
             },
         },
         responsive: [
             {
-                breakpoint: 430,
+                breakpoint: 1024,
                 options: {
-                    chart: {
-                        height: 300,
+                    xaxis: {
+                        labels: {
+                            show: false,
+                        },
                     },
                 },
             },
         ],
-        stroke: {
-            colors: [trafficChannelsChartColors.strokeColor],
-        },
-        states: {
-            hover: {
-                filter: {
-                    type: "darken",
-                    value: 0.9,
-                },
-            },
-        },
-        tooltip: {
-            shared: true,
-            followCursor: false,
-            fillSeriesColor: false,
-            inverseOrder: true,
-            style: {
-                fontSize: "14px",
-                fontFamily: "Inter, sans-serif",
-            },
-            x: {
-                show: true,
-                formatter: function (_, { seriesIndex, w }) {
-                    const label = w.config.labels[seriesIndex];
-                    return label;
-                },
-            },
-            y: {
-                formatter: function (value) {
-                    return value + "%";
-                },
-            },
-        },
-        grid: {
-            show: false,
-        },
-        dataLabels: {
-            enabled: false,
-        },
-        legend: {
-            show: false,
-        },
     };
 };
 
-if (document.getElementById("traffic-by-device")) {
+if (document.getElementById("sale-statistics")) {
     const chart = new ApexCharts(
-        document.getElementById("traffic-by-device"),
-        getTrafficChannelsChartOptions()
+        document.getElementById("sale-statistics"),
+        getSaleChartOptions()
     );
     chart.render();
 
     // init again when toggling dark mode
     document.addEventListener("dark-mode", function () {
-        chart.updateOptions(getTrafficChannelsChartOptions());
+        chart.updateOptions(getSaleChartOptions());
     });
 }

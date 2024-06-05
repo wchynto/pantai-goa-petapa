@@ -21,8 +21,8 @@ class KategoriController extends Controller
     public function index()
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.kategori', [
+                'title' => 'Tiket - Admin Goa Petapa',
                 'kategori' => $this->kategoriService->getKategoriAll(),
             ]);
         } catch (\Exception $e) {
@@ -36,8 +36,8 @@ class KategoriController extends Controller
     public function create()
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.tambah-kategori', [
+                'title' => 'Tambah Tiket - Admin Goa Petapa',
             ]);
         } catch (\Exception $e) {
             abort(500);

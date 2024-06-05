@@ -23,7 +23,7 @@ class KategoriRepository extends BaseRepository implements KategoriRepositoryInt
 
     public function getKategoriAll()
     {
-        return $this->model->all();
+        return $this->model->latest()->get();
     }
 
     public function getKategoriByUuid($uuid)

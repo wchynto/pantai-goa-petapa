@@ -45,5 +45,5 @@
       <textarea name="body" id="body"></textarea>
     </div>
 
-    <x-admin.add-cancel-button url="{{ url('admin/postingan') }}"></x-admin.add-cancel-button>
+    <x-admin.submit-cancel-button submit="Tambah" url="{{ url('admin/postingan') }}"></x-admin.submit-cancel-button>
 </form>

@@ -39,19 +39,6 @@ class PengunjungController extends Controller
     }
   }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        try {
-            return view('admin.tambah-pengunjung', [
-                'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
-            ]);
-        } catch (\Exception $e) {
-            abort(500);
-        }
-    }
   /**
    * Show the form for creating a new resource.
    */
@@ -76,7 +63,6 @@ class PengunjungController extends Controller
 
       $pengunjung = $this->pengunjungService->createPengunjung($data);
 
-            $data['pengunjung_uuid'] = $pengunjung->uuid;
       $data['pengunjung_uuid'] = $pengunjung->uuid;
 
       if ($request->tipe == 'user') {
@@ -85,12 +71,12 @@ class PengunjungController extends Controller
         $this->guestService->createGuest($data);
       }
 
-            return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-            return back()->with('error',  $e->getMessage());
-        }
+      return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
+    } catch (\Exception $e) {
+      dd($e->getMessage());
+      return back()->with('error',  $e->getMessage());
     }
+  }
 
   /**
    * Display the specified resource.
@@ -107,53 +93,53 @@ class PengunjungController extends Controller
     try {
       $pengunjung = $this->pengunjungService->getPengunjungByUuid($id);
 
-            return view('admin.edit-pengunjung', [
-                'pengunjung' => $pengunjung,
-                'title' => 'Edit Pengunjung - Admin Pantai Goa Petapa'
-            ]);
-        } catch (\Exception $e) {
-            abort(500);
-        }
+      return view('admin.edit-pengunjung', [
+        'pengunjung' => $pengunjung,
+        'title' => 'Edit Pengunjung - Admin Pantai Goa Petapa'
+      ]);
+    } catch (\Exception $e) {
+      abort(500);
     }
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePengunjungRequest $request, string $id)
-    {
-        try {
-            if ($this->pengunjungService->isUser($id)) {
-                $id = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->uuid;
-                $this->userService->updateUser($request->all(), $id);
-            } else {
-                $id = $this->guestService->getGuestWhere('pengunjung_uuid', $id)->first()->uuid;
-                $this->guestService->updateGuest($request->all(), $id);
-            }
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(UpdatePengunjungRequest $request, string $id)
+  {
+    try {
+      if ($this->pengunjungService->isUser($id)) {
+        $user_id = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->uuid;
+        $this->userService->updateUser($request->all(), $user_id);
+      } else {
+        $guest_id = $this->guestService->getGuestWhere('pengunjung_uuid', $id)->first()->uuid;
+        $this->guestService->updateGuest($request->all(), $guest_id);
+      }
 
       $this->pengunjungService->updatePengunjung($request->all(), $id);
 
-            return back()->with('success', 'Data pengunjung berhasil diperbarui!');
-        } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
-        }
+      return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil diperbarui!');
+    } catch (\Exception $e) {
+      return back()->with('error', $e->getMessage());
     }
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        try {
-            if ($this->pengunjungService->isUser($id)) {
-                $this->userService->deleteUserWhere('pengunjung_uuid', $id);
-            } else {
-                $this->guestService->deleteGuestWhere('pengunjung_uuid', $id);
-            }
-            $this->pengunjungService->deletePengunjung($id);
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(string $id)
+  {
+    try {
+      if ($this->pengunjungService->isUser($id)) {
+        $this->userService->deleteUserWhere('pengunjung_uuid', $id);
+      } else {
+        $this->guestService->deleteGuestWhere('pengunjung_uuid', $id);
+      }
+      $this->pengunjungService->deletePengunjung($id);
 
-            return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil dihapus!');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Data pengunjung gagal dihapus!');
-        }
+      return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil dihapus!');
+    } catch (\Exception $e) {
+      return back()->with('error', 'Data pengunjung gagal dihapus!');
     }
+  }
 }

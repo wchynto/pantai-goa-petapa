@@ -1,4 +1,4 @@
-<form action="{{ route('pengunjung.update', ['pengunjung' => $item->uuid]) }}" method="POST">
+<form action="{{ route('pengunjung.update', $item->uuid) }}" method="POST">
   @csrf
   @method('PUT')
   <div class="grid gap-4 mb-4 grid-cols-2">
@@ -19,18 +19,30 @@
     <div class="col-span-2">
       <label for="tipe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
       <select name="tipe" id="tipe"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-        required="">
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 read-only:cursor-not-allowed"
+        required>
         @if ($item->user)
-          <option value="member">
-            Member</option>
-        @else
-          <option value="guest">
-            Guest</option>
+          <option value="member" selected>Member</option>
+        @elseif ($item->guest)
+          <option value="guest" selected>Guest</option>
         @endif
       </select>
     </div>
+    @if ($item->user)
+      <div class="col-span-2">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+        <input type="text" name="email" id="email"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          placeholder="Masukkan email" value="{{ $item->user->email }}">
+      </div>
+      <div class="col-span-2">
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+        <input type="password" name="password" id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          placeholder="Masukkan password" value="">
+      </div>
+    @endif
   </div>
 
-  <x-admin.add-cancel-button url="{{ route('pengunjung.index') }}"></x-admin.add-cancel-button>
+  <x-admin.submit-cancel-button submit="Update" url="{{ route('pengunjung.index') }}"></x-admin.submit-cancel-button>
 </form>

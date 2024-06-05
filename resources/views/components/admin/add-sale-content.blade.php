@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <x-admin.add-cancel-button url="{{ route('transaksi.index') }}"></x-admin.add-cancel-button>
+  <x-admin.submit-cancel-button submit="Tambah" url="{{ route('transaksi.index') }}"></x-admin.submit-cancel-button>
 </form>
 
 <script>

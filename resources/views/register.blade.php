@@ -20,7 +20,7 @@
         <div class="sm:w-2/3 lg:w-1/2 my-10">
           <div class="flex flex-col items-center justify-center md:h-screen lg:py-0 mt-0">
             <div
-              class="w-full bg-slate-200 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+              class="w-full bg-blue-100 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign up to Pantai Goa Petapa

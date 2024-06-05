@@ -10,34 +10,34 @@ use App\Services\UserService;
 
 class PengunjungController extends Controller
 {
-    protected $pengunjungService;
-    protected $userService;
-    protected $guestService;
+  protected $pengunjungService;
+  protected $userService;
+  protected $guestService;
 
-    public function __construct()
-    {
-        $this->pengunjungService = new PengunjungService();
-        $this->userService = new UserService();
-        $this->guestService = new GuestService();
+  public function __construct()
+  {
+    $this->pengunjungService = new PengunjungService();
+    $this->userService = new UserService();
+    $this->guestService = new GuestService();
+  }
+
+  /**
+   * Display a listing of the resource.
+   */
+  public function index()
+  {
+    try {
+      $pengunjung = $this->pengunjungService->getPengunjungAll();
+
+      return view('admin.pengunjung', [
+        'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
+        'title' => 'Pengunjung - Admin Pantai Goa Petapa'
+      ]);
+    } catch (\Exception $e) {
+      dd($e->getMessage());
+      abort(500);
     }
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        try {
-            $pengunjung = $this->pengunjungService->getPengunjungAll();
-
-            return view('admin.pengunjung', [
-                'pengunjung' => $pengunjung,
-                'title' => 'Pengunjung - Admin Pantai Goa Petapa'
-            ]);
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-            abort(500);
-        }
-    }
+  }
 
     /**
      * Show the form for creating a new resource.
@@ -52,48 +52,64 @@ class PengunjungController extends Controller
             abort(500);
         }
     }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    try {
+      return view('admin.tambah-pengunjung', [
+        'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
+      ]);
+    } catch (\Exception $e) {
+      abort(500);
+    }
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorePengunjungRequest $request)
-    {
-        try {
-            $data = $request->all();
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(StorePengunjungRequest $request)
+  {
+    try {
+      $data = $request->all();
 
-            $pengunjung = $this->pengunjungService->createPengunjung($data);
+      $pengunjung = $this->pengunjungService->createPengunjung($data);
 
             $data['pengunjung_uuid'] = $pengunjung->uuid;
+      $data['pengunjung_uuid'] = $pengunjung->uuid;
 
-            if ($request->tipe == 'user') {
-                $this->userService->createUser($data);
-            } else {
-                $this->guestService->createGuest($data);
-            }
+      if ($request->tipe == 'user') {
+        $this->userService->createUser($data);
+      } else {
+        $this->guestService->createGuest($data);
+      }
 
-            return back()->with('success', 'Data pengunjung berhasil ditambahkan!');
+            return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return back()->with('error',  $e->getMessage());
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-    }
+  /**
+   * Display the specified resource.
+   */
+  public function show(string $id)
+  {
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        try {
-            $pengunjung = $this->pengunjungService->getPengunjungByUuid($id);
+  /**
+   * Show the form for editing the specified resource.
+   */
+  public function edit(string $id)
+  {
+    try {
+      $pengunjung = $this->pengunjungService->getPengunjungByUuid($id);
 
-            return view('', [
+            return view('admin.edit-pengunjung', [
                 'pengunjung' => $pengunjung,
+                'title' => 'Edit Pengunjung - Admin Pantai Goa Petapa'
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -106,20 +122,18 @@ class PengunjungController extends Controller
     public function update(UpdatePengunjungRequest $request, string $id)
     {
         try {
-            $data = $request->all();
             if ($this->pengunjungService->isUser($id)) {
-                if (!$data['password'])
-                    $data['password'] = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->password;
-                $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->update($data);
+                $id = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->uuid;
+                $this->userService->updateUser($request->all(), $id);
             } else {
-                $this->guestService->getGuestWhere('pengunjung_uuid', $id)->first()->update($data);
+                $id = $this->guestService->getGuestWhere('pengunjung_uuid', $id)->first()->uuid;
+                $this->guestService->updateGuest($request->all(), $id);
             }
 
-            $this->pengunjungService->updatePengunjung($data, $id);
+      $this->pengunjungService->updatePengunjung($request->all(), $id);
 
-            return back()->with('success', 'Data pengunjung berhasil diubah!');
+            return back()->with('success', 'Data pengunjung berhasil diperbarui!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return back()->with('error', $e->getMessage());
         }
     }
@@ -130,11 +144,15 @@ class PengunjungController extends Controller
     public function destroy(string $id)
     {
         try {
+            if ($this->pengunjungService->isUser($id)) {
+                $this->userService->deleteUserWhere('pengunjung_uuid', $id);
+            } else {
+                $this->guestService->deleteGuestWhere('pengunjung_uuid', $id);
+            }
             $this->pengunjungService->deletePengunjung($id);
 
-            return back()->with('success', 'Data pengunjung berhasil dihapus!');
+            return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil dihapus!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return back()->with('error', 'Data pengunjung gagal dihapus!');
         }
     }

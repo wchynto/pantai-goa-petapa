@@ -1,4 +1,83 @@
 <div class="flex flex-col mt-6">
+  <div class="overflow-x-auto rounded-lg">
+    <div class="inline-block min-w-full align-middle">
+      <div class="overflow-hidden shadow sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+          <thead class="bg-gray-50 dark:bg-gray-700">
+            <tr>
+              <th scope="col"
+                class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                NAMA
+              </th>
+              <th scope="col"
+                class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                NO. TELEPON
+              </th>
+              <th scope="col"
+                class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                ROLE
+              </th>
+              <th scope="col"
+                class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                AKSI
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-gray-800">
+            @foreach ($items as $item)
+              <tr class="{{ $loop->even ? 'bg-gray-50 dark:bg-gray-700' : '' }}">
+                <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                  {{ $item->nama }}
+                </td>
+                <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                  {{ $item->user->no_telepon ?? $item->guest->no_telepon }}
+                </td>
+                <td class="p-4 whitespace-nowrap">
+                  @if ($item->user)
+                    <span
+                      class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">Member</span>
+                  @else
+                    <span
+                      class="bg-orange-100 text-orange-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-orange-100 dark:bg-gray-700 dark:border-orange-300 dark:text-orange-300">Guest</span>
+                  @endif
+                </td>
+                <td class="p-4 whitespace-nowrap">
+                  {{-- Edit Button --}}
+                  <a href="{{ route('pengunjung.edit', ['pengunjung' => $item->uuid]) }}"
+                    class="inline-block text-xs
+                    font-medium text-yellow-600 dark:text-yellow-400 hover:text-yellow-500 dark:hover:text-yellow-300">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28" />
+                    </svg>
+                  </a>
+                  {{-- Edit Pengunjung Modal --}}
+                  <div id="editPengunjungModal-{{ $item->uuid }}" tabindex="-1" aria-hidden="true"
+                    class="hidden overflow-y-auto overflow-x-hidden top-4 fixed md:top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
+                      <!-- Modal content -->
+                      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div
+                          class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            Edit Pengunjung
+                          </h3>
+                          <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-toggle="editPengunjungModal-{{ $item->uuid }}">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                              viewBox="0 0 14 14">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
     <div class="overflow-x-auto rounded-lg">
         <div class="inline-block min-w-full align-middle">
             <div class="overflow-hidden shadow sm:rounded-lg">

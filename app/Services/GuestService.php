@@ -114,4 +114,9 @@ class GuestService
     {
         return $this->guestRepository->deleteGuest($uuid);
     }
+
+    public function deleteGuestWhere($column, $value)
+    {
+        return $this->guestRepository->deleteGuestWhere($column, $value);
+    }
 }

@@ -3,7 +3,7 @@
   <section class="flex justify-center mt-16">
     <div class="container xl:max-w-screen-xl p-4">
       <div class="flex items-center justify-center">
-        <a href="order"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-200 rounded-full">
+        <a href="order"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
           <span class="text-2xl font-semibold text-white">1</span>
         </div></a>
         
@@ -15,7 +15,7 @@
         
         <hr class="w-12 h-1 my-4 bg-gray-700 border-0 rounded md:my-10">
         
-        <a href="payment"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-200 rounded-full">
+        <a href="payment"><div class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
           <span class="text-2xl font-semibold text-white">3</span>
         </div></a>
       </div>
@@ -30,7 +30,7 @@
         {{-- KONFIRMASI PESANAN--}}
         <div class="w-full mb-8">
           <h1 class="text-l mb-4 font-semibold lg:text-lg">Konfirmasi Pemesanan</h1>
-          <div class="w-full bg-blue-200 border border-gray-200 shadow-xl lg:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 my-4 rounded-lg py-4">
+          <div class="w-full bg-blue-100 border border-gray-200 shadow-xl lg:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 my-4 rounded-lg py-4">
             {{-- METODE PEMBAYARAN --}}
             <h1 class="lg:text-lg text-sm font-semibold dark:text-white ms-4 lg:ms-0">Metode Pembayaran</h1>
             <div class="flex flex-row gap-10 my-4 mx-4 lg:mx-0">

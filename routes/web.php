@@ -7,6 +7,7 @@ use App\Http\Controllers\UserSessionController;
 use App\Http\Controllers\AdminSessionController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TiketController;
+use App\Models\Pengunjung;
 
 // User routes
 Route::get('/', function () {
@@ -61,10 +62,6 @@ Route::group([
     Route::resource('tiket', TiketController::class);
 
     Route::resource('pengunjung', PengunjungController::class);
-
-    Route::get('postingan', function () {
-        return view('/admin/postingan', ['title' => 'Postingan - Admin Pantai Goa Petapa']);
-    });
 
     Route::get('postingan/tambah', function () {
         return view('/admin/tambah-postingan', ['title' => 'Tambah Postingan - Admin Pantai Goa Petapa']);

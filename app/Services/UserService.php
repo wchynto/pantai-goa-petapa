@@ -54,4 +54,9 @@ class UserService
     {
         return $this->userRepository->deleteUser($uuid);
     }
+
+    public function deleteUserWhere($column, $value)
+    {
+        return $this->userRepository->deleteUserWhere($column, $value);
+    }
 }

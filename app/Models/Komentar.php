@@ -8,32 +8,53 @@ use Illuminate\Support\Str;
 
 class Komentar extends Pivot
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $table = 'komentars';
+  /**
+   * The primary key associated with the table.
+   *
+   * @var string
+   */
+  protected $primaryKey = 'uuid';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'body',
-        'user_uuid',
-        'postingan_uuid'
-    ];
+  /**
+   * The "type" of the auto-incrementing ID.
+   *
+   * @var string
+   */
+  protected $keyType = 'string';
 
-    /**
-     * The booting method of the model
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
+  /**
+   * Indicates if the IDs are auto-incrementing.
+   *
+   * @var bool
+   */
+  public $incrementing = false;
 
-        static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) Str::uuid();
-        });
-    }
+  protected $table = 'komentars';
+
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'body',
+    'user_uuid',
+    'postingan_uuid'
+  ];
+
+  /**
+   * The booting method of the model
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
+
+    static::creating(function ($model) {
+      $model->uuid = Str::uuid();
+    });
+  }
 }

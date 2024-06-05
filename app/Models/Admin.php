@@ -8,47 +8,61 @@ use Illuminate\Support\Str;
 
 class Admin extends Authenticatable
 {
-    use HasFactory;
+  use HasFactory;
 
-    /**
-     * The primary key for the model.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'uuid';
+  /**
+   * The primary key associated with the table.
+   *
+   * @var string
+   */
+  protected $primaryKey = 'uuid';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'nama',
-        'email',
-        'password',
-    ];
+  /**
+   * The "type" of the auto-incrementing ID.
+   *
+   * @var string
+   */
+  protected $keyType = 'string';
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+  /**
+   * Indicates if the IDs are auto-incrementing.
+   *
+   * @var bool
+   */
+  public $incrementing = false;
 
-    /**
-     * The booting method of the model
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = [
+    'nama',
+    'email',
+    'password',
+  ];
 
-        static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) Str::uuid();
-        });
-    }
+  /**
+   * The attributes that should be hidden for serialization.
+   *
+   * @var array<int, string>
+   */
+  protected $hidden = [
+    'password',
+    'remember_token',
+  ];
+
+  /**
+   * The booting method of the model
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
+
+    static::creating(function ($model) {
+      $model->uuid = Str::uuid();
+    });
+  }
 }

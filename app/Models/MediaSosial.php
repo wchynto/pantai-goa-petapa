@@ -8,33 +8,54 @@ use Illuminate\Support\Str;
 
 class MediaSosial extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'keterangan'
-    ];
+  /**
+   * The primary key associated with the table.
+   *
+   * @var string
+   */
+  protected $primaryKey = 'uuid';
 
-    /**
-     * The booting method of the model
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
+  /**
+   * The "type" of the auto-incrementing ID.
+   *
+   * @var string
+   */
+  protected $keyType = 'string';
 
-        static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) Str::uuid();
-        });
-    }
+  /**
+   * Indicates if the IDs are auto-incrementing.
+   *
+   * @var bool
+   */
+  public $incrementing = false;
 
-    public function profil()
-    {
-        return $this->belongsToMany(Profil::class, 'profil_media_sosials', 'media_sosial_uuid', 'profil_uuid')->withPivot(['keterangan', 'media_sosial_uuid', 'profil_uuid'])->using(ProfilMediaSosial::class);
-    }
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'keterangan'
+  ];
+
+  /**
+   * The booting method of the model
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
+
+    static::creating(function ($model) {
+      $model->uuid = Str::uuid();
+    });
+  }
+
+  public function profil()
+  {
+    return $this->belongsToMany(Profil::class, 'profil_media_sosials', 'media_sosial_uuid', 'profil_uuid')->withPivot(['keterangan', 'media_sosial_uuid', 'profil_uuid'])->using(ProfilMediaSosial::class);
+  }
 }

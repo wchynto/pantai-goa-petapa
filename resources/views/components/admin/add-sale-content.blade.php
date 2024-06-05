@@ -1,4 +1,4 @@
-<form method="POST">
+<form action="{{ route('transaksi.store') }}" method="POST">
   <div class="grid gap-4 mb-4 grid-cols-2">
     <div class="col-span-2">
       <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <x-admin.add-cancel-button url="{{ url('admin/penjualan') }}"></x-admin.add-cancel-button>
+  <x-admin.add-cancel-button url="{{ route('transaksi.index') }}"></x-admin.add-cancel-button>
 </form>
 
 <script>

@@ -20,9 +20,11 @@ class TransaksiController extends Controller
     public function index()
     {
         try {
-            return view('', [
-                'title' => '',
-                'transaksi' => $this->transaksiService->getTransaksiAll(),
+            $transaksis = $this->transaksiService->getTransaksiAll();
+
+            return view('admin.transaksi.index', [
+                'title' => 'Transaksi - Admin Pantai Goa Petapa',
+                'transaksis' => collectionPaginate($transaksis, 10, null, ['path' => route('transaksi.index')]),
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -35,8 +37,8 @@ class TransaksiController extends Controller
     public function create()
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.transaksi.create', [
+                'title' => 'Tambah Transaksi - Admin Pantai Goa Petapa',
             ]);
         } catch (\Exception $e) {
             abort(500);

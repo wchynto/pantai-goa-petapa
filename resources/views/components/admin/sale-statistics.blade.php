@@ -2,7 +2,7 @@
   class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
   <div class="flex items-center justify-between mb-4">
     <div class="flex-shrink-0">
-      <h3 class="flex flex-col items-start mb-4 text-lg font-semibold text-gray-900 dark:text-white">Penjualan</h3>
+      <h3 class="flex flex-col items-start mb-4 text-lg font-semibold text-gray-900 dark:text-white">Transaksi</h3>
       <span
         class="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">Rp{{ number_format(5800000, 0, ',', '.') }}</span>
     </div>
@@ -57,9 +57,9 @@
       </div>
     </div>
     <div class="flex-shrink-0">
-      <a href="{{ url('admin/penjualan') }}"
+      <a href="{{ route('transaksi.index') }}"
         class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
-        LIHAT PENJUALAN
+        LIHAT TRANSAKSI
         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

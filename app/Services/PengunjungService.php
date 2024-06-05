@@ -49,6 +49,14 @@ class PengunjungService
 
     public function deletePengunjung($uuid)
     {
+        $pengunjung = $this->getPengunjungByUuid($uuid);
+
+        if ($pengunjung->user()->exists()) {
+            $pengunjung->user()->delete();
+        } else if ($pengunjung->guest()->exists()) {
+            $pengunjung->guest()->delete();
+        }
+
         return $this->pengunjungRepository->deletePengunjung($uuid);
     }
 

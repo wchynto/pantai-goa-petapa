@@ -45,7 +45,9 @@ class PengunjungController extends Controller
     public function create()
     {
         try {
-            return view('');
+            return view('admin.tambah-pengunjung', [
+                'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
+            ]);
         } catch (\Exception $e) {
             abort(500);
         }
@@ -63,8 +65,6 @@ class PengunjungController extends Controller
 
             $data['pengunjung_uuid'] = $pengunjung->uuid;
 
-            // dd($pengunjung, $data);
-
             if ($request->tipe == 'user') {
                 $this->userService->createUser($data);
             } else {
@@ -73,7 +73,6 @@ class PengunjungController extends Controller
 
             return back()->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return back()->with('error',  $e->getMessage());
         }
     }
@@ -107,16 +106,20 @@ class PengunjungController extends Controller
     public function update(UpdatePengunjungRequest $request, string $id)
     {
         try {
+            $data = $request->all();
             if ($this->pengunjungService->isUser($id)) {
-                $this->userService->updateUser($request->all(), $id);
+                if (!$data['password'])
+                    $data['password'] = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->password;
+                $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->update($data);
             } else {
-                $this->guestService->updateGuest($request->all(), $id);
+                $this->guestService->getGuestWhere('pengunjung_uuid', $id)->first()->update($data);
             }
 
-            $this->pengunjungService->updatePengunjung($request->all(), $id);
+            $this->pengunjungService->updatePengunjung($data, $id);
 
             return back()->with('success', 'Data pengunjung berhasil diubah!');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return back()->with('error', $e->getMessage());
         }
     }
@@ -131,6 +134,7 @@ class PengunjungController extends Controller
 
             return back()->with('success', 'Data pengunjung berhasil dihapus!');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return back()->with('error', 'Data pengunjung gagal dihapus!');
         }
     }

@@ -41,6 +41,12 @@ class UserService
 
     public function updateUser($data, $uuid)
     {
+        dd(!$data['password']);
+
+        if (!$data['password']) {
+            $data->password = $this->getUserByUuid($uuid)->password;
+        }
+
         return $this->userRepository->updateUser($data, $uuid);
     }
 

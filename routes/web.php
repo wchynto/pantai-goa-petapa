@@ -59,13 +59,7 @@ Route::group([
 
     Route::resource('tiket', TiketController::class);
 
-    Route::get('pengunjung', function () {
-        return view('/admin/pengunjung', ['title' => 'Pengunjung - Admin Pantai Goa Petapa']);
-    });
-
-    Route::get('pengunjung/tambah', function () {
-        return view('/admin/tambah-pengunjung', ['title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa']);
-    });
+    Route::resource('pengunjung', PengunjungController::class);
 
     Route::get('postingan', function () {
         return view('/admin/postingan', ['title' => 'Postingan - Admin Pantai Goa Petapa']);
@@ -91,7 +85,6 @@ Route::group([
 // Auth User
 Route::post('user/login', [UserSessionController::class, 'login'])->name('user.login');
 Route::get('user/logout', [UserSessionController::class, 'logout'])->name('user.logout');
-Route::resource('pengunjung', PengunjungController::class);
 
 // Auth Admin
 Route::post('admin/login', [AdminSessionController::class, 'login'])->name('admin.login');

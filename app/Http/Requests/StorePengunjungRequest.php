@@ -26,8 +26,8 @@ class StorePengunjungRequest extends FormRequest
         return [
             'nama' => 'required',
             'tipe' => 'required',
-            'email' => 'required_if:tipe,user|email',
-            'password' => 'required_if:tipe,user|min:8',
+            // 'email' => 'required_if:tipe,user|email',
+            // 'password' => 'required_if:tipe,user|min:8',
             'no_telepon' => 'required'
         ];
     }

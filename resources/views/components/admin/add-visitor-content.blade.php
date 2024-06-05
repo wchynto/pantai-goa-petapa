@@ -25,5 +25,25 @@
     </div>
   </div>
 
-  <x-admin.add-cancel-button url="{{ route('pengunjung.index') }}"></x-admin.add-cancel-button>
+    <x-admin.add-cancel-button url="{{ route('pengunjung.index') }}"></x-admin.add-cancel-button>
 </form>
+
+<script>
+    let tipe = $('#tipe').val();
+
+    $('#tipe').change(function() {
+        tipe = $(this).val();
+
+        if (tipe === 'user') {
+            $('#email').parent().removeClass('hidden');
+            $('#password').parent().removeClass('hidden');
+            $('password').attr('required', '');
+            $('email').attr('required', '');
+        } else {
+            $('#email').parent().addClass('hidden');
+            $('#password').parent().addClass('hidden');
+            $('password').removeAttr('required');
+            $('email').removeAttr('required');
+        }
+    });
+</script>

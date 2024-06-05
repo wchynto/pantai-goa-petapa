@@ -1,12 +1,13 @@
 <?php
 
-use App\Models\Pengunjung;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\UserSessionController;
 use App\Http\Controllers\AdminSessionController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\TiketController;
 
 // User routes
 Route::get('/', function () {
@@ -49,35 +50,17 @@ Route::group([
   'middleware' => ['admin']
 ], function () {
   Route::get('dashboard', DashboardController::class)->name('admin.dashboard');
-
   Route::resource('transaksi', TransaksiController::class);
-
-  Route::get('tiket', function () {
-    return view('/admin/tiket', ['title' => 'Tiket - Admin Pantai Goa Petapa']);
-  });
-
-  Route::get('tiket/tambah', function () {
-    return view('/admin/tambah-tiket', ['title' => 'Tambah Tiket - Admin Pantai Goa Petapa']);
-  });
-
+  Route::resource('tiket', TiketController::class);
   Route::resource('pengunjung', PengunjungController::class);
+  Route::resource('kategori', KategoriController::class);
 
   Route::get('postingan', function () {
     return view('/admin/postingan', ['title' => 'Postingan - Admin Pantai Goa Petapa']);
   });
-
   Route::get('postingan/tambah', function () {
     return view('/admin/tambah-postingan', ['title' => 'Tambah Postingan - Admin Pantai Goa Petapa']);
   });
-
-  Route::get('kategori', function () {
-    return view('/admin/kategori', ['title' => 'Kategori - Admin Pantai Goa Petapa']);
-  });
-
-  Route::get('kategori/tambah', function () {
-    return view('/admin/tambah-kategori', ['title' => 'Tambah Kategori - Admin Pantai Goa Petapa']);
-  });
-
   Route::get('laporan', function () {
     return view('/admin/laporan', ['title' => 'Laporan - Admin Pantai Goa Petapa']);
   });

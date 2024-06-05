@@ -23,7 +23,7 @@ class TiketRepository extends BaseRepository implements TiketRepositoryInterface
 
     public function getTiketAll()
     {
-        return $this->model->all();
+        return $this->model->latest()->get();
     }
 
     public function getTiketByUuid($uuid)

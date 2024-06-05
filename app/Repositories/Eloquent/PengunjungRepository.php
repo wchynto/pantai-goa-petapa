@@ -28,7 +28,7 @@ class PengunjungRepository extends BaseRepository implements PengunjungRepositor
      */
     public function getPengunjungAll()
     {
-        return $this->model->all();
+        return $this->model->latest()->get();
     }
 
     /**

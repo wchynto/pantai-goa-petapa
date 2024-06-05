@@ -13,6 +13,11 @@ class UpdatePengunjungRequest extends FormRequest
      */
     public function authorize(): bool
     {
+
+        if (auth()->guard('web-admin')->check()) {
+            return true;
+        }
+
         return false;
     }
 

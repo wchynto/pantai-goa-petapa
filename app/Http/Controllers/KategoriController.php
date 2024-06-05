@@ -21,7 +21,7 @@ class KategoriController extends Controller
     public function index()
     {
         try {
-            return view('admin.kategori', [
+            return view('admin.kategori.index', [
                 'title' => 'Tiket - Admin Goa Petapa',
                 'kategori' => $this->kategoriService->getKategoriAll(),
             ]);
@@ -36,7 +36,7 @@ class KategoriController extends Controller
     public function create()
     {
         try {
-            return view('admin.tambah-kategori', [
+            return view('admin.kategori.create', [
                 'title' => 'Tambah Tiket - Admin Goa Petapa',
             ]);
         } catch (\Exception $e) {
@@ -52,7 +52,7 @@ class KategoriController extends Controller
         try {
             $this->kategoriService->createKategori($request->all());
 
-            return back()->with('success', 'Data Kategori berhasil ditambahkan!');
+            return redirect()->route('kategori.index')->with('success', 'Data Kategori berhasil ditambahkan!');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -72,8 +72,8 @@ class KategoriController extends Controller
     public function edit(string $id)
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.kategori.edit', [
+                'title' => 'Edit Tiket - Admin Goa Petapa',
                 'kategori' => $this->kategoriService->getKategoriByUuid($id),
             ]);
         } catch (\Exception $e) {
@@ -89,7 +89,7 @@ class KategoriController extends Controller
         try {
             $this->kategoriService->updateKategori($request->all(), $id);
 
-            return back()->with('success', 'Data Kategori berhasil diubah!');
+            return redirect()->route('kategori.index')->with('success', 'Data Kategori berhasil diupdate!');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -103,7 +103,7 @@ class KategoriController extends Controller
         try {
             $this->kategoriService->deleteKategori($id);
 
-            return back()->with('success', 'Data Kategori berhasil dihapus!');
+            return redirect()->route('kategori.index')->with('success', 'Data Kategori berhasil dihapus!');
         } catch (\Exception $e) {
             return back()->with('error', 'Data Kategori gagal dihapus!');
         }

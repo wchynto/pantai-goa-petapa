@@ -11,7 +11,7 @@
                     buttonUrl="{{ route('kategori.create') }}" buttonText="Tambah Kategori Baru"></x-admin.card-header>
 
                 <!-- Table -->
-                <x-admin.categories-table :kategori="$kategori"></x-admin.categories-table>
+                <x-admin.categories-table :items="$kategori"></x-admin.categories-table>
 
                 <!-- Card Footer -->
                 <x-admin.card-footer :start="1" :end="4" :total="4"></x-admin.card-footer>

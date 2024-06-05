@@ -29,7 +29,7 @@ class PengunjungController extends Controller
     try {
       $pengunjung = $this->pengunjungService->getPengunjungAll();
 
-      return view('admin.pengunjung', [
+      return view('admin.pengunjung.index', [
         'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
         'title' => 'Pengunjung - Admin Pantai Goa Petapa'
       ]);
@@ -45,7 +45,7 @@ class PengunjungController extends Controller
   public function create()
   {
     try {
-      return view('admin.tambah-pengunjung', [
+      return view('admin.pengunjung.create', [
         'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
       ]);
     } catch (\Exception $e) {
@@ -93,7 +93,7 @@ class PengunjungController extends Controller
     try {
       $pengunjung = $this->pengunjungService->getPengunjungByUuid($id);
 
-      return view('admin.edit-pengunjung', [
+      return view('admin.pengunjung.edit', [
         'pengunjung' => $pengunjung,
         'title' => 'Edit Pengunjung - Admin Pantai Goa Petapa'
       ]);

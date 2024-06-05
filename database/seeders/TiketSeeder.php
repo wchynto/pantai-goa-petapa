@@ -18,7 +18,7 @@ class TiketSeeder extends Seeder
 
         Tiket::create([
             'keterangan' => 'Tiket masuk mobil',
-            'harga' => 15000,
+            'harga' => 10000,
             'kendaraan_uuid' => $kendaraan->firstWhere('keterangan', 'Mobil')->uuid
         ]);
 

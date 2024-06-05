@@ -91,7 +91,6 @@ Route::group([
 // Auth User
 Route::post('user/login', [UserSessionController::class, 'login'])->name('user.login');
 Route::get('user/logout', [UserSessionController::class, 'logout'])->name('user.logout');
-Route::resource('pengunjung', PengunjungController::class);
 
 // Auth Admin
 Route::post('admin/login', [AdminSessionController::class, 'login'])->name('admin.login');

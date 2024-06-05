@@ -8,58 +8,79 @@ use Illuminate\Support\Str;
 
 class Pengunjung extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'nama'
-    ];
+  /**
+   * The primary key associated with the table.
+   *
+   * @var string
+   */
+  protected $primaryKey = 'uuid';
 
-    /**
-     * The booting method of the model
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
+  /**
+   * The "type" of the auto-incrementing ID.
+   *
+   * @var string
+   */
+  protected $keyType = 'string';
 
-        static::creating(function ($model) {
-            $model->uuid = Str::uuid();
-        });
-    }
+  /**
+   * Indicates if the IDs are auto-incrementing.
+   *
+   * @var bool
+   */
+  public $incrementing = false;
 
-    /**
-     * Relationship to user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function user()
-    {
-        return $this->hasOne(User::class, 'pengunjung_uuid', 'uuid');
-    }
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'nama'
+  ];
 
-    /**
-     * Relationship to guest
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function guest()
-    {
-        return $this->hasOne(Guest::class, 'pengunjung_uuid', 'uuid');
-    }
+  /**
+   * The booting method of the model
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
 
-    /**
-     * Relationship to transaksi
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function transaksi()
-    {
-        return $this->hasMany(Transaksi::class, 'pengunjung_uuid', 'uuid');
-    }
+    static::creating(function ($model) {
+      $model->uuid = Str::uuid();
+    });
+  }
+
+  /**
+   * Relationship to user
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasOne
+   */
+  public function user()
+  {
+    return $this->hasOne(User::class, 'pengunjung_uuid', 'uuid');
+  }
+
+  /**
+   * Relationship to guest
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasOne
+   */
+  public function guest()
+  {
+    return $this->hasOne(Guest::class, 'pengunjung_uuid', 'uuid');
+  }
+
+  /**
+   * Relationship to transaksi
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function transaksi()
+  {
+    return $this->hasMany(Transaksi::class, 'pengunjung_uuid', 'uuid');
+  }
 }

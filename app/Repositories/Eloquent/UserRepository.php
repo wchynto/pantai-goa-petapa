@@ -114,4 +114,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         return $this->model->find($uuid)->delete();
     }
+
+    public function deleteUserWhere($column, $value)
+    {
+        return $this->model->where($column, $value)->delete();
+    }
 }

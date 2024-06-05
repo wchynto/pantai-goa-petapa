@@ -13,6 +13,27 @@ class User extends Authenticatable
   use HasFactory, Notifiable;
 
   /**
+   * The primary key associated with the table.
+   *
+   * @var string
+   */
+  protected $primaryKey = 'uuid';
+
+  /**
+   * The "type" of the auto-incrementing ID.
+   *
+   * @var string
+   */
+  protected $keyType = 'string';
+
+  /**
+   * Indicates if the IDs are auto-incrementing.
+   *
+   * @var bool
+   */
+  public $incrementing = false;
+
+  /**
    * The attributes that are mass assignable.
    *
    * @var array<int, string>

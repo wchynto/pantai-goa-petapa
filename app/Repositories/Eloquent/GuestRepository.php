@@ -114,4 +114,9 @@ class GuestRepository extends BaseRepository implements GuestRepositoryInterface
     {
         return $this->model->find($uuid)->delete();
     }
+
+    public function deleteGuestWhere($column, $value)
+    {
+        return $this->model->where($column, $value)->delete();
+    }
 }

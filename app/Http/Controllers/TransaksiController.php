@@ -24,7 +24,7 @@ class TransaksiController extends Controller
 
             return view('admin.transaksi.index', [
                 'title' => 'Transaksi - Admin Pantai Goa Petapa',
-                'transaksis' => collectionPaginate($transaksis, 10, null, ['path' => route('transaksi.index')]),
+                'transaksi' => collectionPaginate($transaksis, 10, null, ['path' => route('transaksi.index')]),
             ]);
         } catch (\Exception $e) {
             abort(500);

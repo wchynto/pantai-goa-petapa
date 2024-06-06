@@ -11,7 +11,7 @@
                     buttonText="Tambah Tiket Baru"></x-admin.card-header>
 
                 <!-- Table -->
-                <x-admin.tickets-table :tiket="$tiket" :kendaraan="$kendaraan"></x-admin.tickets-table>
+                <x-admin.tickets-table :items="$tiket"></x-admin.tickets-table>
 
                 <!-- Card Footer -->
                 <x-admin.card-footer :start="1" :end="4" :total="4"></x-admin.card-footer>

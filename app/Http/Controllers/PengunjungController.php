@@ -60,9 +60,7 @@ class PengunjungController extends Controller
   {
     try {
       $data = $request->all();
-
       $pengunjung = $this->pengunjungService->createPengunjung($data);
-
       $data['pengunjung_uuid'] = $pengunjung->uuid;
 
       if ($request->tipe == 'user') {
@@ -135,6 +133,7 @@ class PengunjungController extends Controller
       } else {
         $this->guestService->deleteGuestWhere('pengunjung_uuid', $id);
       }
+
       $this->pengunjungService->deletePengunjung($id);
 
       return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil dihapus!');

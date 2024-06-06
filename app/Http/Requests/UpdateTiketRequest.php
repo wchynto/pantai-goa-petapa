@@ -28,7 +28,7 @@ class UpdateTiketRequest extends FormRequest
         return [
             'keterangan' => 'required',
             'harga' => 'required|numeric',
-            'kendaraan_uuid' => 'required',
+            'jenis_kendaraan' => 'required',
         ];
     }
 
@@ -38,7 +38,7 @@ class UpdateTiketRequest extends FormRequest
             'keterangan.required' => 'Keterangan harus diisi',
             'harga.required' => 'Harga harus diisi',
             'harga.numeric' => 'Harga harus berupa angka',
-            'kendaraan_uuid.required' => 'Jenis kendaraan harus diisi',
+            'jenis_kendaraan.required' => 'Jenis kendaraan harus diisi',
         ];
     }
 }

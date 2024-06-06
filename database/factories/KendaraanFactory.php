@@ -17,7 +17,7 @@ class KendaraanFactory extends Factory
     public function definition(): array
     {
         return [
-            'keterangan' => fake()->randomElement(['Mobil', 'Motor', 'Sepeda', 'Berjalan']),
+            'jenis_kendaraan' => fake()->randomElement(['Mobil', 'Motor', 'Sepeda', 'Berjalan']),
         ];
     }
 }

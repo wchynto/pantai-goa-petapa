@@ -37,7 +37,7 @@ class Kendaraan extends Model
    * @var array
    */
   protected $fillable = [
-    'keterangan',
+    'jenis_kendaraan',
   ];
 
   /**

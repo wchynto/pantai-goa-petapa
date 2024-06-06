@@ -14,7 +14,7 @@ class KendaraanTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * The function tests if the 'kendaraans' table has the specified columns 'uuid' and 'keterangan'.
+     * The function tests if the 'kendaraans' table has the specified columns 'uuid' and 'jenis_kendaraan'.
      *
      * @return void
      */
@@ -23,7 +23,7 @@ class KendaraanTest extends TestCase
         $this->assertTrue(
             Schema::hasColumns('kendaraans', [
                 'uuid',
-                'keterangan'
+                'jenis_kendaraan'
             ]),
         );
     }

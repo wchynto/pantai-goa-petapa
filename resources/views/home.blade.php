@@ -11,12 +11,12 @@
             that calm your soul</h1>
           <div class="flex flex-col sm:flex-row gap-4">
             <a href="{{ url('tiket') }}"
-              class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-700">
+              class="inline-flex justify-center items-center py-3 px-7 text-base font-medium text-center text-white rounded-lg bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-700">
               Lihat Tiket
             </a>
-            <a href="{{ url('register') }}"
-              class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-700">
-              Daftar
+            <a href="{{ url('login') }}"
+              class="inline-flex justify-center items-center py-3 px-7 text-base font-medium text-center text-white rounded-lg bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-700">
+              Login
             </a>
           </div>
         </div>

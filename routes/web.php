@@ -26,28 +26,30 @@ Route::get('kontak', function () {
   return view('kontak', ['title' => 'Kontak - Pantai Goa Petapa']);
 });
 
-Route::get('login', [UserSessionController::class, 'viewLogin']);
+Route::get('login', [UserSessionController::class, 'viewLogin'])->name('login');
 
-Route::get('register', [UserSessionController::class, 'viewRegister']);
+Route::get('register', [UserSessionController::class, 'viewRegister'])->name('register');
 
-Route::get('order', function () {
-  return view('order', ['title' => 'Order - Pantai Goa Petapa']);
-});
+Route::middleware('auth')->group(function () {
+  Route::get('order', function () {
+    return view('order', ['title' => 'Order - Pantai Goa Petapa']);
+  });
 
-Route::get('confirmation-order', function () {
-  return view('confirmation-order', ['title' => 'Confirmation Order - Pantai Goa Petapa']);
-});
+  Route::get('confirmation-order', function () {
+    return view('confirmation-order', ['title' => 'Confirmation Order - Pantai Goa Petapa']);
+  });
 
-Route::get('payment', function () {
-  return view('payment', ['title' => 'Payment - Pantai Goa Petapa']);
-});
+  Route::get('payment', function () {
+    return view('payment', ['title' => 'Payment - Pantai Goa Petapa']);
+  });
 
-Route::get('profil', function () {
-  return view('user/profil', ['title' => 'Profil - Pantai Goa Petapa']);
-});
+  Route::get('profil', function () {
+    return view('user/profil', ['title' => 'Profil - Pantai Goa Petapa']);
+  });
 
-Route::get('riwayat-pemesanan', function () {
-  return view('user/riwayat-pemesanan', ['title' => 'Riwayat Pemesanan - Pantai Goa Petapa']);
+  Route::get('riwayat-pemesanan', function () {
+    return view('user/riwayat-pemesanan', ['title' => 'Riwayat Pemesanan - Pantai Goa Petapa']);
+  });
 });
 
 // Admin routes

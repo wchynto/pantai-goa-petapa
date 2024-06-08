@@ -33,9 +33,8 @@
           class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
           id="user-dropdown">
           <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900 dark:text-white">{{ auth()->user()->email }}</span>
-            <span
-              class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ auth()->user()->no_telepon }}</span>
+            <span class="block text-sm text-gray-900 dark:text-white">{{ auth()->user()->pengunjung->nama }}</span>
+            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ auth()->user()->email }}</span>
           </div>
           <ul class="py-2" aria-labelledby="user-menu-button">
             <li>
@@ -72,27 +71,18 @@
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
       <ul
         class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        @if (auth()->check() && request()->is('profil') || request()->is('riwayat-pemesanan'))
-          <li>
-            <x-nav-link href="/profil" :active="request()->is('profil')">Profil</x-nav-link>
-          </li>
-          <li>
-            <x-nav-link href="/riwayat-pemesanan" :active="request()->is('riwayat-pemesanan')">Riwayat Pemesanan</x-nav-link>
-          </li>
-        @else
-          <li>
-            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-          </li>
-          <li>
-            <x-nav-link href="/tiket" :active="request()->is('tiket')">Tiket</x-nav-link>
-          </li>
-          <li>
-            <x-nav-link href="/tentang" :active="request()->is('tentang')">Tentang</x-nav-link>
-          </li>
-          <li>
-            <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
-          </li>
-        @endif
+        <li>
+          <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+        </li>
+        <li>
+          <x-nav-link href="/tiket" :active="request()->is('tiket')">Tiket</x-nav-link>
+        </li>
+        <li>
+          <x-nav-link href="/tentang" :active="request()->is('tentang')">Tentang</x-nav-link>
+        </li>
+        <li>
+          <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
+        </li>
       </ul>
     </div>
   </div>

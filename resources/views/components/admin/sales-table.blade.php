@@ -19,7 +19,7 @@
               </th>
               <th scope="col"
                 class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                SUBTOTAL
+                TOTAL
               </th>
               <th scope="col"
                 class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
@@ -38,7 +38,7 @@
                   {{ $item->no_transaksi }}
                 </td>
                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                  {{ $item->created_at->format('d M Y') }}
+                  {{ $item->tanggal_transaksi }}
                 </td>
                 <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
                   {{ $item->pengunjung->nama }}
@@ -47,7 +47,7 @@
                   Rp{{ number_format($item->total_harga, 0, ',', '.') }}
                 </td>
                 <td class="p-4 whitespace-nowrap">
-                  @if($item->status == 'pending')
+                  @if ($item->status == 'pending')
                     <span
                       class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-purple-100 dark:bg-gray-700 dark:border-purple-500 dark:text-purple-400">Menunggu</span>
                   @elseif ($item->status == 'success')

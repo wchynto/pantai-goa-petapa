@@ -1,36 +1,3 @@
-@php
-  $items = [
-      (object) [
-          'uuid' => 'transaksi-1',
-          'no_transaksi' => '2024050001',
-          'tanggal_transaksi' => '2024-05-01',
-          'total_harga' => 150000,
-          'status' => 'pending',
-      ],
-      (object) [
-          'uuid' => 'transaksi-2',
-          'no_transaksi' => '2024050002',
-          'tanggal_transaksi' => '2024-05-02',
-          'total_harga' => 200000,
-          'status' => 'success',
-      ],
-      (object) [
-          'uuid' => 'transaksi-3',
-          'no_transaksi' => '2024050003',
-          'tanggal_transaksi' => '2024-05-03',
-          'total_harga' => 250000,
-          'status' => 'canceled',
-      ],
-      (object) [
-          'uuid' => 'transaksi-4',
-          'no_transaksi' => '2024050004',
-          'tanggal_transaksi' => '2024-05-04',
-          'total_harga' => 300000,
-          'status' => 'expired',
-      ],
-  ];
-@endphp
-
 <x-layout>
   <x-slot:title>{{ $title }}</x-slot:title>
   <section class="flex justify-center mt-20">
@@ -82,13 +49,13 @@
                       </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-gray-800">
-                      @foreach ($items as $item)
+                      @foreach ($riwayat as $item)
                         <tr class="{{ $loop->even ? 'bg-gray-50 dark:bg-gray-700' : '' }}">
                           <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
                             {{ $item->tanggal_transaksi }}
                           </td>
                           <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $item->no_transaksi }}
+                            #{{ $item->no_transaksi }}
                           </td>
                           <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
                             Rp{{ number_format($item->total_harga, 0, ',', '.') }}
@@ -110,7 +77,7 @@
                           </td>
                           <td class="p-4 whitespace-nowrap">
                             {{-- Detail Button --}}
-                            <a href="{{ url('riwayat-transaksi/' . $item->uuid) }}"
+                            <a href="{{ route('history-order.show', $item->uuid) }}"
                               class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 inline-block">
                               <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" fill="none" viewBox="0 0 24 24">

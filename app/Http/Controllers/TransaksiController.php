@@ -60,7 +60,14 @@ class TransaksiController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            return view('admin.transaksi.show', [
+                'title' => 'Detail Transaksi - Admin Pantai Goa Petapa',
+                'transaksi' => $this->transaksiService->getTransaksiByUuid($id),
+            ]);
+        } catch (\Exception $e) {
+            abort(500);
+        }
     }
 
     /**

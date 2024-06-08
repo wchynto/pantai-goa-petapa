@@ -22,7 +22,7 @@ class KategoriController extends Controller
     {
         try {
             return view('admin.kategori.index', [
-                'title' => 'Tiket - Admin Goa Petapa',
+                'title' => 'Kategori - Admin Goa Petapa',
                 'kategori' => $this->kategoriService->getKategoriAll(),
             ]);
         } catch (\Exception $e) {
@@ -37,7 +37,7 @@ class KategoriController extends Controller
     {
         try {
             return view('admin.kategori.create', [
-                'title' => 'Tambah Tiket - Admin Goa Petapa',
+                'title' => 'Tambah Kategori - Admin Goa Petapa',
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -73,7 +73,7 @@ class KategoriController extends Controller
     {
         try {
             return view('admin.kategori.edit', [
-                'title' => 'Edit Tiket - Admin Goa Petapa',
+                'title' => 'Edit Kategori - Admin Goa Petapa',
                 'kategori' => $this->kategoriService->getKategoriByUuid($id),
             ]);
         } catch (\Exception $e) {

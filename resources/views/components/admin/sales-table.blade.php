@@ -35,7 +35,7 @@
             @foreach ($items as $item)
               <tr class="{{ $loop->even ? 'bg-gray-50 dark:bg-gray-700' : '' }}">
                 <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                  {{ $item->no_transaksi }}
+                  #{{ $item->no_transaksi }}
                 </td>
                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
                   {{ $item->tanggal_transaksi }}
@@ -63,7 +63,7 @@
                 </td>
                 <td class="p-4 whitespace-nowrap">
                   {{-- Detail Button --}}
-                  <a href="{{ url('admin/transaksi/' . $item['transaksi_id']) }}"
+                  <a href="{{ route('transaksi.show', $item->uuid) }}"
                     class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 inline-block">
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                       height="24" fill="none" viewBox="0 0 24 24">

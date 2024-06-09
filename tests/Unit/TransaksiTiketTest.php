@@ -21,7 +21,7 @@ class TransaksiTiketTest extends TestCase
             Schema::hasColumns('transaksi_tikets', [
                 'uuid',
                 'no_tiket',
-                'jumlah_penumpang',
+                'jumlah',
                 'expire_in',
                 'status',
                 'transaksi_uuid',

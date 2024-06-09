@@ -18,10 +18,10 @@ class TransaksiSeeder extends Seeder
         $pengunjungs = Pengunjung::all();
         $tikets = Tiket::all();
 
-    $pengunjungs->each(function (Pengunjung $pengunjung) use ($tikets): void {
-      $jumlah = rand(1, 5);
+        $pengunjungs->each(function (Pengunjung $pengunjung) use ($tikets): void {
+            $jumlah = rand(1, 5);
 
-      $selectedTikets = $tikets->random(rand(1, 4));
+            $selectedTikets = $tikets->random(rand(1, 4));
 
             $transaksiData = [
                 'pengunjung_uuid' => $pengunjung->uuid,
@@ -35,7 +35,7 @@ class TransaksiSeeder extends Seeder
             $transaksiTiketData = $selectedTikets->mapWithKeys(function ($tiket) use ($transaksi, $jumlah) {
                 return [
                     $tiket->uuid => [
-                        'jumlah_penumpang' => $jumlah,
+                        'jumlah' => $jumlah,
                         'tiket_uuid' => $tiket->uuid,
                         'transaksi_uuid' => $transaksi->uuid,
                     ]

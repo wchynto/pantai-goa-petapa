@@ -38,12 +38,12 @@
           <div class="mb-9 md:mb-0">
             <img src="{{ asset('images/park.png') }}" alt="Park" class="w-3/5 mx-auto lg:w-5/6">
             <p class="text-lg font-bold text-blue-900 lg:text-2xl text-center lg:mt-4 lg:mb-1 dark:text-white">Tempat Parkir</p>
-            <p class="mx-auto text-base font-light text-gray-800 text-center md:text-sm dark:text-white lg:w-4/5 md:text-sm lg:text-base w-3/5 md:w-3/5">Tempat parkir selalu tersedia tanpa perlu khawatir kehabisan.</p>
+            <p class="mx-auto text-base font-light text-gray-800 text-center md:text-sm dark:text-white lg:w-4/5 lg:text-base w-3/5 md:w-3/5">Tempat parkir selalu tersedia tanpa perlu khawatir kehabisan.</p>
           </div>
           <div class="">
             <img src="{{ asset('images/toilet.png') }}" alt="Toilet" class="w-3/5 mx-auto lg:w-5/6">
             <p class="text-lg font-bold text-blue-900 lg:text-2xl text-center lg:mt-4 lg:mb-1 dark:text-white">Toilet</p>
-            <p class="mx-auto text-base font-light text-gray-800 text-center md:text-sm dark:text-white lg:w-5/6 md:text-sm lg:text-base w-3/5 md:w-3/5">Toilet dilengkapi dengan fasilitas yang bersih dan nyaman.</p>
+            <p class="mx-auto text-base font-light text-gray-800 text-center dark:text-white lg:w-5/6 md:text-sm lg:text-base w-3/5 md:w-3/5">Toilet dilengkapi dengan fasilitas yang bersih dan nyaman.</p>
           </div>
         </div>
 
@@ -51,12 +51,12 @@
           <div class="md:w-full mb-9 md:mb-0">
             <img src="{{ asset('images/playground.png') }}" alt="Playground" class="w-3/5 mx-auto lg:w-4/5">
             <p class="text-lg font-bold text-blue-900 lg:text-2xl text-center lg:mt-4 lg:mb-1 dark:text-white">Playground</p>
-            <p class="mx-auto text-base font-light text-gray-800 text-center md:text-sm dark:text-white lg:w-4/5 md:text-sm lg:text-base w-3/5 md:w-3/5">Anak-anak bisa bermain dengan leluasa tanpa ingin pulang lebih awal</p>
+            <p class="mx-auto text-base font-light text-gray-800 text-center md:text-sm dark:text-white lg:w-4/5 lg:text-base w-3/5 md:w-3/5">Anak-anak bisa bermain dengan leluasa tanpa ingin pulang lebih awal</p>
           </div>
           <div class="md:w-full">
             <img src="{{ asset('images/boat.png') }}" alt="boat" class="w-3/5 mx-auto lg:w-4/5">
-            <p class="text-lg font-bold text-blue-900 lg:text-2xl text-center lg:mt-4 lg:mb-1 dark:text-white text-base">Boat</p>
-            <p class="mx-auto text-base font-light text-gray-800 text-center md:text-sm dark:text-white lg:w-4/5 md:text-sm lg:text-base w-3/5 md:w-3/5">Perahu tersedia untuk petualangan laut yang menyenangkan</p>
+            <p class="font-bold text-blue-900 lg:text-2xl text-center lg:mt-4 lg:mb-1 dark:text-white text-base">Boat</p>
+            <p class="mx-auto text-base font-light text-gray-800 text-center dark:text-white lg:w-4/5 md:text-sm lg:text-base w-3/5 md:w-3/5">Perahu tersedia untuk petualangan laut yang menyenangkan</p>
           </div>
         </div>
       </div>

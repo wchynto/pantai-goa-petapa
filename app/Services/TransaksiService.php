@@ -39,6 +39,16 @@ class TransaksiService
     public function createTransaksi($data)
     {
         $transaksi = $this->transaksiRepository->createTransaksi($data);
+
+        foreach ($data['tiket'] as $tiket) {
+            $transaksi->tiket()->attach($data['tiket_uuid'], [
+                'jumlah' => 1,
+                'transaksi_uuid' => $transaksi->uuid,
+                'tiket_uuid' => $tiket
+            ]);
+        }
+
+        return $transaksi;
     }
 
     public function updateTransaksi($data, $uuid)

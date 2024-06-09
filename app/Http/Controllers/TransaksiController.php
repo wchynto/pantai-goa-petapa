@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PengunjungService;
+use App\Services\TiketService;
 use App\Services\TransaksiService;
 use ErrorException;
 use Illuminate\Http\Request;
@@ -9,10 +11,14 @@ use Illuminate\Http\Request;
 class TransaksiController extends Controller
 {
     protected $transaksiService;
+    protected $pengunjungService;
+    protected $tiketService;
 
     public function __construct()
     {
         $this->transaksiService = new TransaksiService();
+        $this->pengunjungService = new PengunjungService();
+        $this->tiketService = new TiketService();
     }
 
     /**
@@ -41,6 +47,8 @@ class TransaksiController extends Controller
         try {
             return view('admin.transaksi.create', [
                 'title' => 'Tambah Transaksi - Admin Pantai Goa Petapa',
+                'pengunjung' => $this->pengunjungService->getPengunjungAll(),
+                'tiket' => $this->tiketService->getTiketAll(),
             ]);
         } catch (\Exception $e) {
             abort(500);

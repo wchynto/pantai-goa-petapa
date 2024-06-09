@@ -44,7 +44,7 @@ class TransaksiTiket extends Pivot
    * @var array
    */
   protected $fillable = [
-    'jumlah_penumpang',
+    'jumlah',
     'status',
     'transaksi_uuid',
     'tiket_uuid'
@@ -68,7 +68,7 @@ class TransaksiTiket extends Pivot
 
   /**
    * Relationship to kendaraan
-   * 
+   *
    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
    */
   public function tiket()

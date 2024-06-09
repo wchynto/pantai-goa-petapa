@@ -23,12 +23,12 @@ class TransaksiRepository extends BaseRepository implements TransaksiRepositoryI
 
     public function getTransaksiAll()
     {
-        return $this->model->all();
+        return $this->model->with(['tiket', 'pengunjung'])->latest()->get();
     }
 
     public function getTransaksiByUuid($uuid)
     {
-        return $this->model->find($uuid);
+        return $this->model->find($uuid)->with(['tiket', 'pengunjung']);
     }
 
     public function getTransaksiWhere($column, $value)

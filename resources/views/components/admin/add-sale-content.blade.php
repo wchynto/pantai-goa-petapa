@@ -8,11 +8,9 @@
       <div class="grid grid-cols-12 gap-4">
         <div class="col-span-10">
           <select id="nama" name="nama" style="width: 100%" required>
-            <option value="" selected="">Pilih pengunjung</option>
-            <option value="pengunjung-620">Alice Johnson</option>
-            <option value="pengunjung-619">Bob Smith</option>
-            <option value="pengunjung-618">Charlie Brown</option>
-            <option value="pengunjung-617">Diana Prince</option>
+            @foreach ($pengunjung as $p)
+              <option value="{{ $p->id }}">{{ $p->nama }}</option>
+            @endforeach
           </select>
         </div>
         <div class="col-span-2">
@@ -37,10 +35,11 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               required>
               <option value="" selected="">Pilih tiket</option>
-              <option value="tiket-1">Pejalan Kaki</option>
-              <option value="tiket-2">Sepeda</option>
-              <option value="tiket-3">Sepeda Motor</option>
-              <option value="tiket-4">Mobil</option>
+              @foreach ($tiket as $t)
+                <option value="{{ $t->id }}">{{ $t->keterangan }} -
+                  Rp. {{ number_format($t->harga, 0, ',', '.') }}
+                </option>
+              @endforeach
             </select>
           </div>
           <div class="col-span-6 md:col-span-3 lg:col-span-2">

@@ -60,7 +60,7 @@ class TransaksiTest extends TestCase
         ]);
 
         $transaksi->tiket()->attach($tiket->uuid, [
-            'jumlah_penumpang' => 1,
+            'jumlah' => 1,
             'transaksi_uuid' => $transaksi->uuid,
             'tiket_uuid' => $tiket->uuid
         ]);
@@ -92,7 +92,7 @@ class TransaksiTest extends TestCase
         ]);
 
         $transaksi->tiket()->attach($tiket->uuid, [
-            'jumlah_penumpang' => 1,
+            'jumlah' => 1,
             'transaksi_uuid' => $transaksi->uuid,
             'tiket_uuid' => $tiket->uuid
         ]);

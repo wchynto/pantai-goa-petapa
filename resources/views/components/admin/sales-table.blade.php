@@ -19,7 +19,7 @@
               </th>
               <th scope="col"
                 class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
-                SUBTOTAL
+                TOTAL
               </th>
               <th scope="col"
                 class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
@@ -35,10 +35,10 @@
             @foreach ($items as $item)
               <tr class="{{ $loop->even ? 'bg-gray-50 dark:bg-gray-700' : '' }}">
                 <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                  {{ $item->no_transaksi }}
+                  #{{ $item->no_transaksi }}
                 </td>
                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                  {{ $item->created_at->format('d M Y') }}
+                  {{ $item->tanggal_transaksi }}
                 </td>
                 <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
                   {{ $item->pengunjung->nama }}
@@ -47,7 +47,7 @@
                   Rp{{ number_format($item->total_harga, 0, ',', '.') }}
                 </td>
                 <td class="p-4 whitespace-nowrap">
-                  @if($item->status == 'pending')
+                  @if ($item->status == 'pending')
                     <span
                       class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-purple-100 dark:bg-gray-700 dark:border-purple-500 dark:text-purple-400">Menunggu</span>
                   @elseif ($item->status == 'success')
@@ -63,7 +63,7 @@
                 </td>
                 <td class="p-4 whitespace-nowrap">
                   {{-- Detail Button --}}
-                  <a href="{{ url('admin/transaksi/' . $item['transaksi_id']) }}"
+                  <a href="{{ route('transaksi.show', $item->uuid) }}"
                     class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 inline-block">
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                       height="24" fill="none" viewBox="0 0 24 24">

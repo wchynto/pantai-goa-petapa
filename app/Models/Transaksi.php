@@ -72,6 +72,16 @@ class Transaksi extends Model
   }
 
   /**
+   * Relationship to transaksiTiket
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function transaksiTiket()
+  {
+    return $this->hasMany(TransaksiTiket::class, 'transaksi_uuid', 'uuid');
+  }
+
+  /**
    * Relationship to pengunjung
    *
    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -21,7 +21,7 @@
                 <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
                   {{ $item->keterangan }}
                 </td>
-                <td class="p-4 whitespace-nowrap inline-flex justify-center w-full">
+                <td class="p-4 whitespace-nowrap inline-flex justify-center w-full gap-1">
                   {{-- Edit Button --}}
                   <a href="{{ route('kategori.edit', $item->uuid) }}"
                     class="text-xs font-medium text-yellow-600 dark:text-yellow-400 hover:text-yellow-500 dark:hover:text-yellow-300">

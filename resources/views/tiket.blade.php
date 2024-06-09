@@ -1,19 +1,16 @@
 <x-layout>
-    <x-slot:title>{{ $title }}</x-slot:title>
-    <section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply bg-cover mt-16 flex justify-center"
-        style="background-image: url('{{ asset('images/background-jumbotron.png') }}')">
-        <div class="container xl:max-w-screen-xl">
-            <div class="px-4 mx-auto py-14 flex flex-col lg:py-10">
-                <div class="w-full text-center lg:w-3/5 lg:mx-auto">
-                    <p class="mt-8 mb-2 text-medium font-extrabold text-gray-300 lg:text-3xl lg:mt-3">PANTAI GOA PETAPA
-                    </p>
-                    <h1 class="text-sm px-20 font-thin leading-5 text-white lg:text-lg">Pantai Goa Petapa adalah
-                        destinasi wisata yang menawarkan keindahan alam pantai dan berbagai fasilitas menarik bagi
-                        pengunjung. Pilih tiketmu untuk memulai eksplorasi Pantai Goa Petapa!</h1>
-                </div>
-            </div>
+  <x-slot:title>{{ $title }}</x-slot:title>
+  <section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply bg-cover mt-16 flex justify-center"
+    style="background-image: url('{{ asset('images/background-jumbotron.png') }}')">
+    <div class="container xl:max-w-screen-xl">
+      <div class="px-4 mx-auto py-14 flex flex-col lg:py-10">
+        <div class="w-full text-center lg:w-3/5 lg:mx-auto">
+          <p class="mt-8 mb-2 text-medium font-extrabold text-white lg:text-3xl lg:mt-3">PANTAI GOA PETAPA</p>
+          <h1 class="text-sm px-20 font-thin leading-5 text-white lg:text-lg">Pantai Goa Petapa adalah destinasi wisata yang menawarkan keindahan alam pantai dan berbagai fasilitas menarik bagi pengunjung. Pilih tiketmu untuk memulai eksplorasi Pantai Goa Petapa!</h1>
         </div>
-    </section>
+      </div>
+    </div>    
+  </section>
 
     <main class="flex flex-col items-center pt-10 mb-12 mx-6 lg:mx-32" id="explore">
         {{-- SHOPPING PRODUCT --}}

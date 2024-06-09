@@ -58,7 +58,7 @@
               <input type="text" name="jumlah[]" id="jumlah-1" data-input-counter data-input-counter-min="1"
                 data-input-counter-max="50" aria-describedby="helper-text-explanation"
                 class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="999" required />
+                placeholder="999" value="1" required />
               <button type="button" id="increment-button-1" data-input-counter-increment="jumlah-1"
                 class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                 <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -135,10 +135,19 @@
       });
     });
 
+    const updateTotal = () => {
+      let total = 0;
+      $('#ticket-container select').each(function() {
+        let harga = $(this).find(':selected').data('harga');
+        let jumlah = $(this).closest('.ticket-row').find('input').val();
+        total += harga * jumlah;
+      });
+      $('#total').text(isNaN(total) ? 'Loading...' : 'Rp' + total.toLocaleString('id-ID'));
+    };
+
     $('#add-ticket-button').on('click', function() {
       let ticketRow = $('.ticket-row').first().clone();
       let rowCount = $('.ticket-row').length + 1;
-
       ticketRow.find('select').val('');
       ticketRow.find('label').eq(0).attr('for', 'tiket-' + rowCount);
       ticketRow.find('select').attr('id', 'tiket-' + rowCount);
@@ -152,23 +161,18 @@
         'data-input-counter-increment': 'jumlah-' + rowCount
       });
       ticketRow.find('input').attr('id', 'jumlah-' + rowCount).val('1');
-
       $('#ticket-container').append(ticketRow);
 
       ticketRow.find('button').eq(0).on('click', function() {
         let input = ticketRow.find('input');
         let value = parseInt(input.val());
-        if (value > 1) {
-          input.val(value - 1);
-        }
+        if (value > 1) input.val(value - 1);
       });
 
       ticketRow.find('button').eq(1).on('click', function() {
         let input = ticketRow.find('input');
         let value = parseInt(input.val());
-        if (value < 50) {
-          input.val(value + 1);
-        }
+        if (value < 50) input.val(value + 1);
       });
 
       ticketRow.find('input').on('input', function() {
@@ -179,42 +183,13 @@
 
       ticketRow.find('button').eq(2).on('click', function() {
         let ticketRow = $('.ticket-row');
-        if (ticketRow.length > 1) {
-          $(this).closest('.ticket-row').remove();
-        }
-      });
-    });
-
-    $('#ticket-container').on('change', 'select', function() {
-      let total = 0;
-      $('#ticket-container select').each(function() {
-        let harga = $(this).find(':selected').data('harga');
-        let jumlah = $(this).closest('.ticket-row').find('input').val();
-        total += harga * jumlah;
+        if (ticketRow.length > 1) $(this).closest('.ticket-row').remove();
+        updateTotal();
       });
 
-      if (isNaN(total)) {
-        total = 'Loading...';
-      } else {
-        total = 'Rp' + total.toLocaleString('id-ID');
-      }
-      $('#total').text(total);
+      updateTotal();
     });
 
-    $('#ticket-container').on('click', 'button', function() {
-      let total = 0;
-      $('#ticket-container select').each(function() {
-        let harga = $(this).find(':selected').data('harga');
-        let jumlah = $(this).closest('.ticket-row').find('input').val();
-        total += harga * jumlah;
-      });
-
-      if (isNaN(total)) {
-        total = 'Loading...';
-      } else {
-        total = 'Rp' + total.toLocaleString('id-ID');
-      }
-      $('#total').text(total);
-    });
+    $('#ticket-container').on('change click', 'select, button', updateTotal);
   });
 </script>

@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Tiket;
 use App\Models\Transaksi;
+use App\Repositories\Eloquent\TiketRepository;
 use App\Repositories\Eloquent\TransaksiRepository;
 
 /**
@@ -11,10 +13,12 @@ use App\Repositories\Eloquent\TransaksiRepository;
 class TransaksiService
 {
     protected $transaksiRepository;
+    protected $tiketRepository;
 
     public function __construct()
     {
         $this->transaksiRepository = new TransaksiRepository(new Transaksi());
+        $this->tiketRepository = new TiketRepository(new Tiket());
     }
 
     public function getTransaksiAll()
@@ -34,7 +38,7 @@ class TransaksiService
 
     public function createTransaksi($data)
     {
-        return $this->transaksiRepository->createTransaksi($data);
+        $transaksi = $this->transaksiRepository->createTransaksi($data);
     }
 
     public function updateTransaksi($data, $uuid)

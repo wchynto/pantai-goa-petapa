@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\TransaksiService;
+use ErrorException;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -27,7 +28,8 @@ class TransaksiController extends Controller
                 'transaksi' => collectionPaginate($transaksis, 10, null, ['path' => route('transaksi.index')]),
             ]);
         } catch (\Exception $e) {
-            abort(500);
+            // abort(500);
+            throw $e;
         }
     }
 

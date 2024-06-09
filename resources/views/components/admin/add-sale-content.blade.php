@@ -1,17 +1,21 @@
 <form action="{{ route('transaksi.store') }}" method="POST">
-  <div class="grid gap-4 mb-4 grid-cols-2">
-    <div class="col-span-2">
-      <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-        Pengunjung</label>
-      <div class="w-full flex gap-4">
-        <select id="nama" name="nama" style="width: 90%" required>
-          <option value="" selected="">Pilih pengunjung</option>
-          <option value="pengunjung-620">Alice Johnson</option>
-          <option value="pengunjung-619">Bob Smith</option>
-          <option value="pengunjung-618">Charlie Brown</option>
-          <option value="pengunjung-617">Diana Prince</option>
-        </select>
-        <div class="w-[10%]">
+  <div class="flex flex-col gap-4">
+    <div class="grid grid-cols-1">
+      <div>
+        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+          Pengunjung</label>
+      </div>
+      <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-10">
+          <select id="nama" name="nama" style="width: 100%" required>
+            <option value="" selected="">Pilih pengunjung</option>
+            <option value="pengunjung-620">Alice Johnson</option>
+            <option value="pengunjung-619">Bob Smith</option>
+            <option value="pengunjung-618">Charlie Brown</option>
+            <option value="pengunjung-617">Diana Prince</option>
+          </select>
+        </div>
+        <div class="col-span-2">
           <button type="button" id="add-user-button"
             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full h-full justify-center"
             data-modal-target="add-visitor-modal" data-modal-toggle="add-visitor-modal">
@@ -24,59 +28,67 @@
         </div>
       </div>
     </div>
-    <div class="col-span-2">
-      <div class="w-full flex gap-4">
-        <div class="w-[90%] flex flex-col gap-4" id="ticket-container">
-          <div class="flex gap-4 ticket-row">
-            <div class="flex-1">
-              <label for="tiket-1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiket</label>
-              <select id="tiket-1" name="tiket[]"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                required>
-                <option value="" selected="">Pilih tiket</option>
-                <option value="tiket-1">Pejalan Kaki</option>
-                <option value="tiket-2">Sepeda</option>
-                <option value="tiket-3">Sepeda Motor</option>
-                <option value="tiket-4">Mobil</option>
-              </select>
-            </div>
-            <div class="w-fit">
-              <label for="jumlah-1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah</label>
-              <div class="relative flex items-center max-w-[8rem]">
-                <button type="button" id="decrement-button-1" data-input-counter-decrement="jumlah-1"
-                  class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                  <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M1 1h16" />
-                  </svg>
-                </button>
-                <input type="text" name="jumlah[]" id="jumlah-1" data-input-counter data-input-counter-min="1"
-                  data-input-counter-max="50" aria-describedby="helper-text-explanation"
-                  class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="999" value="1" required />
-                <button type="button" id="increment-button-1" data-input-counter-increment="jumlah-1"
-                  class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                  <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 1v16M1 9h16" />
-                  </svg>
-                </button>
-              </div>
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-10 md:col-span-11" id="ticket-container">
+        <div class="grid grid-cols-10 md:grid-cols-11 gap-4 ticket-row mb-4">
+          <div class="col-span-11 md:col-span-7 lg:col-span-8">
+            <label for="tiket-1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiket</label>
+            <select id="tiket-1" name="tiket[]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              required>
+              <option value="" selected="">Pilih tiket</option>
+              <option value="tiket-1">Pejalan Kaki</option>
+              <option value="tiket-2">Sepeda</option>
+              <option value="tiket-3">Sepeda Motor</option>
+              <option value="tiket-4">Mobil</option>
+            </select>
+          </div>
+          <div class="col-span-6 md:col-span-3 lg:col-span-2">
+            <label for="jumlah-1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah</label>
+            <div class="relative flex items-center">
+              <button type="button" id="decrement-button-1" data-input-counter-decrement="jumlah-1"
+                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="none" viewBox="0 0 18 2">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h16" />
+                </svg>
+              </button>
+              <input type="text" name="jumlah[]" id="jumlah-1" data-input-counter data-input-counter-min="1"
+                data-input-counter-max="50" aria-describedby="helper-text-explanation"
+                class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="999" value="1" required />
+              <button type="button" id="increment-button-1" data-input-counter-increment="jumlah-1"
+                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 1v16M1 9h16" />
+                </svg>
+              </button>
             </div>
           </div>
+          <div class="col-span-5 md:col-span-1">
+            <button type="button" id="delete-ticket-button"
+              class="text-white inline-flex items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 w-full h-full justify-center">
+              <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </button>
+          </div>
         </div>
-        <div class="w-[10%]">
-          <button type="button" id="add-ticket-button"
-            class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full h-full justify-center">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-        </div>
+      </div>
+      <div class="col-span-2 md:col-span-1 row-span-full col-start-11 md:col-start-12 mb-4">
+        <button type="button" id="add-ticket-button"
+          class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full h-full justify-center">
+          <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </button>
       </div>
     </div>
   </div>
@@ -147,6 +159,13 @@
         let value = $(this).val().replace(/\D/g, '');
         value = Math.max(1, Math.min(50, value));
         $(this).val(value);
+      });
+
+      ticketRow.find('button').eq(2).on('click', function() {
+        let ticketRow = $('.ticket-row');
+        if (ticketRow.length > 1) {
+          $(this).closest('.ticket-row').remove();
+        }
       });
     });
   });

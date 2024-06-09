@@ -11,8 +11,8 @@
                     </div>
 
                     <div class="col">
-                        <x-admin.statistical-numbers :tiket="$tiket" :pengunjung="$pengunjung"
-                            :users="$users"></x-admin.statistical-numbers>
+                        <x-admin.statistical-numbers :tiket="$tiket" :pengunjung="$pengunjung" :users="$users"
+                            :transaksi="$transaksi"></x-admin.statistical-numbers>
                     </div>
                 </div>
             </div>

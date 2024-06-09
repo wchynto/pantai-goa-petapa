@@ -6,6 +6,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\UserSessionController;
 use App\Http\Controllers\AdminSessionController;
+use App\Http\Controllers\HistoryOrderController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TiketController;
 
@@ -55,9 +56,9 @@ Route::middleware('auth')->group(function () {
     return view('user/profil', ['title' => 'Profil - Pantai Goa Petapa']);
   });
 
-  Route::get('riwayat-pemesanan', function () {
-    return view('user/riwayat-pemesanan', ['title' => 'Riwayat Pemesanan - Pantai Goa Petapa']);
-  });
+  Route::get('riwayat-pemesanan', [HistoryOrderController::class, 'index'])->name('history-order');
+
+  Route::get('riwayat-pemesanan/{id}', [HistoryOrderController::class, 'show'])->name('history-order.show');
 });
 
 // Admin routes

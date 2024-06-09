@@ -35,10 +35,10 @@ class PostinganService
 
     public function createPostingan($data)
     {
-        if ($data->hasFile('thumbnail')) {
-            $thumbnail = $data->file('thumbnail');
+        if ($data['thumbnail']) {
+            $thumbnail = $data['thumbnail'];
             $thumbnailName = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $path = Storage::putFileAs('public/thumbnail', $thumbnail, $thumbnailName);
+            $path = Storage::putFileAs('public/images/postingan/thumbnails', $thumbnail, $thumbnailName);
             $data['thumbnail'] = $path;
         }
 
@@ -47,20 +47,26 @@ class PostinganService
 
     public function updatePostingan($data, $uuid)
     {
-        if ($data->hasFile('thumbnail')) {
+        if ($data['thumbnail']) {
             $postingan = $this->postinganRepository->getPostinganByUuid($uuid);
             Storage::delete($postingan->thumbnail);
-            $thumbnail = $data->file('thumbnail');
+            $thumbnail = $data['thumbnail'];
             $thumbnailName = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $path = Storage::putFileAs('public/thumbnail', $thumbnail, $thumbnailName);
+            $path = Storage::putFileAs('public/images/postingan/thumbnails', $thumbnail, $thumbnailName);
             $data['thumbnail'] = $path;
         }
 
         return $this->postinganRepository->updatePostingan($data, $uuid);
     }
-
     public function deletePostingan($uuid)
     {
-        return $this->postinganRepository->deletePostingan($uuid);
+        $postingan = $this->getPostinganByUuid($uuid);
+
+        if (!$postingan->hasConstraints()) {
+            Storage::delete($postingan->thumbnail);
+            return $this->postinganRepository->deletePostingan($uuid);
+        }
+
+        throw new \Exception("Data tidak bisa dihapus! Data masih memiliki relasi dengan data lain.");
     }
 }

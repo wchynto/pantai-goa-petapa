@@ -19,7 +19,7 @@
   <div class="flex lg:mx-32 flex-row gap-4 md:mx-5 mx-5">
     <div class="mb-8 w-full bg-blue-100 border border-gray-200 shadow-xl lg:py-10 md:p-8 dark:bg-gray-800 dark:border-gray-600 md:my-0 my-0 lg:my-4 rounded-lg flex lg:flex-row md:flex-row py-4 flex-col">
       <img src="{{ asset('images/pantai.png') }}" alt="Hero Pantai Goa Petapa" class="lg:px-5 lg:me-3 lg:w-1/2 md:w-1/2 md:mx-5 w-4/5 py-6 mx-auto lg:mx-6">
-      <p class="w-full lg:w-1/2 px-12 mx-auto my-auto text-medium font-light text-gray-800 text-justify pb-6 dark:text-white lg:mx-3 md:px-6 md:leading-8 md:pt-3 lg:leading-10 lg:tracking-wide"><span class="font-extrabold dark:text-white md:w-1/2">Pantai Goa Petapa</span> adalah destinasi wisata yang menawarkan keindahan alam pantai dan berbagai fasilitas menarik bagi pengunjung. Terletak di daerah yang strategis, pantai ini dikenal dengan pemandangan laut yang memukau, pasir putih yang lembut, dan suasana yang tenang, menjadikannya tempat ideal untuk berlibur dan bersantai.</p>
+      <p class="w-full lg:w-1/2 px-12 mx-auto my-auto text-base font-light text-gray-800 text-justify pb-6 dark:text-white lg:mx-3 md:px-6 md:leading-8 md:pt-3 lg:leading-10 lg:tracking-wide lg:text-xl"><span class="font-extrabold dark:text-white md:w-1/2 lg:text-xl">Pantai Goa Petapa</span> adalah destinasi wisata yang menawarkan keindahan alam pantai dan berbagai fasilitas menarik bagi pengunjung. Terletak di daerah yang strategis, pantai ini dikenal dengan pemandangan laut yang memukau, pasir putih yang lembut, dan suasana yang tenang, menjadikannya tempat ideal untuk berlibur dan bersantai.</p>
     </div>
   </div>
 

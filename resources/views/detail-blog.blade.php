@@ -6,7 +6,6 @@
     </div>
     <div class="container xl:max-w-screen-xl px-4 mx-auto">
       <div class="flex lg:flex-col flex-row gap-4">
-        {{-- HUBUNGI KAMI --}}
         <div class="w-full mb-8">
           <h1 class="mb-4 font-semibold lg:text-lg">Judul</h1>
         </div>

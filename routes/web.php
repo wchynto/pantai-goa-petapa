@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('home', ['title' => 'Home - Pantai Goa Petapa']);
 });
 
-Route::get('/tiket', function () {
-    return view('tiket', ['title' => 'Tiket - Pantai Goa Petapa']);
-});
+Route::get('/tiket', [TiketController::class, 'displayTiket']);
 
 Route::get('/tentang', function () {
     return view('tentang', ['title' => 'Tentang - Pantai Goa Petapa']);

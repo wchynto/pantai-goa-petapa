@@ -73,6 +73,6 @@ class Tiket extends Model
    */
   public function transaksi()
   {
-    return $this->belongsToMany(Transaksi::class, 'transaksi_tikets', 'tiket_uuid')->withPivot('jumlah_penumpang', 'transaksi_uuid', 'tiket_uuid')->using(TransaksiTiket::class);
+    return $this->belongsToMany(Transaksi::class, 'transaksi_tikets', 'tiket_uuid')->withPivot('jumlah', 'transaksi_uuid', 'tiket_uuid')->using(TransaksiTiket::class);
   }
 }

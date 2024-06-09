@@ -23,7 +23,7 @@ class PostinganRepository extends BaseRepository implements PostinganRepositoryI
 
     public function getPostinganAll()
     {
-        return $this->model->all();
+        return $this->model->with(['komentar', 'kategori'])->latest()->get();
     }
 
     public function getPostinganByUuid($uuid)

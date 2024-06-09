@@ -4,109 +4,125 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostinganRequest;
 use App\Http\Requests\UpdatePostinganRequest;
+use App\Services\KategoriService;
 use App\Services\PostinganService;
 use Illuminate\Http\Request;
 
 class PostinganController extends Controller
 {
-  protected $postinganService;
+    protected $postinganService;
+    protected $kategoriService;
 
-  public function __construct()
-  {
-    $this->postinganService = new PostinganService();
-  }
-
-  /**
-   * Display a listing of the resource.
-   */
-  public function index()
-  {
-    try {
-      return view('', [
-        'title' => '',
-        'postingan' => $this->postinganService->getPostinganAll(),
-      ]);
-    } catch (\Exception $e) {
-      abort(500);
+    public function __construct()
+    {
+        $this->postinganService = new PostinganService();
+        $this->kategoriService = new KategoriService();
     }
-  }
 
-  /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
-  {
-    try {
-      return view('', [
-        'title' => '',
-      ]);
-    } catch (\Exception $e) {
-      abort(500);
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        try {
+            return view('admin.postingan', [
+                'title' => 'Postingan - Admin Goa Petapa',
+                'postingan' => $this->postinganService->getPostinganAll(),
+            ]);
+        } catch (\Exception $e) {
+            //   abort(500);
+            throw $e;
+        }
     }
-  }
 
-  /**
-   * Store a newly created resource in storage.
-   */
-  public function store(StorePostinganRequest $request)
-  {
-    try {
-      $this->postinganService->createPostingan($request->all());
-
-      return back()->with('success', 'Data Postingan berhasil ditambahkan!');
-    } catch (\Exception $e) {
-      return back()->with('error', $e->getMessage());
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        try {
+            return view('admin.tambah-postingan', [
+                'title' => 'Tambah Postingan - Admin Goa Petapa',
+                'kategori' => $this->kategoriService->getKategoriAll()
+            ]);
+        } catch (\Exception $e) {
+            // throw $e;
+            abort(500);
+        }
     }
-  }
 
-  /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
-  {
-    //
-  }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StorePostinganRequest $request)
+    {
+        try {
+            $validatedData = $request->validated();
 
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(string $id)
-  {
-    try {
-      return view('', [
-        'title' => '',
-        'postingan' => $this->postinganService->getPostinganByUuid($id),
-      ]);
-    } catch (\Exception $e) {
-      abort(500);
+            if ($request->hasFile('thumbnail')) {
+                $validatedData['thumbnail'] = $request->file('thumbnail');
+            }
+
+            $this->postinganService->createPostingan($validatedData);
+
+            return back()->with('success', 'Data Postingan berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            // throw $e;
+            return back()->with('error', 'Data Postingan gagal dihapus!');
+        }
     }
-  }
 
-  /**
-   * Update the specified resource in storage.
-   */
-  public function update(UpdatePostinganRequest $request, string $id)
-  {
-    try {
-      $this->postinganService->updatePostingan($request->all(), $id);
-
-      return back()->with('success', 'Data Postingan berhasil diperbarui!');
-    } catch (\Exception $e) {
-      return back()->with('error', $e->getMessage());
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
     }
-  }
 
-  /**
-   * Remove the specified resource from storage.
-   */
-  public function destroy(string $id)
-  {
-    try {
-      $this->postinganService->deletePostingan($id);
-
-      return back()->with('success', 'Data Postingan berhasil dihapus!');
-    } catch (\Exception $e) {
-      return back()->with('error', 'Data Postingan gagal dihapus!');
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        try {
+            return view('', [
+                'title' => '',
+                'postingan' => $this->postinganService->getPostinganByUuid($id),
+            ]);
+        } catch (\Exception $e) {
+            throw $e;
+            abort(500);
+        }
     }
-  }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdatePostinganRequest $request, string $id)
+    {
+        try {
+            $this->postinganService->updatePostingan($request->all(), $id);
+
+            return back()->with('success', 'Data Postingan berhasil diperbarui!');
+        } catch (\Exception $e) {
+            // throw $e;
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        try {
+            $this->postinganService->deletePostingan($id);
+
+            return back()->with('success', 'Data Postingan berhasil dihapus!');
+        } catch (\Exception $e) {
+            // throw $e;
+            return back()->with('error', 'Data Postingan gagal dihapus!');
+        }
+    }
 }

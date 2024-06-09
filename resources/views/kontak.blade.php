@@ -5,7 +5,7 @@
       <div class="flex lg:flex-col flex-row pt-20 gap-4">
         {{-- HUBUNGI KAMI --}}
         <div class="w-full mb-8">
-          <h1 class="text-l mb-4 font-semibold lg:text-lg">Hubungi Kami</h1>
+          <h1 class="mb-4 font-semibold lg:text-lg">Hubungi Kami</h1>
           <div class="w-full bg-blue-100 border border-gray-200 shadow-xl lg:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 my-4 rounded-lg py-4">
             <form action="">
               <div class="flex flex-col lg:flex-row lg:gap-6 lg:w-full">

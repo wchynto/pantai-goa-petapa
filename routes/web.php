@@ -27,12 +27,12 @@ Route::get('kontak', function () {
   return view('kontak', ['title' => 'Kontak - Pantai Goa Petapa']);
 });
 
-Route::get('posting-user', function () {
-  return view('posting-user', ['title' => 'Postingan User - Pantai Goa Petapa']);
+Route::get('blog', function () {
+  return view('blog', ['title' => 'Blog - Pantai Goa Petapa']);
 });
 
-Route::get('detail-posting', function () {
-  return view('detail-posting', ['title' => 'Detail Posting - Pantai Goa Petapa']);
+Route::get('detail-blog', function () {
+  return view('detail-blog', ['title' => 'Detail Blog - Pantai Goa Petapa']);
 });
 
 Route::get('login', [UserSessionController::class, 'viewLogin'])->name('login');

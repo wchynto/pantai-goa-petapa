@@ -1,16 +1,18 @@
 <x-layout>
-  <x-slot:title>{{ $title }}</x-slot:title>
-  <section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply bg-cover mt-16 flex justify-center"
-    style="background-image: url('{{ asset('images/background-jumbotron.png') }}')">
-    <div class="container xl:max-w-screen-xl">
-      <div class="px-4 mx-auto py-14 flex flex-col lg:py-10">
-        <div class="w-full text-center lg:w-3/5 lg:mx-auto">
-          <p class="mt-8 mb-2 text-medium font-extrabold text-white lg:text-3xl lg:mt-3">PANTAI GOA PETAPA</p>
-          <h1 class="text-sm px-20 font-thin leading-5 text-white lg:text-lg">Pantai Goa Petapa adalah destinasi wisata yang menawarkan keindahan alam pantai dan berbagai fasilitas menarik bagi pengunjung. Pilih tiketmu untuk memulai eksplorasi Pantai Goa Petapa!</h1>
+    <x-slot:title>{{ $title }}</x-slot:title>
+    <section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply bg-cover mt-16 flex justify-center"
+        style="background-image: url('{{ asset('images/background-jumbotron.png') }}')">
+        <div class="container xl:max-w-screen-xl">
+            <div class="px-4 mx-auto py-14 flex flex-col lg:py-10">
+                <div class="w-full text-center lg:w-3/5 lg:mx-auto">
+                    <p class="mt-8 mb-2 text-medium font-extrabold text-white lg:text-3xl lg:mt-3">PANTAI GOA PETAPA</p>
+                    <h1 class="text-sm px-20 font-thin leading-5 text-white lg:text-lg">Pantai Goa Petapa adalah
+                        destinasi wisata yang menawarkan keindahan alam pantai dan berbagai fasilitas menarik bagi
+                        pengunjung. Pilih tiketmu untuk memulai eksplorasi Pantai Goa Petapa!</h1>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>    
-  </section>
+    </section>
 
     <main class="flex flex-col items-center pt-10 mb-12 mx-6 lg:mx-32" id="explore">
         {{-- SHOPPING PRODUCT --}}
@@ -92,7 +94,7 @@
         </div>
 
         <div class="w-1/3 lg:w-1/6 md:w-1/4 pe-3 md:pe-0">
-            <a href="order">
+            <a href="{{ auth()->check() ? route('user.order', auth()->user()->uuid) : route('login') }}">
                 <button type="submit"
                     class="w-full text-white hover bg-blue-900 shadow border-blue-900 hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 p-3 text-center dark:bg-blue-900 dark:text-white dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">
                     Lihat Keranjang

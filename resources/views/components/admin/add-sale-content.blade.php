@@ -8,8 +8,10 @@
       <div class="grid grid-cols-12 gap-4">
         <div class="col-span-10">
           <select id="nama" name="nama" style="width: 100%" required>
+            <option value="" selected="">Pilih pengunjung</option>
             @foreach ($pengunjung as $p)
-              <option value="{{ $p->id }}">{{ $p->nama }}</option>
+              <option value="{{ $p->uuid }}">{{ $p->nama }} -
+                {{ $p->user->no_telepon ?? $p->guest->no_telepon }}</option>
             @endforeach
           </select>
         </div>
@@ -36,8 +38,8 @@
               required>
               <option value="" selected="">Pilih tiket</option>
               @foreach ($tiket as $t)
-                <option value="{{ $t->id }}">{{ $t->keterangan }} -
-                  Rp. {{ number_format($t->harga, 0, ',', '.') }}
+                <option value="{{ $t->id }}" data-harga="{{ $t->harga }}">{{ $t->keterangan }} -
+                  Rp{{ number_format($t->harga, 0, ',', '.') }}
                 </option>
               @endforeach
             </select>
@@ -90,6 +92,21 @@
         </button>
       </div>
     </div>
+    <div class="grid grid-cols-12 gap-4 mb-4">
+      <div class="col-span-12 sm:col-span-6">
+        <div class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Total</div>
+        <div
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+          <span id="total">Loading...</span>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6">
+        <label for="total_bayar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bayar</label>
+        <input type="number" name="total_bayar" id="total_bayar"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          placeholder="20000" required />
+      </div>
+    </div>
   </div>
 
   <x-admin.submit-cancel-button submit="Tambah" url="{{ route('transaksi.index') }}"></x-admin.submit-cancel-button>
@@ -118,10 +135,19 @@
       });
     });
 
+    const updateTotal = () => {
+      let total = 0;
+      $('#ticket-container select').each(function() {
+        let harga = $(this).find(':selected').data('harga');
+        let jumlah = $(this).closest('.ticket-row').find('input').val();
+        total += harga * jumlah;
+      });
+      $('#total').text(isNaN(total) ? 'Loading...' : 'Rp' + total.toLocaleString('id-ID'));
+    };
+
     $('#add-ticket-button').on('click', function() {
       let ticketRow = $('.ticket-row').first().clone();
       let rowCount = $('.ticket-row').length + 1;
-
       ticketRow.find('select').val('');
       ticketRow.find('label').eq(0).attr('for', 'tiket-' + rowCount);
       ticketRow.find('select').attr('id', 'tiket-' + rowCount);
@@ -135,23 +161,18 @@
         'data-input-counter-increment': 'jumlah-' + rowCount
       });
       ticketRow.find('input').attr('id', 'jumlah-' + rowCount).val('1');
-
       $('#ticket-container').append(ticketRow);
 
       ticketRow.find('button').eq(0).on('click', function() {
         let input = ticketRow.find('input');
         let value = parseInt(input.val());
-        if (value > 1) {
-          input.val(value - 1);
-        }
+        if (value > 1) input.val(value - 1);
       });
 
       ticketRow.find('button').eq(1).on('click', function() {
         let input = ticketRow.find('input');
         let value = parseInt(input.val());
-        if (value < 50) {
-          input.val(value + 1);
-        }
+        if (value < 50) input.val(value + 1);
       });
 
       ticketRow.find('input').on('input', function() {
@@ -162,10 +183,13 @@
 
       ticketRow.find('button').eq(2).on('click', function() {
         let ticketRow = $('.ticket-row');
-        if (ticketRow.length > 1) {
-          $(this).closest('.ticket-row').remove();
-        }
+        if (ticketRow.length > 1) $(this).closest('.ticket-row').remove();
+        updateTotal();
       });
+
+      updateTotal();
     });
+
+    $('#ticket-container').on('change click', 'select, button', updateTotal);
   });
 </script>

@@ -42,7 +42,7 @@ class TransaksiService
 
         foreach ($data['tiket'] as $tiket) {
             $transaksi->tiket()->attach($data['tiket_uuid'], [
-                'jumlah' => 1,
+                'jumlah' => $data['jumlah'],
                 'transaksi_uuid' => $transaksi->uuid,
                 'tiket_uuid' => $tiket
             ]);

@@ -31,7 +31,7 @@
                     <img src="{{ asset('images/background-jumbotron.png') }}"
                       class="w-full h-44 md:h-24 rounded-lg object-cover shadow-lg" alt="Photo">
                   </div>
-                  <span class="text-sm font-bold"><a
+                  <span class="text-sm font-semibold"><a
                       href="{{ url('/blog/' . 'lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-asperiores-enim') }}"
                       class="hover:underline">Lorem
                       ipsum dolor sit amet consectetur adipisicing elit. Asperiores, enim.</a></span>
@@ -46,7 +46,7 @@
                   <div class="flex gap-4 mb-2">
                     <img src="{{ asset('images/circle.svg') }}" alt="Icon" class="w-3 h-3 mt-1">
                     <div class="flex flex-col">
-                      <span class="lg:text-sm font-bold text-base"><a href="#" class="hover:underline">Lorem.</a></span>
+                      <span class="lg:text-sm font-semibold text-base"><a href="#" class="hover:underline">Lorem.</a></span>
                     </div>
                   </div>
                 @endfor

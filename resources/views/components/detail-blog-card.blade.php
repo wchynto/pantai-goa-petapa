@@ -18,17 +18,16 @@
   ];
 @endphp
 
-<p class="text-sm sm:text-xs text-gray-600 dark:text-gray-300 mb-4">{{ $created_at }}</p>
+<h1 class="text-2xl font-bold block md:text-3xl text-center md:text-left">{{ $judul }}</h1>
+<p class="text-sm sm:text-xs text-gray-600 my-1">{{ $created_at }}</p>
+<p class="text-xl sm:text-xs text-gray-900 mb-4">Kategori: <a href="{{ url('/blog/kategori/' . $kategori[0]['uuid']) }}" class="hover:underline">{{ $kategori[0]['keterangan'] }}</a></p>
 <div class="relative">
   <img src="{{ asset('images/' . $thumbnail) }}" class="w-full h-96 rounded-lg object-cover" alt="Photo">
 </div>
 <div class="mb-4 rounded-lg bg-white dark:bg-gray-800 shadow-lg">
   <div class="px-4 py-6 mt-10">
     <div class="flex items-center justify-between mb-2 w-5/6">
-      <p class="text-xl sm:text-xs text-gray-900 font-extrabold dark:text-gray-300">Kategori: <a
-        href="{{ url('/blog/kategori/' . $kategori[0]['uuid']) }}"
-        class="hover:underline">{{ $kategori[0]['keterangan'] }}</a></p>
     </div>
-    <p class="text-justify text-xl sm:text-xs text-gray-600 mb-4 dark:text-gray-300">{{ Str::limit(strip_tags($body), 200, '...') }}</p>
+    <p class="text-justify lg:text-base sm:text-xs text-gray-600 mb-4 dark:text-gray-300 lg:px-4">{{ Str::limit(strip_tags($body), 200, '...') }}</p>
   </div>
 </div>

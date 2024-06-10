@@ -6,14 +6,11 @@
     </div>
     <div class="container xl:max-w-screen-xl px-4 mx-auto">
       <div class="flex flex-col gap-x-4">
-        <div class="w-full">
-          <h1 class="text-2xl font-bold block md:text-3xl text-center md:text-left">Judul</h1>
-        </div>
-
         <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 lg:gap-16">
           <section class="sm:flex-row sm:flex-wrap md:w-2/3">
             <x-detail-blog-card></x-detail-blog-card>
           </section>
+
           <section class="lg:mb-16 md:my-0 md:w-1/3">
             <div class="lg:mb-4 md:mb-8 mb-6">
               <span class="text-3xl lg:text-xl font-bold block md:text-2xl text-center md:text-left">Recent
@@ -26,7 +23,7 @@
                     <img src="{{ asset('images/background-jumbotron.png') }}"
                       class="w-full h-44 md:h-24 rounded-lg object-cover shadow-lg" alt="Photo">
                   </div>
-                  <span class="text-sm font-bold"><a
+                  <span class="text-sm font-semibold"><a
                       href="{{ url('/blog/' . 'lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-asperiores-enim') }}"
                       class="hover:underline">Lorem
                       ipsum dolor sit amet consectetur adipisicing elit. Asperiores, enim.</a></span>
@@ -41,7 +38,7 @@
                   <div class="flex gap-4 mb-2">
                     <img src="{{ asset('images/circle.svg') }}" alt="Icon" class="w-3 h-3 mt-1">
                     <div class="flex flex-col">
-                      <span class="lg:text-sm font-bold text-base"><a href="#" class="hover:underline">Lorem.</a></span>
+                      <span class="lg:text-sm font-semibold text-base"><a href="#" class="hover:underline">Lorem.</a></span>
                     </div>
                   </div>
                 @endfor

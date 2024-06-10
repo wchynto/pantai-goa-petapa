@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('history-order') }}"
+                        <a href="{{ route('user.history-order', auth()->user()->uuid) }}"
                             class="flex gap-2 items-center lg:text-lg font-semibold text-gray-800 dark:text-gray-200">
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"

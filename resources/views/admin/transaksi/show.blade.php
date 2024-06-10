@@ -20,7 +20,7 @@
                             <div>
                                 <h4 class="xl:text-lg font-semibold text-gray-800 dark:text-gray-200">To</h4>
                                 <h3 class="text-xl xl:text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                                    {{ $transaksi->pengunjung->nama }}
+                                    {{-- {{ $transaksi->pengunjung->nama }} --}}
                                 </h3>
                             </div>
                         </div>

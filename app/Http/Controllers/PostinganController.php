@@ -25,7 +25,7 @@ class PostinganController extends Controller
     public function index()
     {
         try {
-            return view('admin.postingan', [
+            return view('admin.postingan.index', [
                 'title' => 'Postingan - Admin Goa Petapa',
                 'postingan' => $this->postinganService->getPostinganAll(),
             ]);
@@ -41,7 +41,7 @@ class PostinganController extends Controller
     public function create()
     {
         try {
-            return view('admin.tambah-postingan', [
+            return view('admin.postingan.create', [
                 'title' => 'Tambah Postingan - Admin Goa Petapa',
                 'kategori' => $this->kategoriService->getKategoriAll()
             ]);
@@ -65,7 +65,7 @@ class PostinganController extends Controller
 
             $this->postinganService->createPostingan($validatedData);
 
-            return back()->with('success', 'Data Postingan berhasil ditambahkan!');
+            return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil ditambahkan!');
         } catch (\Exception $e) {
             // throw $e;
             return back()->with('error', 'Data Postingan gagal dihapus!');
@@ -86,9 +86,10 @@ class PostinganController extends Controller
     public function edit(string $id)
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.postingan.edit', [
+                'title' => 'Edit Postingan - Admin Goa Petapa',
                 'postingan' => $this->postinganService->getPostinganByUuid($id),
+                'kategori' => $this->kategoriService->getKategoriAll()
             ]);
         } catch (\Exception $e) {
             throw $e;
@@ -104,7 +105,7 @@ class PostinganController extends Controller
         try {
             $this->postinganService->updatePostingan($request->all(), $id);
 
-            return back()->with('success', 'Data Postingan berhasil diperbarui!');
+            return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil diperbarui!');
         } catch (\Exception $e) {
             // throw $e;
             return back()->with('error', $e->getMessage());
@@ -119,7 +120,7 @@ class PostinganController extends Controller
         try {
             $this->postinganService->deletePostingan($id);
 
-            return back()->with('success', 'Data Postingan berhasil dihapus!');
+            return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil dihapus!');
         } catch (\Exception $e) {
             // throw $e;
             return back()->with('error', 'Data Postingan gagal dihapus!');

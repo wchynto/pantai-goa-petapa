@@ -110,7 +110,7 @@ class TiketController extends Controller
             $this->kendaraanService->updateKendaraan($request->all(), $kendaraan_uuid);
             $this->tiketService->updateTiket($request->all(), $id);
 
-            return back()->with('success', 'Data Tiket berhasil diperbarui!');
+            return redirect()->route('tiket.index')->with('success', 'Data Tiket berhasil diperbarui!');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -126,7 +126,7 @@ class TiketController extends Controller
             $kendaraan_uuid = $this->tiketService->getTiketByUuid($id)->kendaraan_uuid;
             $this->kendaraanService->deleteKendaraan($kendaraan_uuid);
 
-            return back()->with('success', 'Data Tiket berhasil dihapus!');
+            return redirect()->route('tiket.index')->with('success', 'Data Tiket berhasil dihapus!');
         } catch (\Exception $e) {
             return back()->with('error', 'Data Tiket gagal dihapus!');
         }

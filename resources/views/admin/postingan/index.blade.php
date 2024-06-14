@@ -5,19 +5,19 @@
     <div class="grid gap-4">
       <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
         <!-- Card header -->
-        <x-admin.card-header title="Daftar Tiket" breadcrumb="Tiket" breadcrumbUrl="{{ url('admin/tiket') }}"
-          searchPlaceholder="Cari tiket..." buttonUrl="{{ route('tiket.create') }}"
-          buttonText="Tambah Tiket Baru"></x-admin.card-header>
+        <x-admin.card-header title="Daftar Postingan" breadcrumb="Postingan" breadcrumbUrl="{{ route('postingan.index') }}"
+          searchPlaceholder="Cari postingan..." buttonUrl="{{ route('postingan.create') }}"
+          buttonText="Tambah Postingan Baru"></x-admin.card-header>
 
         @if (session()->has('success'))
           <x-alert.success>{{ session('success') }}</x-alert.success>
         @endif
 
         <!-- Table -->
-        <x-admin.tickets-table :items="$tiket"></x-admin.tickets-table>
+        <x-admin.posts-table :postingan="$postingan"></x-admin.posts-table>
 
         <!-- Card Footer -->
-        <x-admin.card-footer :start="1" :end="4" :total="4"></x-admin.card-footer>
+        <x-admin.card-footer :start="1" :end="10" :total="100"></x-admin.card-footer>
       </div>
     </div>
   </div>

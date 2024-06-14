@@ -53,7 +53,6 @@ class TiketController extends Controller
         try {
             return view('admin.tiket.create', [
                 'title' => 'Tambah Tiket - Admin Pantai Goa Petapa',
-                'kendaraan' => $this->kendaraanService->getKendaraanAll(),
             ]);
         } catch (\Exception $e) {
             abort(500);

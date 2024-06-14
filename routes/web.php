@@ -63,7 +63,7 @@ Route::group([
 });
 
 // Admin routes
-Route::get('admin/login', [AdminSessionController::class, 'viewLogin']);
+Route::get('admin/login', [AdminSessionController::class, 'viewLogin'])->name('admin.viewLogin');
 
 Route::group([
     'prefix' => 'admin',

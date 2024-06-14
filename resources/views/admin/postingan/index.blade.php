@@ -11,6 +11,8 @@
 
         @if (session()->has('success'))
           <x-alert.success>{{ session('success') }}</x-alert.success>
+        @elseif (session()->has('error'))
+          <x-alert.error>{{ session('error') }}</x-alert.error>
         @endif
 
         <!-- Table -->

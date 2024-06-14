@@ -26,6 +26,9 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign in to Pantai Goa Petapa
                 </h1><br>
+                @if (session()->has('error'))
+                  <x-alert.error>{{ session('error') }}</x-alert.error>
+                @endif
                 <form class="space-y-4 md:space-y-6" action="{{ route('user.login') }}" method="POST">
                   @csrf
                   @method('POST')

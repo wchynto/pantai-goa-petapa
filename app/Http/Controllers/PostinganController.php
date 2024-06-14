@@ -68,7 +68,7 @@ class PostinganController extends Controller
             return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil ditambahkan!');
         } catch (\Exception $e) {
             // throw $e;
-            return back()->with('error', 'Data Postingan gagal dihapus!');
+            return redirect()->route('postingan.index')->with('error', 'Data Postingan gagal ditambahkan!');
         }
     }
 
@@ -108,7 +108,7 @@ class PostinganController extends Controller
             return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil diperbarui!');
         } catch (\Exception $e) {
             // throw $e;
-            return back()->with('error', $e->getMessage());
+            return redirect()->route('postingan.index')->with('error', 'Data Postingan gagal diperbarui!');
         }
     }
 
@@ -123,7 +123,7 @@ class PostinganController extends Controller
             return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil dihapus!');
         } catch (\Exception $e) {
             // throw $e;
-            return back()->with('error', 'Data Postingan gagal dihapus!');
+            return redirect()->route('postingan.index')->with('error', 'Data Postingan gagal dihapus!');
         }
     }
 }

@@ -56,7 +56,7 @@ class UserSessionController extends Controller
                 return redirect()->intended('/');
             }
 
-            return back()->with('error', 'Email atau password salah')->with($request->only('email'));
+            return redirect()->route('login')->with('error', 'Email atau password salah!')->with($request->only('email'));
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage())->with($request->only('email'));
         }

@@ -71,8 +71,7 @@ class PengunjungController extends Controller
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
-            return back()->with('error',  $e->getMessage());
+            return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal ditambahkan!');
         }
     }
 
@@ -126,7 +125,7 @@ class PengunjungController extends Controller
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil diperbarui!');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal diperbarui!');
         }
     }
 
@@ -146,7 +145,7 @@ class PengunjungController extends Controller
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil dihapus!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Data pengunjung gagal dihapus!');
+            return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal dihapus!');
         }
     }
 }

@@ -73,7 +73,7 @@ class TiketController extends Controller
 
             return redirect()->route('tiket.index')->with('success', 'Data Tiket berhasil ditambahkan!');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return redirect()->route('tiket.index')->with('error', 'Data Tiket gagal ditambahkan!');
         }
     }
 
@@ -112,7 +112,7 @@ class TiketController extends Controller
 
             return redirect()->route('tiket.index')->with('success', 'Data Tiket berhasil diperbarui!');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return redirect()->route('tiket.index')->with('error', 'Data Tiket gagal diperbarui!');
         }
     }
 
@@ -128,7 +128,7 @@ class TiketController extends Controller
 
             return redirect()->route('tiket.index')->with('success', 'Data Tiket berhasil dihapus!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Data Tiket gagal dihapus!');
+            return redirect()->route('tiket.index')->with('error', 'Data Tiket gagal dihapus!');
         }
     }
 }

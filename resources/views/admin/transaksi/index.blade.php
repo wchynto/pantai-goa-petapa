@@ -11,7 +11,7 @@
                     buttonUrl="{{ route('transaksi.create') }}" buttonText="Tambah Transaksi Baru"></x-admin.card-header>
 
                 <!-- Table -->
-                <x-admin.sales-table :items="$transaksi"></x-admin.sales-table>
+                <x-admin.transactions-table :items="$transaksi"></x-admin.transactions-table>
 
                 <!-- Card Footer -->
                 <x-admin.card-footer :start="1" :end="10" :total="2340"></x-admin.card-footer>

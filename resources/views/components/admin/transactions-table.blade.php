@@ -74,16 +74,14 @@
                   </a>
 
                   {{-- Edit Button --}}
-                  <button type="button"
-                    class="text-xs font-medium text-yellow-600 dark:text-yellow-400 hover:text-yellow-500 dark:hover:text-yellow-300"
-                    data-modal-target="editTransaksiModal-{{ $item['transaksi_id'] }}"
-                    data-modal-toggle="editTransaksiModal-{{ $item['transaksi_id'] }}">
+                  <a href="{{ route('transaksi.edit', $item->uuid) }}"
+                    class="inline-block text-xs font-medium text-yellow-600 dark:text-yellow-400 hover:text-yellow-500 dark:hover:text-yellow-300">
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                       height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28" />
                     </svg>
-                  </button>
+                  </a>
                   {{-- Edit Transaksi Modal --}}
                   <div id="editTransaksiModal-{{ $item['transaksi_id'] }}" tabindex="-1" aria-hidden="true"
                     class="hidden overflow-y-auto overflow-x-hidden top-4 fixed md:top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">

@@ -28,7 +28,7 @@ class TransaksiRepository extends BaseRepository implements TransaksiRepositoryI
 
     public function getTransaksiByUuid($uuid)
     {
-        return $this->model->find($uuid)->with(['tiket', 'pengunjung']);
+        return $this->model->with(['tiket', 'pengunjung'])->find($uuid);
     }
 
     public function getTransaksiWhere($column, $value)

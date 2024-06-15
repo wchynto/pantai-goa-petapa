@@ -10,97 +10,108 @@ use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
-    protected $transaksiService;
-    protected $pengunjungService;
-    protected $tiketService;
+  protected $transaksiService;
+  protected $pengunjungService;
+  protected $tiketService;
 
-    public function __construct()
-    {
-        $this->transaksiService = new TransaksiService();
-        $this->pengunjungService = new PengunjungService();
-        $this->tiketService = new TiketService();
+  public function __construct()
+  {
+    $this->transaksiService = new TransaksiService();
+    $this->pengunjungService = new PengunjungService();
+    $this->tiketService = new TiketService();
+  }
+
+  /**
+   * Display a listing of the resource.
+   */
+  public function index()
+  {
+    try {
+      $transaksis = $this->transaksiService->getTransaksiAll();
+
+      return view('admin.transaksi.index', [
+        'title' => 'Transaksi - Admin Pantai Goa Petapa',
+        'transaksi' => collectionPaginate($transaksis, 10, null, ['path' => route('transaksi.index')]),
+      ]);
+    } catch (\Exception $e) {
+      // abort(500);
+      throw $e;
     }
+  }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        try {
-            $transaksis = $this->transaksiService->getTransaksiAll();
-
-            return view('admin.transaksi.index', [
-                'title' => 'Transaksi - Admin Pantai Goa Petapa',
-                'transaksi' => collectionPaginate($transaksis, 10, null, ['path' => route('transaksi.index')]),
-            ]);
-        } catch (\Exception $e) {
-            // abort(500);
-            throw $e;
-        }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    try {
+      return view('admin.transaksi.create', [
+        'title' => 'Tambah Transaksi - Admin Pantai Goa Petapa',
+        'pengunjung' => $this->pengunjungService->getPengunjungAll(),
+        'tiket' => $this->tiketService->getTiketAll(),
+      ]);
+    } catch (\Exception $e) {
+      abort(500);
     }
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        try {
-            return view('admin.transaksi.create', [
-                'title' => 'Tambah Transaksi - Admin Pantai Goa Petapa',
-                'pengunjung' => $this->pengunjungService->getPengunjungAll(),
-                'tiket' => $this->tiketService->getTiketAll(),
-            ]);
-        } catch (\Exception $e) {
-            abort(500);
-        }
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request)
+  {
+    try {
+    } catch (\Exception $e) {
     }
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        try {
-        } catch (\Exception $e) {
-        }
+  /**
+   * Display the specified resource.
+   */
+  public function show(string $id)
+  {
+    try {
+      return view('admin.transaksi.show', [
+        'title' => 'Detail Transaksi - Admin Pantai Goa Petapa',
+        'transaksi' => $this->transaksiService->getTransaksiByUuid($id),
+      ]);
+    } catch (\Exception $e) {
+      abort(500);
     }
+  }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        try {
-            return view('admin.transaksi.show', [
-                'title' => 'Detail Transaksi - Admin Pantai Goa Petapa',
-                'transaksi' => $this->transaksiService->getTransaksiByUuid($id),
-            ]);
-        } catch (\Exception $e) {
-            abort(500);
-        }
+  /**
+   * Show the form for editing the specified resource.
+   */
+  public function edit(string $id)
+  {
+    try {
+      return view('admin.transaksi.edit', [
+        'title' => 'Edit Transaksi - Admin Pantai Goa Petapa',
+        'transaksi' => $this->transaksiService->getTransaksiByUuid($id),
+        'pengunjung' => $this->pengunjungService->getPengunjungAll(),
+        'tiket' => $this->tiketService->getTiketAll(),
+      ]);
+    } catch (\Exception $e) {
+      abort(500);
     }
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(Request $request, string $id)
+  {
+    try {
+    } catch (\Exception $e) {
     }
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(string $id)
+  {
+    //
+  }
 }

@@ -14,7 +14,7 @@
         </div>
     </section>
 
-    <main class="flex flex-col items-center pt-10 mb-12 mx-6 lg:mx-32" id="explore">
+    <main class="flex flex-col items-center pt-12 mb-12 mx-6 lg:mx-32" id="explore">
         {{-- SHOPPING PRODUCT --}}
         <div class="w-full mb-8">
             <div class="relative overflow-x-auto shadow-xl sm:rounded-lg mb-4">

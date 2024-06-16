@@ -31,7 +31,7 @@
 @endphp
 
 @foreach ($items as $item)
-  <div class="mb-4 rounded-lg bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-300 dark:hover:bg-gray-900">
+  <div class="mb-4 rounded-lg bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-300 dark:hover:bg-gray-700">
     <div class="relative">
       <img src="{{ asset('images/' . $item['thumbnail']) }}" class="w-full h-44 rounded-t-lg object-cover" alt="Photo">
       <div class="absolute inset-0 bg-black opacity-25 rounded-t-lg"></div>

@@ -9,7 +9,7 @@
               <div class="w-1/6">
                 <img src="{{ asset('images/logo_pantai-goa-petapa_147x147.png') }}" alt="Hero Pantai Goa Petapa">
               </div>
-              <h1 class="text-lg font-bold leading-tight tracking-tight text-blue-900 sm:text-lg dark:text-blue-900">
+              <h1 class="text-lg font-bold leading-tight tracking-tight text-blue-900 sm:text-lg dark:text-white">
                 Pantai Goa Petapa</h1>
               <p class="text-gray-400">Enjoy the beauty of nature and<br>sooting sound of the
                 waves<br>that calm your soul</p>

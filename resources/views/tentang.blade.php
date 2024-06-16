@@ -14,7 +14,7 @@
     </div>
   </section>
 
-  <p class="text-lg font-bold text-gray-800 lg:text-3xl text-center lg:my-4 md:my-4 my-4">Tentang Pantai Goa Petapa</p>
+  <p class="text-lg font-bold text-gray-800 lg:text-3xl text-center lg:my-4 md:my-4 my-4 dark:text-white">Tentang Pantai Goa Petapa</p>
 
   <div class="flex lg:mx-32 flex-row gap-4 md:mx-5 mx-5">
     <div class="mb-8 w-full bg-blue-100 border border-gray-200 shadow-xl lg:py-10 md:p-8 dark:bg-gray-800 dark:border-gray-600 md:my-0 my-0 lg:my-4 rounded-lg flex lg:flex-row md:flex-row py-4 flex-col">

@@ -5,7 +5,7 @@
             <div class="flex items-center justify-center">
                 <div
                     class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-900 rounded-full">
-                    <span class="text-2xl font-semibold text-white">1</span>
+                    <span class="text-2xl font-semibold text-white ">1</span>
                 </div>
 
                 <hr class="w-12 h-1 my-4 bg-gray-700 border-0 rounded md:my-10">
@@ -13,7 +13,7 @@
                 <a href="{{ route('user.confirmation-order', auth()->user()->uuid) }}">
                     <div
                         class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
-                        <span class="text-2xl font-semibold text-white">2</span>
+                        <span class="text-2xl font-semibold text-white dark:text-blue-900">2</span>
                     </div>
                 </a>
 
@@ -22,11 +22,11 @@
                 <a href="{{ route('user.payment', auth()->user()->uuid) }}">
                     <div
                         class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
-                        <span class="text-2xl font-semibold text-white">3</span>
+                        <span class="text-2xl font-semibold text-white dark:text-blue-900">3</span>
                     </div>
                 </a>
             </div>
-            <div class="flex items-center justify-center mx-auto">
+            <div class="flex items-center justify-center mx-auto dark:text-white">
                 <h1 class="text-l px-14 font-bold">Pesan</h1>
                 <h1 class="text-l">Konfirmasi</h1>
                 <h1 class="text-l px-8">Pembayaran</h1>
@@ -35,7 +35,7 @@
             <div class="flex flex-row pt-20 gap-6 lg:gap-10">
                 {{-- SHOPPING CART --}}
                 <div class="w-1/2 md:w-3/4 mb-8">
-                    <h1 class="text-lg mb-4 font-semibold">Keranjang belanja</h1>
+                    <h1 class="text-lg mb-4 font-semibold dark:text-white">Keranjang belanja</h1>
                     <div
                         class="w-full bg-white border border-gray-200 shadow-xl p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 mb-4 rounded-lg">
                         <div class="relative overflow-x-auto shadow-xl sm:rounded-lg mb-4">
@@ -127,7 +127,7 @@
 
                 {{-- ORDER SUM --}}
                 <div class="w-1/2 md:w-1/4 pe-3 md:pe-0">
-                    <h1 class="text-lg font-semibold">Order Summary</h1>
+                    <h1 class="text-lg font-semibold dark:text-white">Order Summary</h1>
                     <div
                         class="w-full bg-white border border-gray-200 shadow-xl lg:p-6 p-4 dark:bg-gray-800 dark:border-gray-600 mb-6 rounded-lg my-6 lg:mt-4">
                         <h1

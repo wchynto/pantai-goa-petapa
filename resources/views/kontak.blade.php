@@ -61,7 +61,7 @@
     function showAlert() {
       alert('Pesan terkirim!');
       setTimeout(function() {
-        window.location.href = "/";
+        window.location.href = "kontak";
       }, 1000);
     }
   </script>

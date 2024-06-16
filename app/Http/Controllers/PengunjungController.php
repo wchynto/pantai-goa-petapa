@@ -27,10 +27,8 @@ class PengunjungController extends Controller
     public function index()
     {
         try {
-            $pengunjung = $this->pengunjungService->getPengunjungAll();
-
             return view('admin.pengunjung.index', [
-                'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
+                'pengunjung' => $this->pengunjungService->getPengunjungAll(),
                 'title' => 'Pengunjung - Admin Pantai Goa Petapa'
             ]);
         } catch (\Exception $e) {

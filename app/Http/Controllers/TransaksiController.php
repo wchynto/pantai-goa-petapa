@@ -27,11 +27,9 @@ class TransaksiController extends Controller
   public function index()
   {
     try {
-      $transaksis = $this->transaksiService->getTransaksiAll();
-
       return view('admin.transaksi.index', [
         'title' => 'Transaksi - Admin Pantai Goa Petapa',
-        'transaksi' => collectionPaginate($transaksis, 10, null, ['path' => route('transaksi.index')]),
+        'transaksi' => $this->transaksiService->getTransaksiAll(),
       ]);
     } catch (\Exception $e) {
       // abort(500);

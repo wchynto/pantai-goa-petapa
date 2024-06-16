@@ -31,17 +31,7 @@
     </nav>
     <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">{{ $title }}</h1>
   </div>
-  <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
-    <div class="flex items-center mb-4 sm:mb-0">
-      <form class="sm:pr-3" action="#" method="GET">
-        <label for="posts-search" class="sr-only">Cari</label>
-        <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
-          <input type="text" name="email" id="posts-search"
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            placeholder="{{ $searchPlaceholder }}">
-        </div>
-      </form>
-    </div>
+  <div class="items-center justify-end flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
     <a href="{{ $buttonUrl }}"
       class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
       {{ $buttonText }}

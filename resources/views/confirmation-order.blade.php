@@ -57,55 +57,55 @@
                             </div>
                         </div>
 
-                        {{-- INFO AKUN --}}
-                        <h1 class="lg:text-lg text-sm font-semibold dark:text-white m-4 lg:mx-0">Informasi Akun</h1>
-                        <div class="flex flex-row gap-10 m-4 lg:mx-0">
-                            <div class="w-2/3 rounded-lg">
-                                <input type="text" name="card_number" id="card_number"
-                                    class="w-full bg-white shadow border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:py-4 lg:text-base"
-                                    placeholder="Enter your virtual account number" required="">
-                            </div>
-                            <div class="w-1/3 rounded-lg">
-                                <input type="text" name="usn_dana" id="usn_dana"
-                                    class="bg-white shadow border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:py-4 lg:text-base"
-                                    placeholder="Username Dana" required="">
-                            </div>
-                        </div>
-
-                        {{-- LOKASI MAP --}}
-                        <h1 class="lg:text-lg text-sm mb-4 font-semibold mx-4 lg:mx-0 dark:text-white">Lokasi Wisata
-                        </h1>
-                        <div class="flex flex-col sm:flex-row gap-10 my-4 mx-4 lg:mx-0">
-                            {{-- MAPS --}}
-                            <div class="w-full lg:w-full aspect-w-16 aspect-h-9">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15834.903932784351!2d112.79205323181527!3d-7.157645635548374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd802ced08960c5%3A0x7b2406a342114256!2sPantai%20Goa%20Petapa!5e0!3m2!1sid!2sid!4v1717248902252!5m2!1sid!2sid"
-                                    class="rounded-lg w-full h-full border-0" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
+                        {{-- QRCODE --}}
+                        <div class="flex flex-col md:flex-row lg:flex-row gap-x-10 m-4 lg:mx-0">
+                            <div class="w-full md:w-1/2 lg:w-1/3 lg:mb-4 flex flex-col mb-0">
+                                <h1 class="lg:text-lg text-sm mb-4 font-semibold mx-0 lg:mx-0 dark:text-white">Scan
+                                    QRCode</h1>
+                                {{-- QRCODE --}}
+                                <img src="{{ asset('images/qr-default.png') }}" alt="Code Pembayaran"
+                                    class="rounded-lg lg:h-96 border-0 justify-center items-center">
                             </div>
 
-                            <div class="flex-row w-full">
+                            <div class="md:w-1/2 w-full lg:w-2/3 flex flex-col">
+                                {{-- INFO AKUN --}}
+                                <h1 class="lg:text-lg text-sm my-4 md:mt-0 font-semibold mx-0 lg:mx-0 dark:text-white">Informasi
+                                    Pembeli
+                                </h1>
                                 {{-- Name --}}
-                                <div class="w-full rounded-lg pb-2">
+                                <div class="w-full rounded-lg">
                                     <input type="text" name="nama_pemesan" id="nama_pemesan"
                                         class="bg-white shadow border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:text-base"
                                         placeholder="Masukkan Nama" required="">
                                 </div>
-
                                 {{-- Email --}}
-                                <div class="w-full rounded-lg py-4">
+                                <div class="w-full rounded-lg lg:my-8 my-4 md:my-3">
                                     <input type="email" name="email_pemesan" id="email_pemesan"
                                         class="bg-white shadow border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:text-base"
                                         placeholder="Masukkan Email" required="">
                                 </div>
 
                                 {{-- Phone --}}
-                                <div class="w-full rounded-lg pt-2">
+                                <div class="w-full rounded-lg">
                                     <input type="tel" name="telepon_pemesan" id="telepon_pemesan"
                                         class="bg-white shadow border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:text-base"
-                                        placeholder="Masukkan Telepon" required="">
+                                        placeholder="Masukkan Nomor Telepon" required="">
                                 </div>
+
+                                <h1 class="lg:text-lg text-sm my-4 md:my-3 lg:my-2 font-semibold mx-0 md:mt-2 lg:mx-0 dark:text-white">Informasi
+                                    Pembayaran
+                                </h1>
+                                <div class="w-full rounded-lg">
+                                    <input type="text" name="card_number" id="card_number"
+                                        class="bg-white shadow border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:text-base"
+                                        placeholder="Masukkan Nomor Virtual Akun" required="">
+                                </div>
+                                <div class="w-full rounded-lg lg:mb-6 my-4 lg:my-8 md:my-3">
+                                    <input type="text" name="usn_dana" id="usn_dana"
+                                        class="bg-white shadow border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:text-base"
+                                        placeholder="Masukkan Nama Pengguna Dana" required="">
+                                </div>
+                                
                             </div>
                         </div>
 

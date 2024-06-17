@@ -29,7 +29,7 @@
             <div class="flex items-center justify-center mx-auto dark:text-white">
                 <h1 class="text-l px-14">Pesan</h1>
                 <h1 class="text-l">Konfirmasi</h1>
-                <h1 class="text-l px-8 font-semibold">Pembayaran</h1>
+                <h1 class="text-l px-8 font-bold">Pembayaran</h1>
             </div>
             <div class="flex flex-col sm:flex-row pt-20 gap-10">
                 {{-- KONFIRMASI PESANAN --}}

@@ -7,10 +7,10 @@
       <div class="flex-1 px-3 space-y-1 bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
         <ul class="py-2 space-y-2">
           <li>
-            <a href="{{ url('admin/dashboard') }}"
-              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+            <a href="{{ route('admin.dashboard') }}"
+              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/dashboard') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
               <svg
-                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                class="w-6 h-6 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white {{ request()->is('admin/dashboard') ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400' }}"
                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
                 <path fill-rule="evenodd"
@@ -24,9 +24,9 @@
         <ul class="py-2 space-y-2">
           <li>
             <a href="{{ route('transaksi.index') }}"
-              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/transaksi') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
               <svg
-                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                class="w-6 h-6 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white {{ request()->is('admin/transaksi') ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400' }}"
                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
                   d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
@@ -36,10 +36,10 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('admin/tiket') }}"
-              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+            <a href="{{ route('tiket.index') }}"
+              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/tiket') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
               <svg
-                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                class="w-6 h-6 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white {{ request()->is('admin/tiket') ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400' }}"
                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
                   d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm2.5 3a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6.207.293a1 1 0 00-1.414 0l-6 6a1 1 0 101.414 1.414l6-6a1 1 0 000-1.414zM12.5 10a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"
@@ -49,10 +49,10 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('admin/pengunjung') }}"
-              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+            <a href="{{ route('pengunjung.index') }}"
+              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/pengunjung') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
               <svg
-                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->is('admin/pengunjung') ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400' }}"
                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                 viewBox="0 0 24 24">
                 <path fill-rule="evenodd"
@@ -65,10 +65,10 @@
         </ul>
         <ul class="py-2 space-y-2">
           <li>
-            <a href="{{ url('admin/postingan') }}"
-              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+            <a href="{{ route('postingan.index') }}"
+              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/postingan') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
               <svg
-                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->is('admin/postingan') ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400' }}"
                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
                   d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v7h-2l-1 2H8l-1-2H5V5z"
@@ -78,10 +78,10 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('admin/kategori') }}"
-              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+            <a href="{{ route('kategori.index') }}"
+              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/kategori') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
               <svg
-                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->is('admin/kategori') ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400' }}"
                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                 viewBox="0 0 24 24">
                 <path
@@ -93,10 +93,10 @@
         </ul>
         <ul class="py-2 space-y-2">
           <li>
-            <a href="{{ url('admin/laporan') }}"
-              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+            <a href="{{ route('admin.laporan') }}"
+              class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/laporan') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
               <svg
-                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->is('admin/laporan') ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400' }}"
                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>

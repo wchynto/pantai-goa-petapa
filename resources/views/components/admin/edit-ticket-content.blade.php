@@ -23,5 +23,5 @@
     </div>
   </div>
 
-  <x-admin.submit-cancel-button submit="Update" url="{{ url('admin/tiket') }}"></x-admin.submit-cancel-button>
+  <x-admin.submit-cancel-button submit="Update" url="{{ route('tiket.index') }}"></x-admin.submit-cancel-button>
 </form>

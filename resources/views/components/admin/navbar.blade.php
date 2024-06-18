@@ -17,7 +17,7 @@
               clip-rule="evenodd"></path>
           </svg>
         </button>
-        <a href="{{ url('admin/dashboard') }}" class="flex ml-2 md:mr-24">
+        <a href="{{ route('admin.dashboard') }}" class="flex ml-2 md:mr-24">
           <img src="/images/logo-navbar.png" class="h-8 mr-3" alt="Pantai Goa Petapa Logo" />
           <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Pantai Goa
             Petapa</span>

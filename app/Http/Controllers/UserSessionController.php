@@ -65,14 +65,9 @@ class UserSessionController extends Controller
     public function logout(Request $request)
     {
         try {
-            dd('dadsad');
-
             auth()->logout();
-
             $request->session()->invalidate();
-
             $request->session()->regenerateToken();
-
             return redirect('');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());

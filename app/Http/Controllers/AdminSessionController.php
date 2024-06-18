@@ -38,11 +38,8 @@ class AdminSessionController extends Controller
     {
         try {
             auth()->logout();
-
             $request->session()->invalidate();
-
             $request->session()->regenerateToken();
-
             return redirect('');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());

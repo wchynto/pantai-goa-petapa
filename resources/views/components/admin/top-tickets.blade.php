@@ -90,7 +90,7 @@
       </div>
     </div>
     <div class="flex-shrink-0">
-      <a href="{{ url('admin/tiket') }}"
+      <a href="{{ route('tiket.index') }}"
         class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
         LIHAT TIKET
         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"

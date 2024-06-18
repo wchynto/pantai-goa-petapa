@@ -10,34 +10,34 @@ use App\Services\UserService;
 
 class PengunjungController extends Controller
 {
-  protected $pengunjungService;
-  protected $userService;
-  protected $guestService;
+    protected $pengunjungService;
+    protected $userService;
+    protected $guestService;
 
-  public function __construct()
-  {
-    $this->pengunjungService = new PengunjungService();
-    $this->userService = new UserService();
-    $this->guestService = new GuestService();
-  }
-
-  /**
-   * Display a listing of the resource.
-   */
-  public function index()
-  {
-    try {
-      $pengunjung = $this->pengunjungService->getPengunjungAll();
-
-      return view('admin.pengunjung', [
-        'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
-        'title' => 'Pengunjung - Admin Pantai Goa Petapa'
-      ]);
-    } catch (\Exception $e) {
-      dd($e->getMessage());
-      abort(500);
+    public function __construct()
+    {
+        $this->pengunjungService = new PengunjungService();
+        $this->userService = new UserService();
+        $this->guestService = new GuestService();
     }
-  }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        try {
+            $pengunjung = $this->pengunjungService->getPengunjungAll();
+
+            return view('admin.pengunjung', [
+                'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
+                'title' => 'Pengunjung - Admin Pantai Goa Petapa'
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            abort(500);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -52,38 +52,25 @@ class PengunjungController extends Controller
             abort(500);
         }
     }
-  /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
-  {
-    try {
-      return view('admin.tambah-pengunjung', [
-        'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
-      ]);
-    } catch (\Exception $e) {
-      abort(500);
-    }
-  }
 
-  /**
-   * Store a newly created resource in storage.
-   */
-  public function store(StorePengunjungRequest $request)
-  {
-    try {
-      $data = $request->all();
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StorePengunjungRequest $request)
+    {
+        try {
+            $data = $request->all();
 
-      $pengunjung = $this->pengunjungService->createPengunjung($data);
+            $pengunjung = $this->pengunjungService->createPengunjung($data);
 
             $data['pengunjung_uuid'] = $pengunjung->uuid;
-      $data['pengunjung_uuid'] = $pengunjung->uuid;
+            $data['pengunjung_uuid'] = $pengunjung->uuid;
 
-      if ($request->tipe == 'user') {
-        $this->userService->createUser($data);
-      } else {
-        $this->guestService->createGuest($data);
-      }
+            if ($request->tipe == 'user') {
+                $this->userService->createUser($data);
+            } else {
+                $this->guestService->createGuest($data);
+            }
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
@@ -92,20 +79,20 @@ class PengunjungController extends Controller
         }
     }
 
-  /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
-  {
-  }
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+    }
 
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(string $id)
-  {
-    try {
-      $pengunjung = $this->pengunjungService->getPengunjungByUuid($id);
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        try {
+            $pengunjung = $this->pengunjungService->getPengunjungByUuid($id);
 
             return view('admin.edit-pengunjung', [
                 'pengunjung' => $pengunjung,
@@ -130,7 +117,7 @@ class PengunjungController extends Controller
                 $this->guestService->updateGuest($request->all(), $id);
             }
 
-      $this->pengunjungService->updatePengunjung($request->all(), $id);
+            $this->pengunjungService->updatePengunjung($request->all(), $id);
 
             return back()->with('success', 'Data pengunjung berhasil diperbarui!');
         } catch (\Exception $e) {

@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostinganRequest;
 use App\Http\Requests\UpdatePostinganRequest;
+use App\Services\KategoriService;
 use App\Services\PostinganService;
 use Illuminate\Http\Request;
 
 class PostinganController extends Controller
 {
     protected $postinganService;
+    protected $kategoriService;
 
     public function __construct()
     {
         $this->postinganService = new PostinganService();
+        $this->kategoriService = new KategoriService();
     }
 
     /**
@@ -22,9 +25,10 @@ class PostinganController extends Controller
     public function index()
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.postingan', [
+                'title' => 'Postingan - Admin Goa Petapa',
                 'postingan' => $this->postinganService->getPostinganAll(),
+                'kategori' => $this->kategoriService->getKategoriAll()
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -37,8 +41,9 @@ class PostinganController extends Controller
     public function create()
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.tambah-postingan', [
+                'title' => 'Tambah Postingan - Admin Goa Petapa',
+                'kategori' => $this->kategoriService->getKategoriAll()
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -51,10 +56,17 @@ class PostinganController extends Controller
     public function store(StorePostinganRequest $request)
     {
         try {
+            $data = $request->all();
+
+            if ($request->hasFile('thumbnail')) {
+                $data['thumbnail'] = $request->file('thumbnail');
+            }
+
             $this->postinganService->createPostingan($request->all());
 
             return back()->with('success', 'Data Postingan berhasil ditambahkan!');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return back()->with('error', $e->getMessage());
         }
     }

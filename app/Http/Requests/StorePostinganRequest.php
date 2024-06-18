@@ -11,6 +11,10 @@ class StorePostinganRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        if (auth()->guard('web-admin')->check()) {
+            return true;
+        }
+
         return false;
     }
 
@@ -23,8 +27,9 @@ class StorePostinganRequest extends FormRequest
     {
         return [
             'judul' => 'required|string',
-            'thumbnail' => 'required|image|size:2048',
+            'thumbnail' => 'required|image|max:2048',
             'body' => 'required',
+            'kategori_id' => 'required'
         ];
     }
 
@@ -35,8 +40,9 @@ class StorePostinganRequest extends FormRequest
             'judul.string' => 'Judul harus berupa string!',
             'thumbnail.required' => 'Thumbnail harus diisi!',
             'thumbnail.image' => 'Thumbnail harus berupa gambar!',
-            'thumbnail.size' => 'Ukuran thumbnail maksimal 2MB!',
+            'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB!',
             'body.required' => 'Body harus diisi!',
+            'kategori_id' => 'Kategori harus diisi!'
         ];
     }
 }

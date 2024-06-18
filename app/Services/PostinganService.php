@@ -35,12 +35,13 @@ class PostinganService
 
     public function createPostingan($data)
     {
-        if ($data->hasFile('thumbnail')) {
-            $thumbnail = $data->file('thumbnail');
+        if ($data['thumbnail']) {
+            $thumbnail = $data['thumbnail'];
             $thumbnailName = time() . '.' . $thumbnail->getClientOriginalExtension();
             $path = Storage::putFileAs('public/thumbnail', $thumbnail, $thumbnailName);
             $data['thumbnail'] = $path;
         }
+        dd($this->postinganRepository->createPostingan($data));
 
         return $this->postinganRepository->createPostingan($data);
     }

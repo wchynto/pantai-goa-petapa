@@ -6,6 +6,7 @@ use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\UserSessionController;
 use App\Http\Controllers\AdminSessionController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PostinganController;
 use App\Http\Controllers\TiketController;
 use App\Models\Pengunjung;
 
@@ -63,12 +64,9 @@ Route::group([
 
     Route::resource('pengunjung', PengunjungController::class);
 
-    Route::get('postingan/tambah', function () {
-        return view('/admin/tambah-postingan', ['title' => 'Tambah Postingan - Admin Pantai Goa Petapa']);
-    });
+    Route::resource('postingan', PostinganController::class);
 
     Route::resource('kategori', KategoriController::class);
-
 
     Route::get('laporan', function () {
         return view('/admin/laporan', ['title' => 'Laporan - Admin Pantai Goa Petapa']);

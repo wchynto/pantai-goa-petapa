@@ -31,8 +31,8 @@
                         @foreach ($postingan as $p)
                             <tr class="{{ $loop->even ? 'bg-gray-50 dark:bg-gray-700' : '' }}">
                                 <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img src="{{ Storage::url($p->thumbnail) }}" alt="{{ $p->thumbnail }}"
-                                        class="w-10 h-10 object-cover rounded-lg">
+                                    <img src="https://source.unsplash.com/100x100/?{{ $p->thumbnail }}"
+                                        alt="{{ $p->thumbnail }}" class="w-10 h-10 object-cover rounded-lg">
                                 </td>
                                 <td class="p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
                                     {{ $p->judul }}
@@ -45,7 +45,7 @@
                                 </td>
                                 <td class="p-4 whitespace-nowrap">
                                     {{-- Edit Button --}}
-                                    <a href="{{ route('postingan.update', $p->uuid) }}"
+                                    <a href="{{ route('postingan.edit', $p->uuid) }}"
                                         class="inline-block text-xs font-medium text-yellow-600 dark:text-yellow-400 hover:text-yellow-500 dark:hover:text-yellow-300">
                                         <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -90,7 +90,7 @@
                                                 <form class="p-4 md:p-5" method="POST"
                                                     action="{{ route('postingan.destroy', $p->uuid) }}">
                                                     @csrf
-                                                    @method('Delete')
+                                                    @method('DELETE')
                                                     <input type="hidden" name="postingan_id"
                                                         value="{{ $p->uuid }}">
                                                     <div class="p-6 pt-0 text-center">

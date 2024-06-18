@@ -29,7 +29,7 @@ class PengunjungController extends Controller
         try {
             $pengunjung = $this->pengunjungService->getPengunjungAll();
 
-            return view('admin.pengunjung.index', [
+            return view('admin.pengunjung', [
                 'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
                 'title' => 'Pengunjung - Admin Pantai Goa Petapa'
             ]);
@@ -39,19 +39,19 @@ class PengunjungController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        try {
-            return view('admin.pengunjung.create', [
-                'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
-            ]);
-        } catch (\Exception $e) {
-            abort(500);
-        }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    try {
+      return view('admin.tambah-pengunjung', [
+        'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
+      ]);
+    } catch (\Exception $e) {
+      abort(500);
     }
+  }
 
     /**
      * Store a newly created resource in storage.
@@ -60,7 +60,10 @@ class PengunjungController extends Controller
     {
         try {
             $data = $request->all();
+
             $pengunjung = $this->pengunjungService->createPengunjung($data);
+
+            $data['pengunjung_uuid'] = $pengunjung->uuid;
             $data['pengunjung_uuid'] = $pengunjung->uuid;
 
             if ($request->tipe == 'user') {
@@ -71,8 +74,7 @@ class PengunjungController extends Controller
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
-            return back()->with('error',  $e->getMessage());
+            return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal ditambahkan!');
         }
     }
 
@@ -126,7 +128,7 @@ class PengunjungController extends Controller
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil diperbarui!');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal diperbarui!');
         }
     }
 
@@ -146,7 +148,7 @@ class PengunjungController extends Controller
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil dihapus!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Data pengunjung gagal dihapus!');
+            return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal dihapus!');
         }
     }
 }

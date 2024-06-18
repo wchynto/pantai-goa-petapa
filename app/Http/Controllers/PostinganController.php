@@ -28,6 +28,7 @@ class PostinganController extends Controller
             return view('admin.postingan', [
                 'title' => 'Postingan - Admin Goa Petapa',
                 'postingan' => $this->postinganService->getPostinganAll(),
+                'kategori' => $this->kategoriService->getKategoriAll()
             ]);
         } catch (\Exception $e) {
             //   abort(500);
@@ -57,18 +58,17 @@ class PostinganController extends Controller
     public function store(StorePostinganRequest $request)
     {
         try {
-            $validatedData = $request->validated();
+            $data = $request->all();
 
             if ($request->hasFile('thumbnail')) {
-                $validatedData['thumbnail'] = $request->file('thumbnail');
+                $data['thumbnail'] = $request->file('thumbnail');
             }
 
-            $this->postinganService->createPostingan($validatedData);
+            $this->postinganService->createPostingan($request->all());
 
-            return back()->with('success', 'Data Postingan berhasil ditambahkan!');
+            return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil ditambahkan!');
         } catch (\Exception $e) {
-            // throw $e;
-            return back()->with('error', 'Data Postingan gagal dihapus!');
+            return back()->with('error', $e->getMessage());
         }
     }
 
@@ -86,9 +86,10 @@ class PostinganController extends Controller
     public function edit(string $id)
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.postingan.edit', [
+                'title' => 'Edit Postingan - Admin Goa Petapa',
                 'postingan' => $this->postinganService->getPostinganByUuid($id),
+                'kategori' => $this->kategoriService->getKategoriAll()
             ]);
         } catch (\Exception $e) {
             throw $e;
@@ -104,10 +105,10 @@ class PostinganController extends Controller
         try {
             $this->postinganService->updatePostingan($request->all(), $id);
 
-            return back()->with('success', 'Data Postingan berhasil diperbarui!');
+            return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil diperbarui!');
         } catch (\Exception $e) {
             // throw $e;
-            return back()->with('error', $e->getMessage());
+            return redirect()->route('postingan.index')->with('error', 'Data Postingan gagal diperbarui!');
         }
     }
 
@@ -119,10 +120,10 @@ class PostinganController extends Controller
         try {
             $this->postinganService->deletePostingan($id);
 
-            return back()->with('success', 'Data Postingan berhasil dihapus!');
+            return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil dihapus!');
         } catch (\Exception $e) {
             // throw $e;
-            return back()->with('error', 'Data Postingan gagal dihapus!');
+            return redirect()->route('postingan.index')->with('error', 'Data Postingan gagal dihapus!');
         }
     }
 }

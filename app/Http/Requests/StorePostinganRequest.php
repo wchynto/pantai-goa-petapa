@@ -26,10 +26,10 @@ class StorePostinganRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'judul' => 'required',
-            'thumbnail' => 'required|image',
+            'judul' => 'required|string',
+            'thumbnail' => 'required|image|max:2048',
             'body' => 'required',
-            'kategori_uuid' => 'required'
+            'kategori_id' => 'required'
         ];
     }
 
@@ -41,8 +41,9 @@ class StorePostinganRequest extends FormRequest
             'thumbnail.required' => 'Thumbnail harus diisi!',
             'thumbnail.image' => 'Thumbnail harus berupa gambar!',
             'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB!',
+            'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB!',
             'body.required' => 'Body harus diisi!',
-            'kategori_uuid.required' => 'Kategori harus diisi!'
+            'kategori_id' => 'Kategori harus diisi!'
         ];
     }
 }

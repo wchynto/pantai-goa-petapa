@@ -27,8 +27,8 @@
     </div>
   </section>
 
-  <div class="flex lg:mx-32 flex-row gap-4 md:mx-5 mx-5">
-    <div class="mb-8 mt-0 lg:mb-20 md:mb-10 md:mt-5 w-full bg-white border-gray-200 shadow-2xl lg:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 lg:mt-8 rounded-lg py-4 flex flex-col">
+  <div class="flex lg:mx-32 flex-row gap-4 md:mx-5 mx-5 ">
+    <div class="mb-8 mt-0 lg:mb-16 md:mb-10 md:mt-5 w-full bg-white border-gray-200 shadow-2xl lg:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 lg:mt-14 rounded-lg py-4 flex flex-col">
       <div class="flex flex-col">
         <p class="text-lg font-bold text-blue-950 lg:text-2xl text-center mb-5 dark:text-white">Fasilitas</p>
       </div>

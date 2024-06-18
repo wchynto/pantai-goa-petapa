@@ -11,7 +11,7 @@
                     buttonUrl="{{ route('postingan.create') }}" buttonText="Tambah Postingan Baru"></x-admin.card-header>
 
                 <!-- Table -->
-                <x-admin.posts-table :postingan="$postingan"></x-admin.posts-table>
+                <x-admin.posts-table :postingan="$postingan" :kategori="$kategori"></x-admin.posts-table>
 
                 <!-- Card Footer -->
                 <x-admin.card-footer :start="1" :end="10" :total="100"></x-admin.card-footer>

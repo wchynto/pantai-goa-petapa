@@ -63,7 +63,7 @@ Route::group([
 });
 
 // Admin routes
-Route::get('admin/login', [AdminSessionController::class, 'viewLogin']);
+Route::get('admin/login', [AdminSessionController::class, 'viewLogin'])->name('admin.viewLogin');
 
 Route::group([
     'prefix' => 'admin',
@@ -73,8 +73,10 @@ Route::group([
     Route::resource('transaksi', TransaksiController::class);
     Route::resource('tiket', TiketController::class);
     Route::resource('pengunjung', PengunjungController::class);
-    Route::resource('kategori', KategoriController::class);
+
     Route::resource('postingan', PostinganController::class);
+
+    Route::resource('kategori', KategoriController::class);
 
     Route::get('laporan', function () {
         return view('/admin/laporan', ['title' => 'Laporan - Admin Pantai Goa Petapa']);

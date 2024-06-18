@@ -4,9 +4,9 @@
     <div class="grid gap-4 mb-4 grid-cols-2">
         <div class="col-span-2 sm:col-span-1">
             <label for="thumbnail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Thumbnail</label>
-            <input
+            <input name="thumbnail"
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                aria-describedby="thumbnail_help" id="thumbnail" type="file" name="thumbnail" required>
+                aria-describedby="thumbnail_help" id="thumbnail" type="file" required>
         </div>
         <div class="col-span-2 sm:col-span-1">
             <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
@@ -15,7 +15,7 @@
                 required="">
                 <option value="" selected>Pilih Kategori</option>
                 @foreach ($kategori as $item)
-                    <option value="{{ $item->uuid }}">{{ $item->keterangan }}</option>
+                    <option value="{{ $item->keterangan }}">{{ $item->keterangan }}</option>
                 @endforeach
             </select>
         </div>
@@ -30,5 +30,5 @@
             <textarea name="body" id="body"></textarea>
         </div>
 
-        <x-admin.submit-cancel-button submit="Tambah" url="{{ url('admin/postingan') }}"></x-admin.submit-cancel-button>
+        <x-admin.add-cancel-button url="{{ url('admin/postingan') }}"></x-admin.add-cancel-button>
 </form>

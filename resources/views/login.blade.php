@@ -9,7 +9,7 @@
               <div class="w-1/6">
                 <img src="{{ asset('images/logo_pantai-goa-petapa_147x147.png') }}" alt="Hero Pantai Goa Petapa">
               </div>
-              <h1 class="text-lg font-bold leading-tight tracking-tight text-blue-900 sm:text-lg dark:text-blue-900">
+              <h1 class="text-lg font-bold leading-tight tracking-tight text-blue-900 sm:text-lg dark:text-white">
                 Pantai Goa Petapa</h1>
               <p class="text-gray-400">Enjoy the beauty of nature and<br>sooting sound of the
                 waves<br>that calm your soul</p>
@@ -26,6 +26,9 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign in to Pantai Goa Petapa
                 </h1><br>
+                @if (session()->has('error'))
+                  <x-alert.error>{{ session('error') }}</x-alert.error>
+                @endif
                 <form class="space-y-4 md:space-y-6" action="{{ route('user.login') }}" method="POST">
                   @csrf
                   @method('POST')

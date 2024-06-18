@@ -381,9 +381,9 @@ const getSaleChartOptions = () => {
     };
 };
 
-if (document.getElementById("sale-statistics")) {
+if (document.getElementById("transaction-statistics")) {
     const chart = new ApexCharts(
-        document.getElementById("sale-statistics"),
+        document.getElementById("transaction-statistics"),
         getSaleChartOptions()
     );
     chart.render();

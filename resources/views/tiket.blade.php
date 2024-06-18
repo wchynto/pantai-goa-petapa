@@ -14,7 +14,7 @@
         </div>
     </section>
 
-    <main class="flex flex-col items-center pt-10 mb-12 mx-6 lg:mx-32" id="explore">
+    <main class="flex flex-col items-center pt-12 mb-12 mx-6 lg:mx-32" id="explore">
         {{-- SHOPPING PRODUCT --}}
         <div class="w-full mb-8">
             <div class="relative overflow-x-auto shadow-xl sm:rounded-lg mb-4">
@@ -34,11 +34,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $gambar = ["mobil.png", "sepeda-motor.png", "sepeda.png", "pejalan-kaki.png"];
+                        $i = 0;
+                        ?>
                         @foreach ($tiket as $t)
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="px-6 py-4">
-                                    <img src="{{ asset('images/mobil.png') }}" alt="Tiket-mobil">
+                                    <img src="{{ asset('images/' . $gambar[$i]) }}" alt="Tiket-mobil">
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">
@@ -62,17 +66,17 @@
                                 {{-- AKSI --}}
                                 <td class="px-6 my-6 lg:my-10 text-xs md:text-base flex flex-row">
                                     {{-- MINUS --}}
-                                    <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    <button class="minus-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none">
                                             <path
                                                 d="M21.375 0.75H2.625C2.12772 0.75 1.65081 0.947544 1.29917 1.29917C0.947544 1.65081 0.75 2.12772 0.75 2.625V21.375C0.75 21.8723 0.947544 22.3492 1.29917 22.7008C1.65081 23.0525 2.12772 23.25 2.625 23.25H21.375C21.8723 23.25 22.3492 23.0525 22.7008 22.7008C23.0525 22.3492 23.25 21.8723 23.25 21.375V2.625C23.25 2.12772 23.0525 1.65081 22.7008 1.29917C22.3492 0.947544 21.8723 0.75 21.375 0.75ZM18.5625 12.9375H5.4375C5.18886 12.9375 4.9504 12.8387 4.77459 12.6629C4.59877 12.4871 4.5 12.2486 4.5 12C4.5 11.7514 4.59877 11.5129 4.77459 11.3371C4.9504 11.1613 5.18886 11.0625 5.4375 11.0625H18.5625C18.8111 11.0625 19.0496 11.1613 19.2254 11.3371C19.4012 11.5129 19.5 11.7514 19.5 12C19.5 12.2486 19.4012 12.4871 19.2254 12.6629C19.0496 12.8387 18.8111 12.9375 18.5625 12.9375Z"
                                                 fill="#365486" class="dark:fill-slate-400" />
                                         </svg></button>
                                     <p
-                                        class="px-6 font-medium text-sm text-gray-900 whitespace-nowrap dark:text-white md:text-base">
+                                        class="quantity px-6 font-medium text-sm text-gray-900 whitespace-nowrap dark:text-white md:text-base">
                                         0</p>
                                     {{-- PLUS --}}
-                                    <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    <button class="plus-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none">
                                             <path
                                                 d="M21.375 0.75H2.625C2.12772 0.75 1.65081 0.947544 1.29917 1.29917C0.947544 1.65081 0.75 2.12772 0.75 2.625V21.375C0.75 21.8723 0.947544 22.3492 1.29917 22.7008C1.65081 23.0525 2.12772 23.25 2.625 23.25H21.375C21.8723 23.25 22.3492 23.0525 22.7008 22.7008C23.0525 22.3492 23.25 21.8723 23.25 21.375V2.625C23.25 2.12772 23.0525 1.65081 22.7008 1.29917C22.3492 0.947544 21.8723 0.75 21.375 0.75ZM18.5625 12.9375H12.9375V18.5625C12.9375 18.8111 12.8387 19.0496 12.6629 19.2254C12.4871 19.4012 12.2486 19.5 12 19.5C11.7514 19.5 11.5129 19.4012 11.3371 19.2254C11.1613 19.0496 11.0625 18.8111 11.0625 18.5625V12.9375H5.4375C5.18886 12.9375 4.9504 12.8387 4.77459 12.6629C4.59877 12.4871 4.5 12.2486 4.5 12C4.5 11.7514 4.59877 11.5129 4.77459 11.3371C4.9504 11.1613 5.18886 11.0625 5.4375 11.0625H11.0625V5.4375C11.0625 5.18886 11.1613 4.9504 11.3371 4.77459C11.5129 4.59877 11.7514 4.5 12 4.5C12.2486 4.5 12.4871 4.59877 12.6629 4.77459C12.8387 4.9504 12.9375 5.18886 12.9375 5.4375V11.0625H18.5625C18.8111 11.0625 19.0496 11.1613 19.2254 11.3371C19.4012 11.5129 19.5 11.7514 19.5 12C19.5 12.2486 19.4012 12.4871 19.2254 12.6629C19.0496 12.8387 18.8111 12.9375 18.5625 12.9375Z"
@@ -83,10 +87,11 @@
                                 <td class="px-6 py-4 text-xs md:text-base">
                                     <button type="submit"
                                         class="border border-gray-500 w-full text-white hover bg-blue-900 shadow hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 py-2 px-6 text-center dark:bg-blue-900 dark:text-white dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">
-                                        Pilih
+                                        Tambah ke Keranjang
                                     </button>
                                 </td>
                             </tr>
+                        <?php $i += 1;?>
                         @endforeach
                     </tbody>
                 </table>
@@ -108,4 +113,28 @@
             </a>
         </div>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const minusButtons = document.querySelectorAll('.minus-btn');
+            const plusButtons = document.querySelectorAll('.plus-btn');
+    
+            minusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const quantityElement = button.nextElementSibling;
+                    let quantity = parseInt(quantityElement.textContent);
+                    if (quantity > 0) {
+                        quantityElement.textContent = quantity - 1;
+                    }
+                });
+            });
+    
+            plusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const quantityElement = button.previousElementSibling;
+                    let quantity = parseInt(quantityElement.textContent);
+                    quantityElement.textContent = quantity + 1;
+                });
+            });
+        });
+    </script>
 </x-layout>

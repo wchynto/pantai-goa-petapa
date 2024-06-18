@@ -25,9 +25,10 @@ class PostinganController extends Controller
     public function index()
     {
         try {
-            return view('admin.postingan.index', [
+            return view('admin.postingan', [
                 'title' => 'Postingan - Admin Goa Petapa',
                 'postingan' => $this->postinganService->getPostinganAll(),
+                'kategori' => $this->kategoriService->getKategoriAll()
             ]);
         } catch (\Exception $e) {
             //   abort(500);
@@ -41,7 +42,7 @@ class PostinganController extends Controller
     public function create()
     {
         try {
-            return view('admin.postingan.create', [
+            return view('admin.tambah-postingan', [
                 'title' => 'Tambah Postingan - Admin Goa Petapa',
                 'kategori' => $this->kategoriService->getKategoriAll()
             ]);
@@ -57,18 +58,17 @@ class PostinganController extends Controller
     public function store(StorePostinganRequest $request)
     {
         try {
-            $validatedData = $request->validated();
+            $data = $request->all();
 
             if ($request->hasFile('thumbnail')) {
-                $validatedData['thumbnail'] = $request->file('thumbnail');
+                $data['thumbnail'] = $request->file('thumbnail');
             }
 
-            $this->postinganService->createPostingan($validatedData);
+            $this->postinganService->createPostingan($request->all());
 
             return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil ditambahkan!');
         } catch (\Exception $e) {
-            // throw $e;
-            return redirect()->route('postingan.index')->with('error', 'Data Postingan gagal ditambahkan!');
+            return back()->with('error', $e->getMessage());
         }
     }
 

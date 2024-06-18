@@ -6,7 +6,7 @@
                 <a href="{{ route('user.order', auth()->user()->uuid) }}">
                     <div
                         class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
-                        <span class="text-2xl font-semibold text-white">1</span>
+                        <span class="text-2xl font-semibold text-white dark:text-blue-900">1</span>
                     </div>
                 </a>
 
@@ -15,7 +15,7 @@
                 <a href="{{ route('user.confirmation-order', auth()->user()->uuid) }}">
                     <div
                         class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
-                        <span class="text-2xl font-semibold text-white">2</span>
+                        <span class="text-2xl font-semibold text-white dark:text-blue-900">2</span>
                     </div>
                 </a>
 
@@ -26,15 +26,15 @@
                     <span class="text-2xl font-semibold text-white">3</span>
                 </div>
             </div>
-            <div class="flex items-center justify-center mx-auto">
+            <div class="flex items-center justify-center mx-auto dark:text-white">
                 <h1 class="text-l px-14">Pesan</h1>
                 <h1 class="text-l">Konfirmasi</h1>
-                <h1 class="text-l px-8 font-semibold">Pembayaran</h1>
+                <h1 class="text-l px-8 font-bold">Pembayaran</h1>
             </div>
             <div class="flex flex-col sm:flex-row pt-20 gap-10">
                 {{-- KONFIRMASI PESANAN --}}
                 <div class="w-full mb-8">
-                    <h1 class="text-l mb-4 font-semibold">Konfirmasi Pemesanan</h1>
+                    <h1 class="text-l mb-4 font-semibold dark:text-white">Konfirmasi Pemesanan</h1>
                     <div
                         class="w-full bg-blue-100 border border-gray-200 shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 my-4 rounded-lg py-4">
                         <div class="flex justify-center">

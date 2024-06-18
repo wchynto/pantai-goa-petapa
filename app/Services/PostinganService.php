@@ -41,6 +41,7 @@ class PostinganService
             $path = Storage::putFileAs('public/images/postingan/thumbnails', $thumbnail, $thumbnailName);
             $data['thumbnail'] = $path;
         }
+        dd($this->postinganRepository->createPostingan($data));
 
         return $this->postinganRepository->createPostingan($data);
     }

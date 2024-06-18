@@ -19,7 +19,7 @@
 @endphp
 
 <h1 class="text-2xl font-bold block md:text-3xl text-center md:text-left">{{ $judul }}</h1>
-<p class="text-sm sm:text-xs text-gray-600 my-1">{{ $created_at }}</p>
+<p class="text-sm sm:text-xs text-gray-600 my-1 dark:text-white">{{ $created_at }}</p>
 <p class="text-xl sm:text-xs text-gray-900 mb-4">Kategori: <a href="{{ url('/blog/kategori/' . $kategori[0]['uuid']) }}" class="hover:underline">{{ $kategori[0]['keterangan'] }}</a></p>
 <div class="relative">
   <img src="{{ asset('images/' . $thumbnail) }}" class="w-full h-96 rounded-lg object-cover" alt="Photo">

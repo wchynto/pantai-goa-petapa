@@ -27,8 +27,10 @@ class PengunjungController extends Controller
     public function index()
     {
         try {
-            return view('admin.pengunjung.index', [
-                'pengunjung' => $this->pengunjungService->getPengunjungAll(),
+            $pengunjung = $this->pengunjungService->getPengunjungAll();
+
+            return view('admin.pengunjung', [
+                'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
                 'title' => 'Pengunjung - Admin Pantai Goa Petapa'
             ]);
         } catch (\Exception $e) {
@@ -37,19 +39,19 @@ class PengunjungController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        try {
-            return view('admin.pengunjung.create', [
-                'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
-            ]);
-        } catch (\Exception $e) {
-            abort(500);
-        }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    try {
+      return view('admin.tambah-pengunjung', [
+        'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
+      ]);
+    } catch (\Exception $e) {
+      abort(500);
     }
+  }
 
     /**
      * Store a newly created resource in storage.
@@ -58,7 +60,10 @@ class PengunjungController extends Controller
     {
         try {
             $data = $request->all();
+
             $pengunjung = $this->pengunjungService->createPengunjung($data);
+
+            $data['pengunjung_uuid'] = $pengunjung->uuid;
             $data['pengunjung_uuid'] = $pengunjung->uuid;
 
             if ($request->tipe == 'user') {

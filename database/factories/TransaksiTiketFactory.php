@@ -17,7 +17,7 @@ class TransaksiTiketFactory extends Factory
     public function definition(): array
     {
         return [
-            'jumlah_penumpang' => fake()->randomNumber(2),
+            'jumlah' => fake()->randomNumber(2),
             'status' => fake()->randomElement(['active', 'expired', 'canceled', 'used'])
         ];
     }

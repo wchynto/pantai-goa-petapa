@@ -14,19 +14,19 @@ class KendaraanSeeder extends Seeder
     public function run(): void
     {
         Kendaraan::create([
-            'keterangan' => 'Mobil'
+            'jenis_kendaraan' => 'Mobil'
         ]);
 
         Kendaraan::create([
-            'keterangan' => 'Motor'
+            'jenis_kendaraan' => 'Motor'
         ]);
 
         Kendaraan::create([
-            'keterangan' => 'Sepeda'
+            'jenis_kendaraan' => 'Sepeda'
         ]);
 
         Kendaraan::create([
-            'keterangan' => 'Berjalan Kaki'
+            'jenis_kendaraan' => 'Berjalan Kaki'
         ]);
     }
 }

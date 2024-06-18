@@ -49,7 +49,7 @@
           </div>
 
           <div class="col-span-2">
-            <x-admin.sale-statistics></x-admin.sale-statistics>
+            <x-admin.transaction-statistics></x-admin.transaction-statistics>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transaksi_tikets', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->string('no_tiket', 10)->unique();
-            $table->integer('jumlah_penumpang')->nullable();
+            $table->integer('jumlah');
             $table->date('expire_in')->nullable();
             $table->enum('status', ['active', 'expired', 'canceled', 'used'])->default('active');
             $table->foreignUuid('transaksi_uuid')->constrained('transaksis', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();

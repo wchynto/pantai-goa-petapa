@@ -11,6 +11,13 @@ class TransaksiTiket extends Pivot
   use HasFactory;
 
   /**
+   * The table associated with the model.
+   *
+   * @var string
+   */
+  protected $table = 'transaksi_tikets';
+
+  /**
    * The primary key associated with the table.
    *
    * @var string
@@ -37,7 +44,7 @@ class TransaksiTiket extends Pivot
    * @var array
    */
   protected $fillable = [
-    'jumlah_penumpang',
+    'jumlah',
     'status',
     'transaksi_uuid',
     'tiket_uuid'
@@ -57,5 +64,15 @@ class TransaksiTiket extends Pivot
       $model->no_tiket = strtotime(date('Y-m-d')) + $model->count();
       $model->expire_in = date('Y-m-d H:i:s', strtotime('+3 day'));
     });
+  }
+
+  /**
+   * Relationship to kendaraan
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function tiket()
+  {
+    return $this->belongsTo(Tiket::class, 'tiket_uuid', 'uuid');
   }
 }

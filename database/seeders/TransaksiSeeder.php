@@ -10,37 +10,39 @@ use Illuminate\Support\Str;
 
 class TransaksiSeeder extends Seeder
 {
-  /**
-   * Run the database seeds.
-   */
-  public function run(): void
-  {
-    $pengunjungs = Pengunjung::all();
-    $tikets = Tiket::all();
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $pengunjungs = Pengunjung::all();
+        $tikets = Tiket::all();
 
-    $pengunjungs->each(function (Pengunjung $pengunjung) use ($tikets): void {
-      $selectedTikets = $tikets->random(2);
+        $pengunjungs->each(function (Pengunjung $pengunjung) use ($tikets): void {
+            $jumlah = rand(1, 5);
 
-      $transaksiData = [
-        'pengunjung_uuid' => $pengunjung->uuid,
-        'total_harga' => $selectedTikets->sum('harga'),
-        'total_bayar' => $selectedTikets->sum('harga'),
-        'tanggal_transaksi' => now(),
-      ];
+            $selectedTikets = $tikets->random(rand(1, 4));
 
-      $transaksi = Transaksi::create($transaksiData);
+            $transaksiData = [
+                'pengunjung_uuid' => $pengunjung->uuid,
+                'total_harga' => $selectedTikets->sum('harga') * $jumlah,
+                'total_bayar' => $selectedTikets->sum('harga') * $jumlah + (rand(0, 2) * [1000, 2000, 5000][array_rand([1000, 2000, 5000])]),
+                'tanggal_transaksi' => now(),
+            ];
 
-      $transaksiTiketData = $selectedTikets->mapWithKeys(function ($tiket) use ($transaksi) {
-        return [
-          $tiket->uuid => [
-            'jumlah_penumpang' => rand(1, 5),
-            'tiket_uuid' => $tiket->uuid,
-            'transaksi_uuid' => $transaksi->uuid,
-          ]
-        ];
-      })->toArray();
+            $transaksi = Transaksi::create($transaksiData);
 
-      $transaksi->tiket()->attach($transaksiTiketData);
-    });
-  }
+            $transaksiTiketData = $selectedTikets->mapWithKeys(function ($tiket) use ($transaksi, $jumlah) {
+                return [
+                    $tiket->uuid => [
+                        'jumlah' => $jumlah,
+                        'tiket_uuid' => $tiket->uuid,
+                        'transaksi_uuid' => $transaksi->uuid,
+                    ]
+                ];
+            })->toArray();
+
+            $transaksi->tiket()->attach($transaksiTiketData);
+        });
+    }
 }

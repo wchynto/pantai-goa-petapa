@@ -18,13 +18,18 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
   <script>
+    let html = document.querySelector('html');
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
         '(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
+      html.setAttribute('data-bs-theme', 'dark');
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove('dark');
+      html.setAttribute('data-bs-theme', 'light');
     }
   </script>
 </head>

@@ -68,7 +68,17 @@ class Transaksi extends Model
    */
   public function tiket()
   {
-    return $this->belongsToMany(Tiket::class, 'transaksi_tikets', 'transaksi_uuid', 'tiket_uuid')->withPivot('jumlah_penumpang', 'tiket_uuid', 'transaksi_uuid')->using(TransaksiTiket::class);
+    return $this->belongsToMany(Tiket::class, 'transaksi_tikets', 'transaksi_uuid', 'tiket_uuid')->withPivot('jumlah', 'tiket_uuid', 'transaksi_uuid')->using(TransaksiTiket::class);
+  }
+
+  /**
+   * Relationship to transaksiTiket
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function transaksiTiket()
+  {
+    return $this->hasMany(TransaksiTiket::class, 'transaksi_uuid', 'uuid');
   }
 
   /**

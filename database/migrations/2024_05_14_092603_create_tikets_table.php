@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tikets', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->string('keterangan', 50);
+            $table->string('thumbnail', 50)->nullable();
             $table->integer('harga');
             $table->foreignUuid('kendaraan_uuid')->constrained('kendaraans', 'uuid')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();

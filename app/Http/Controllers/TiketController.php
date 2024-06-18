@@ -24,10 +24,21 @@ class TiketController extends Controller
     public function index()
     {
         try {
-            return view('admin.tiket', [
+            return view('admin.tiket.index', [
                 'title' => 'Tiket - Admin Pantai Goa Petapa',
                 'tiket' => $this->tiketService->getTiketAll(),
-                'kendaraan' => $this->kendaraanService->getKendaraanAll(),
+            ]);
+        } catch (\Exception $e) {
+            abort(500);
+        }
+    }
+
+    public function displayTiket()
+    {
+        try {
+            return view('tiket', [
+                'title' => 'Tiket - Pantai Goa Petapa',
+                'tiket' => $this->tiketService->getTiketAll(),
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -40,9 +51,8 @@ class TiketController extends Controller
     public function create()
     {
         try {
-            return view('admin.tambah-tiket', [
+            return view('admin.tiket.create', [
                 'title' => 'Tambah Tiket - Admin Pantai Goa Petapa',
-                'kendaraan' => $this->kendaraanService->getKendaraanAll(),
             ]);
         } catch (\Exception $e) {
             abort(500);
@@ -55,11 +65,14 @@ class TiketController extends Controller
     public function store(StoreTiketRequest $request)
     {
         try {
-            $this->tiketService->createTiket($request->all());
+            $data = $request->all();
+            $kendaraan = $this->kendaraanService->createKendaraan($data);
+            $data['kendaraan_uuid'] = $kendaraan->uuid;
+            $this->tiketService->createTiket($data);
 
-            return back()->with('success', 'Data Tiket berhasil ditambahkan!');
+            return redirect()->route('tiket.index')->with('success', 'Data Tiket berhasil ditambahkan!');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return redirect()->route('tiket.index')->with('error', 'Data Tiket gagal ditambahkan!');
         }
     }
 
@@ -77,8 +90,8 @@ class TiketController extends Controller
     public function edit(string $id)
     {
         try {
-            return view('', [
-                'title' => '',
+            return view('admin.tiket.edit', [
+                'title' => 'Edit Tiket - Admin Pantai Goa Petapa',
                 'tiket' => $this->tiketService->getTiketByUuid($id),
             ]);
         } catch (\Exception $e) {
@@ -92,11 +105,13 @@ class TiketController extends Controller
     public function update(UpdateTiketRequest $request, string $id)
     {
         try {
+            $kendaraan_uuid = $this->tiketService->getTiketByUuid($id)->kendaraan_uuid;
+            $this->kendaraanService->updateKendaraan($request->all(), $kendaraan_uuid);
             $this->tiketService->updateTiket($request->all(), $id);
 
-            return back()->with('success', 'Data Tiket berhasil diubah!');
+            return redirect()->route('tiket.index')->with('success', 'Data Tiket berhasil diperbarui!');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return redirect()->route('tiket.index')->with('error', 'Data Tiket gagal diperbarui!');
         }
     }
 
@@ -107,10 +122,12 @@ class TiketController extends Controller
     {
         try {
             $this->tiketService->deleteTiket($id);
+            $kendaraan_uuid = $this->tiketService->getTiketByUuid($id)->kendaraan_uuid;
+            $this->kendaraanService->deleteKendaraan($kendaraan_uuid);
 
-            return back()->with('success', 'Data Tiket berhasil dihapus!');
+            return redirect()->route('tiket.index')->with('success', 'Data Tiket berhasil dihapus!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Data Tiket gagal dihapus!');
+            return redirect()->route('tiket.index')->with('error', 'Data Tiket gagal dihapus!');
         }
     }
 }

@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserSessionController extends Controller
 {
+    protected $userService;
+
+    public function __construct()
+    {
+        $this->userService = new UserService();
+    }
+
     public function viewLogin()
     {
         try {
@@ -25,6 +33,18 @@ class UserSessionController extends Controller
         }
     }
 
+    public function profil($id)
+    {
+        try {
+            return view('user/profil', [
+                'user' => $this->userService->getUserByUuid($id),
+                'title' => 'Profil - Pantai Goa Petapa'
+            ]);
+        } catch (\Exception $e) {
+            abort(500);
+        }
+    }
+
     public function login(LoginRequest $request)
     {
         try {
@@ -36,20 +56,22 @@ class UserSessionController extends Controller
                 return redirect()->intended('/');
             }
 
-            return back()->with('error', 'Email atau password salah')->with($request->only('email'));
+            return redirect()->route('login')->with('error', 'Email atau password salah!')->with($request->only('email'));
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage())->with($request->only('email'));
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         try {
+            dd('dadsad');
+
             auth()->logout();
 
-            request()->session()->invalidate();
+            $request->session()->invalidate();
 
-            request()->session()->regenerateToken();
+            $request->session()->regenerateToken();
 
             return redirect('');
         } catch (\Exception $e) {

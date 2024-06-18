@@ -18,26 +18,26 @@ class TiketSeeder extends Seeder
 
         Tiket::create([
             'keterangan' => 'Tiket masuk mobil',
-            'harga' => 15000,
-            'kendaraan_uuid' => $kendaraan->firstWhere('keterangan', 'Mobil')->uuid
+            'harga' => 10000,
+            'kendaraan_uuid' => $kendaraan->firstWhere('jenis_kendaraan', 'Mobil')->uuid
         ]);
 
         Tiket::create([
             'keterangan' => 'Tiket masuk motor',
             'harga' => 5000,
-            'kendaraan_uuid' => $kendaraan->firstWhere('keterangan', 'Motor')->uuid
+            'kendaraan_uuid' => $kendaraan->firstWhere('jenis_kendaraan', 'Motor')->uuid
         ]);
 
         Tiket::create([
             'keterangan' => 'Tiket masuk sepeda',
             'harga' => 2000,
-            'kendaraan_uuid' => $kendaraan->firstWhere('keterangan', 'Sepeda')->uuid
+            'kendaraan_uuid' => $kendaraan->firstWhere('jenis_kendaraan', 'Sepeda')->uuid
         ]);
 
         Tiket::create([
             'keterangan' => 'Tiket masuk berjalan kaki',
             'harga' => 1000,
-            'kendaraan_uuid' => $kendaraan->firstWhere('keterangan', 'Berjalan Kaki')->uuid
+            'kendaraan_uuid' => $kendaraan->firstWhere('jenis_kendaraan', 'Berjalan Kaki')->uuid
         ]);
     }
 }

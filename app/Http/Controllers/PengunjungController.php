@@ -39,19 +39,19 @@ class PengunjungController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        try {
-            return view('admin.tambah-pengunjung', [
-                'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
-            ]);
-        } catch (\Exception $e) {
-            abort(500);
-        }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    try {
+      return view('admin.tambah-pengunjung', [
+        'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
+      ]);
+    } catch (\Exception $e) {
+      abort(500);
     }
+  }
 
     /**
      * Store a newly created resource in storage.
@@ -74,8 +74,7 @@ class PengunjungController extends Controller
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
-            return back()->with('error',  $e->getMessage());
+            return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal ditambahkan!');
         }
     }
 
@@ -84,6 +83,14 @@ class PengunjungController extends Controller
      */
     public function show(string $id)
     {
+        try {
+            return view('admin.pengunjung.show', [
+                'title' => 'Detail Pengunjung - Admin Pantai Goa Petapa',
+                'pengunjung' => $this->pengunjungService->getPengunjungByUuid($id),
+            ]);
+        } catch (\Exception $e) {
+            abort(500);
+        }
     }
 
     /**
@@ -94,7 +101,7 @@ class PengunjungController extends Controller
         try {
             $pengunjung = $this->pengunjungService->getPengunjungByUuid($id);
 
-            return view('admin.edit-pengunjung', [
+            return view('admin.pengunjung.edit', [
                 'pengunjung' => $pengunjung,
                 'title' => 'Edit Pengunjung - Admin Pantai Goa Petapa'
             ]);
@@ -110,18 +117,18 @@ class PengunjungController extends Controller
     {
         try {
             if ($this->pengunjungService->isUser($id)) {
-                $id = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->uuid;
-                $this->userService->updateUser($request->all(), $id);
+                $user_id = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->uuid;
+                $this->userService->updateUser($request->all(), $user_id);
             } else {
-                $id = $this->guestService->getGuestWhere('pengunjung_uuid', $id)->first()->uuid;
-                $this->guestService->updateGuest($request->all(), $id);
+                $guest_id = $this->guestService->getGuestWhere('pengunjung_uuid', $id)->first()->uuid;
+                $this->guestService->updateGuest($request->all(), $guest_id);
             }
 
             $this->pengunjungService->updatePengunjung($request->all(), $id);
 
-            return back()->with('success', 'Data pengunjung berhasil diperbarui!');
+            return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil diperbarui!');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal diperbarui!');
         }
     }
 
@@ -136,11 +143,12 @@ class PengunjungController extends Controller
             } else {
                 $this->guestService->deleteGuestWhere('pengunjung_uuid', $id);
             }
+
             $this->pengunjungService->deletePengunjung($id);
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil dihapus!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Data pengunjung gagal dihapus!');
+            return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal dihapus!');
         }
     }
 }

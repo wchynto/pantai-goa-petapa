@@ -41,6 +41,7 @@ class StorePostinganRequest extends FormRequest
             'thumbnail.required' => 'Thumbnail harus diisi!',
             'thumbnail.image' => 'Thumbnail harus berupa gambar!',
             'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB!',
+            'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB!',
             'body.required' => 'Body harus diisi!',
             'kategori_id' => 'Kategori harus diisi!'
         ];

@@ -35,63 +35,91 @@
                     </thead>
                     <tbody>
                         <?php
-                        $gambar = ["mobil.png", "sepeda-motor.png", "sepeda.png", "pejalan-kaki.png"];
+                        $gambar = ['mobil.png', 'sepeda-motor.png', 'sepeda.png', 'pejalan-kaki.png'];
                         $i = 0;
                         ?>
                         @foreach ($tiket as $t)
-                            <tr
-                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="px-6 py-4">
-                                    <img src="{{ asset('images/' . $gambar[$i]) }}" alt="Tiket-mobil">
-                                </td>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">
-                                    {{ $t->keterangan }}
-                                </th>
-                                {{-- PANAH --}}
-                                <td class="px-6 py-4 text-xs md:text-base">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
-                                        viewBox="0 0 16 15" fill="none">
-                                        <path
-                                            d="M12.172 7.03898L6.808 2.19071L8.222 0.912659L16 7.94283L8.222 14.973L6.808 13.695L12.172 8.84668H0V7.03898H12.172Z"
-                                            fill="#B4B1B1" />
-                                        <path
-                                            d="M12.172 7.03898L6.808 2.19071L8.222 0.912659L16 7.94283L8.222 14.973L6.808 13.695L12.172 8.84668H0V7.03898H12.172Z"
-                                            fill="#323643" class="dark:fill-slate-400" />
-                                    </svg>
-                                </td>
-                                <td class="px-6 py-4 text-xs md:text-base">
-                                    Rp. {{ number_format($t->harga, 0, ',', '.') }}
-                                </td>
-                                {{-- AKSI --}}
-                                <td class="px-6 my-6 lg:my-10 text-xs md:text-base flex flex-row">
-                                    {{-- MINUS --}}
-                                    <button class="minus-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
+                            <form action="{{ route('add-item') }}" method="post">
+                                @csrf
+                                @method('post')
+                                @php
+                                    $cart = session()->get('cart');
+                                    $jumlah = 0;
+                                    if ($cart) {
+                                        foreach ($cart as $index => $c) {
+                                            if ($c['uuid'] == $t->uuid) {
+                                                $jumlah = $cart[$index]['jumlah'];
+                                            }
+                                        }
+                                    }
+                                @endphp
+                                <input type="hidden" value="{{ $t->uuid }}" name="uuid">
+                                <input type="hidden" value="{{ $t->harga }}" name="harga">
+                                <input type="hidden" value="{{ $t->keterangan }}" name="keterangan">
+                                <tr
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="px-6 py-4">
+                                        <img src="{{ asset('images/' . $gambar[$i]) }}" alt="Tiket-mobil">
+                                    </td>
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">
+                                        {{ $t->keterangan }}
+                                    </th>
+                                    {{-- PANAH --}}
+                                    <td class="px-6 py-4 text-xs md:text-base">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"
+                                            viewBox="0 0 16 15" fill="none">
                                             <path
-                                                d="M21.375 0.75H2.625C2.12772 0.75 1.65081 0.947544 1.29917 1.29917C0.947544 1.65081 0.75 2.12772 0.75 2.625V21.375C0.75 21.8723 0.947544 22.3492 1.29917 22.7008C1.65081 23.0525 2.12772 23.25 2.625 23.25H21.375C21.8723 23.25 22.3492 23.0525 22.7008 22.7008C23.0525 22.3492 23.25 21.8723 23.25 21.375V2.625C23.25 2.12772 23.0525 1.65081 22.7008 1.29917C22.3492 0.947544 21.8723 0.75 21.375 0.75ZM18.5625 12.9375H5.4375C5.18886 12.9375 4.9504 12.8387 4.77459 12.6629C4.59877 12.4871 4.5 12.2486 4.5 12C4.5 11.7514 4.59877 11.5129 4.77459 11.3371C4.9504 11.1613 5.18886 11.0625 5.4375 11.0625H18.5625C18.8111 11.0625 19.0496 11.1613 19.2254 11.3371C19.4012 11.5129 19.5 11.7514 19.5 12C19.5 12.2486 19.4012 12.4871 19.2254 12.6629C19.0496 12.8387 18.8111 12.9375 18.5625 12.9375Z"
-                                                fill="#365486" class="dark:fill-slate-400" />
-                                        </svg></button>
-                                    <p
-                                        class="quantity px-6 font-medium text-sm text-gray-900 whitespace-nowrap dark:text-white md:text-base">
-                                        0</p>
-                                    {{-- PLUS --}}
-                                    <button class="plus-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
+                                                d="M12.172 7.03898L6.808 2.19071L8.222 0.912659L16 7.94283L8.222 14.973L6.808 13.695L12.172 8.84668H0V7.03898H12.172Z"
+                                                fill="#B4B1B1" />
                                             <path
-                                                d="M21.375 0.75H2.625C2.12772 0.75 1.65081 0.947544 1.29917 1.29917C0.947544 1.65081 0.75 2.12772 0.75 2.625V21.375C0.75 21.8723 0.947544 22.3492 1.29917 22.7008C1.65081 23.0525 2.12772 23.25 2.625 23.25H21.375C21.8723 23.25 22.3492 23.0525 22.7008 22.7008C23.0525 22.3492 23.25 21.8723 23.25 21.375V2.625C23.25 2.12772 23.0525 1.65081 22.7008 1.29917C22.3492 0.947544 21.8723 0.75 21.375 0.75ZM18.5625 12.9375H12.9375V18.5625C12.9375 18.8111 12.8387 19.0496 12.6629 19.2254C12.4871 19.4012 12.2486 19.5 12 19.5C11.7514 19.5 11.5129 19.4012 11.3371 19.2254C11.1613 19.0496 11.0625 18.8111 11.0625 18.5625V12.9375H5.4375C5.18886 12.9375 4.9504 12.8387 4.77459 12.6629C4.59877 12.4871 4.5 12.2486 4.5 12C4.5 11.7514 4.59877 11.5129 4.77459 11.3371C4.9504 11.1613 5.18886 11.0625 5.4375 11.0625H11.0625V5.4375C11.0625 5.18886 11.1613 4.9504 11.3371 4.77459C11.5129 4.59877 11.7514 4.5 12 4.5C12.2486 4.5 12.4871 4.59877 12.6629 4.77459C12.8387 4.9504 12.9375 5.18886 12.9375 5.4375V11.0625H18.5625C18.8111 11.0625 19.0496 11.1613 19.2254 11.3371C19.4012 11.5129 19.5 11.7514 19.5 12C19.5 12.2486 19.4012 12.4871 19.2254 12.6629C19.0496 12.8387 18.8111 12.9375 18.5625 12.9375Z"
-                                                fill="#365486" class="dark:fill-slate-400" />
-                                        </svg></button>
-                                </td>
-                                {{-- PILIH --}}
-                                <td class="px-6 py-4 text-xs md:text-base">
-                                    <button type="submit"
-                                        class="border border-gray-500 w-full text-white hover bg-blue-900 shadow hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 py-2 px-6 text-center dark:bg-blue-900 dark:text-white dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">
-                                        Tambah ke Keranjang
-                                    </button>
-                                </td>
-                            </tr>
-                        <?php $i += 1;?>
+                                                d="M12.172 7.03898L6.808 2.19071L8.222 0.912659L16 7.94283L8.222 14.973L6.808 13.695L12.172 8.84668H0V7.03898H12.172Z"
+                                                fill="#323643" class="dark:fill-slate-400" />
+                                        </svg>
+                                    </td>
+                                    <td class="px-6 py-4 text-xs md:text-base">
+                                        Rp. {{ number_format($t->harga, 0, ',', '.') }}
+                                    </td>
+                                    {{-- AKSI --}}
+                                    <td class="px-6 my-6 lg:my-10 text-xs md:text-base flex flex-row">
+                                        {{-- MINUS --}}
+                                        <div class="relative flex items-center">
+                                            <button type="button" id="decrement-button"
+                                                data-input-counter-decrement="counter-input-{{ $loop->iteration }}"
+                                                class="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 18 2">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                </svg>
+                                            </button>
+                                            <input type="text" id="counter-input-{{ $loop->iteration }}"
+                                                data-input-counter
+                                                class="flex-shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center"
+                                                placeholder="" value="{{ $jumlah }}" required name="jumlah" />
+                                            <button type="button" id="increment-button"
+                                                data-input-counter-increment="counter-input-{{ $loop->iteration }}"
+                                                class="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 18 18">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    {{-- PILIH --}}
+                                    <td class="px-6 py-4 text-xs md:text-base">
+                                        <button type="submit"
+                                            class="border border-gray-500 w-full text-white hover bg-blue-900 shadow hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 py-2 px-6 text-center dark:bg-blue-900 dark:text-white dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">
+                                            Tambah ke Keranjang
+                                        </button>
+                                    </td>
+                                </tr>
+                            </form>
+                            <?php $i += 1; ?>
                         @endforeach
                     </tbody>
                 </table>
@@ -117,7 +145,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const minusButtons = document.querySelectorAll('.minus-btn');
             const plusButtons = document.querySelectorAll('.plus-btn');
-    
+
             minusButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const quantityElement = button.nextElementSibling;
@@ -127,7 +155,7 @@
                     }
                 });
             });
-    
+
             plusButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const quantityElement = button.previousElementSibling;
@@ -136,5 +164,28 @@
                 });
             });
         });
+
+        // function addItem(el) {
+        //     fetch('/api/add-item', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'Accept': 'application/json',
+        //             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        //         },
+        //         body: JSON.stringify({
+        //             uuid: el.uuid.value,
+        //             jumlah: el.jumlah.value
+        //         })
+        //     }).then(res => {
+        //         return res.json();
+        //     }).then(data => {
+        //         console.log(data);
+        //     }).catch(err => {
+        //         console.error(err);
+        //     });
+
+        //     return false;
+        // }
     </script>
 </x-layout>

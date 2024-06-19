@@ -16,6 +16,44 @@ class TransaksiOnlineController extends Controller
         return view('order', ['title' => 'Transaksi - Pantai Goa Petapa']);
     }
 
+    public function addItem(Request $request)
+    {
+        try {
+            $cart = [];
+            $canAdd = true;
+
+            if ($request->jumlah == 0) {
+                return back()->with('error', 'Minimal jumlah item adalah satu');
+            }
+
+            if (session()->has('cart')) {
+                $cart = session()->get('cart');
+            }
+
+            foreach ($cart as $index => $c) {
+                if ($c['uuid'] == $request->uuid) {
+                    $cart[$index]['jumlah'] = $request->jumlah;
+                    $canAdd = false;
+                }
+            }
+
+            if ($canAdd) {
+                $cart[] = [
+                    'uuid' => $request->uuid,
+                    'jumlah' => $request->jumlah,
+                    'keterangan' => $request->keterangan,
+                    'harga' => $request->harga,
+                ];
+            }
+
+            session(['cart' => $cart]);
+
+            return back()->with('success', 'Item berhasil ditambahkan ke keranjang');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     public function showKonfirmasiTransaksi()
     {
         return view('confirmation-order', ['title' => 'Konfirmasi Transaksi - Pantai Goa Petapa']);

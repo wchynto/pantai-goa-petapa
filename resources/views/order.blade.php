@@ -1,4 +1,7 @@
 <x-layout>
+    @php
+        $total = 0;
+    @endphp
     <x-slot:title>{{ $title }}</x-slot:title>
     <section class="flex justify-center mt-16">
         <div class="container xl:max-w-screen-xl p-4">
@@ -56,53 +59,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr
-                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="px-6 py-4">
-                                            <img src="{{ asset('images/mobil.png') }}" alt="Tiket-mobil">
-                                        </td>
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">
-                                            Tiket Masuk Mobil
-                                        </th>
-                                        <td class="px-6 py-4 text-xs md:text-base">
-                                            1
-                                        </td>
-                                        <td class="px-6 py-4 text-xs md:text-base">
-                                            Rp10.000
-                                        </td>
-                                    </tr>
-                                    <tr
-                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="px-6 py-4">
-                                            <img src="{{ asset('images/sepeda-motor.png') }}" alt="Tiket-sepeda-motor">
-                                        </td>
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">
-                                            Tiket Masuk Sepeda Motor
-                                        </th>
-                                        <td class="px-6 py-4 text-xs md:text-base">
-                                            1
-                                        </td>
-                                        <td class="px-6 py-4 text-xs md:text-base">
-                                            Rp5.000
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="px-6 py-4">
-                                            <img src="{{ asset('images/pejalan-kaki.png') }}" alt="Tiket-pejalan-kaki">
-                                        </td>
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-xs md:text-base">
-                                            Tiket Masuk Pejalan Kaki
-                                        </th>
-                                        <td class="px-6 py-4 text-xs md:text-base">
-                                            1
-                                        </td>
-                                        <td class="px-6 py-4 text-xs md:text-base">
-                                            Rp1.000
-                                        </td>
-                                    </tr>
+                                    @foreach (Session::get('cart') ?? [] as $item)
+                                        @php
+                                            $total += $item['jumlah'] * $item['harga'];
+                                        @endphp
+                                        <tr
+                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <td class="px-6 py-4">
+                                                <img src="{{ asset('images/sepeda-motor.png') }}"
+                                                    alt="Tiket-sepeda-motor">
+                                            </td>
+                                            <th scope="row"
+                                                class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">
+                                                {{ $item['keterangan'] }}
+                                            </th>
+                                            <td class="px-6 py-4 text-xs md:text-base">
+                                                {{ $item['jumlah'] }}
+                                            </td>
+                                            <td class="px-6 py-4 text-xs md:text-base">
+                                                Rp. {{ number_format($item['jumlah'] * $item['harga'], 0, ',', '.') }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -135,7 +113,7 @@
                             Total Payment</h1></a>
                         <h1
                             class="text-sm lg:text-lg font-extrabold leading-tight tracking-tight text-blue-950 md:text-base dark:text-white">
-                            Rp16.000</h1></a>
+                            Rp. {{ number_format($total, 0, ',', '.') }}</h1></a>
                     </div>
                     <a href="{{ route('user.confirmation-order', auth()->user()->uuid) }}"><button type="submit"
                             class="w-full text-white hover bg-blue-900 shadow border-blue-900 hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 p-3 text-center dark:bg-blue-900 dark:text-white  dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">Pesan

@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('tiket', [TiketController::class, 'displayTiket'])->name(('home.tiket'));
+Route::post('/add-item', [TransaksiOnlineController::class, 'addItem'])->name('add-item');
 
 Route::get('tentang', function () {
     return view('tentang', ['title' => 'Tentang - Pantai Goa Petapa']);
@@ -46,8 +47,6 @@ Route::get('detail-blog', function () {
 Route::get('login', [UserSessionController::class, 'viewLogin'])->name('login');
 
 Route::get('register', [UserSessionController::class, 'viewRegister'])->name('register');
-
-Route::get('transaksi', [TransaksiOnlineController::class, 'showTransaksi'])->name('user.order');
 
 Route::group([
     'prefix' => 'user/{id}/',
@@ -86,7 +85,6 @@ Route::group([
 // Auth User
 Route::post('user/login', [UserSessionController::class, 'login'])->name('user.login');
 Route::get('user/logout', function () {
-    dd('dsda');
 })->name('user.logout');
 
 // Auth Admin

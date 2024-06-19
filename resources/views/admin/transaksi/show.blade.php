@@ -32,7 +32,7 @@
                 <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Status:
                   @if ($transaksi->status == 'pending')
                     <span
-                      class="bg-purple-100 text-purple-800 text-sm px-2.5 py-0.5 rounded-md border border-purple-100 dark:bg-gray-700 dark:border-purple-500 dark:text-purple-400">Menunggu</span>
+                      class="bg-blue-100 text-blue-800 text-sm px-2.5 py-0.5 rounded-md border border-blue-100 dark:bg-gray-700 dark:border-blue-500 dark:text-blue-400">Menunggu</span>
                   @elseif ($transaksi->status == 'success')
                     <span
                       class="bg-green-100 text-green-800 text-sm px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 border border-green-100 dark:border-green-500">Berhasil</span>
@@ -50,6 +50,26 @@
               @foreach ($transaksi->transaksiTiket as $item)
                 <div
                   class="grid grid-cols-6 items-center p-4 md:p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                  <div class="col-span-6 flex justify-between">
+                    <h5 class="text-lg lg:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      #{{ $item->no_tiket }}</h5>
+                    <p class="text-gray-800 dark:text-gray-400 font-medium">
+                      Status:
+                      @if ($item->status == 'active')
+                        <span
+                          class="bg-blue-100 text-blue-800 text-sm px-2.5 py-0.5 rounded-md border border-blue-100 dark:bg-gray-700 dark:text-blue-400 dark:border-blue-400">Aktif</span>
+                      @elseif ($item->status == 'expired')
+                        <span
+                          class="bg-orange-100 text-orange-800 text-sm px-2.5 py-0.5 rounded-md border border-orange-100 dark:bg-gray-700 dark:text-orange-300 dark:border-orange-300">Kadaluarsa</span>
+                      @elseif ($item->status == 'canceled')
+                        <span
+                          class="bg-red-100 text-red-800 text-sm px-2.5 py-0.5 rounded-md border border-red-100 dark:bg-gray-700 dark:text-red-400 dark:border-red-400">Dibatalkan</span>
+                      @elseif ($item->status == 'used')
+                        <span
+                          class="bg-green-100 text-green-800 text-sm px-2.5 py-0.5 rounded-md border border-green-100 dark:bg-gray-700 dark:text-green-400 dark:border-green-500">Digunakan</span>
+                      @endif
+                    </p>
+                  </div>
                   <div class="col-span-2 sm:col-span-3">
                     <h5 class="text-lg lg:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                       {{ $item->tiket->kendaraan->jenis_kendaraan }}</h5>

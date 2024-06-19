@@ -105,6 +105,7 @@
     "paging": true,
     "searching": true,
     "ordering": true,
+    "order": [],
     "info": true,
     "autoWidth": false,
     "responsive": true,

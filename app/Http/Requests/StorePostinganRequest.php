@@ -29,7 +29,7 @@ class StorePostinganRequest extends FormRequest
             'judul' => 'required|string',
             'thumbnail' => 'required|image|max:2048',
             'body' => 'required',
-            'kategori_id' => 'required'
+            'kategori_uuid' => 'required'
         ];
     }
 
@@ -43,7 +43,7 @@ class StorePostinganRequest extends FormRequest
             'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB!',
             'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB!',
             'body.required' => 'Body harus diisi!',
-            'kategori_id' => 'Kategori harus diisi!'
+            'kategori_uuid' => 'Kategori harus diisi!'
         ];
     }
 }

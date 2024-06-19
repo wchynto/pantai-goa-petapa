@@ -27,10 +27,8 @@ class PengunjungController extends Controller
     public function index()
     {
         try {
-            $pengunjung = $this->pengunjungService->getPengunjungAll();
-
-            return view('admin.pengunjung', [
-                'pengunjung' => collectionPaginate($pengunjung, 10, null, ['path' => route('pengunjung.index')]),
+            return view('admin.pengunjung.index', [
+                'pengunjung' => $this->pengunjungService->getPengunjungAll(),
                 'title' => 'Pengunjung - Admin Pantai Goa Petapa'
             ]);
         } catch (\Exception $e) {
@@ -45,7 +43,7 @@ class PengunjungController extends Controller
   public function create()
   {
     try {
-      return view('admin.tambah-pengunjung', [
+      return view('admin.pengunjung.create', [
         'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
       ]);
     } catch (\Exception $e) {

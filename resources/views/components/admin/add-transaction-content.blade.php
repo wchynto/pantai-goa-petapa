@@ -16,7 +16,7 @@
           </select>
         </div>
         <div class="col-span-2">
-          <button type="button" id="add-user-button"
+          <button type="button"
             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full h-full justify-center"
             data-modal-target="add-visitor-modal" data-modal-toggle="add-visitor-modal">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -118,21 +118,6 @@
       width: 'resolve',
       selectionCssClass: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500',
       dropdownCssClass: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-    });
-
-    $('#add-user-button').on('click', function() {
-      $('#add-visitor-modal').removeClass('hidden');
-      $('#add-visitor-modal').attr({
-        'aria-hidden': 'false',
-        'aria-model': 'true',
-        'role': 'dialog'
-      });
-      $('#add-transaction-modal').addClass('hidden');
-      $('#add-transaction-modal').attr({
-        'aria-hidden': 'true',
-        'aria-model': 'false',
-        'role': 'dialog'
-      });
     });
 
     const updateTotal = () => {

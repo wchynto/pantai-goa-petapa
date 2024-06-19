@@ -55,20 +55,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  $('#close-user-modal').on('click', function() {
-    $('#add-visitor-modal').addClass('hidden');
-    $('#add-visitor-modal').attr({
-      'aria-hidden': 'true',
-      'aria-model': 'false',
-      'role': 'dialog'
-    });
-    $('#add-transaction-modal').removeClass('hidden');
-    $('#add-transaction-modal').attr({
-      'aria-hidden': 'false',
-      'aria-model': 'true',
-      'role': 'dialog'
-    });
-  });
-</script>

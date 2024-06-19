@@ -7,7 +7,7 @@
       <!-- Modal header -->
       <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-          Tambah User Baru
+          Tambah Guest Baru
         </h3>
         <button type="button" id="close-user-modal"
           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -20,7 +20,8 @@
         </button>
       </div>
       <!-- Modal body -->
-      <form class="p-4 md:p-5" method="POST">
+      <form class="p-4 md:p-5" action="{{ route('storeGuest') }}" method="POST">
+        @csrf
         <div class="grid gap-4 mb-4 grid-cols-2">
           <div class="col-span-2">
             <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>

@@ -73,6 +73,7 @@ Route::group([
   Route::resource('transaksi', TransaksiController::class);
   Route::resource('tiket', TiketController::class);
   Route::resource('pengunjung', PengunjungController::class);
+  Route::post('pengunjung-guest', [PengunjungController::class, 'storeGuest'])->name('storeGuest');
   Route::resource('kategori', KategoriController::class);
   Route::resource('postingan', PostinganController::class);
 

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePengunjungRequest;
-use App\Http\Requests\UpdatePengunjungRequest;
+use App\Services\UserService;
 use App\Services\GuestService;
 use App\Services\PengunjungService;
-use App\Services\UserService;
+use App\Http\Requests\StorePengunjungRequest;
+use App\Http\Requests\UpdatePengunjungRequest;
+use App\Http\Requests\StorePengunjungGuestRequest;
 
 class PengunjungController extends Controller
 {
@@ -58,10 +59,7 @@ class PengunjungController extends Controller
     {
         try {
             $data = $request->all();
-
             $pengunjung = $this->pengunjungService->createPengunjung($data);
-
-            $data['pengunjung_uuid'] = $pengunjung->uuid;
             $data['pengunjung_uuid'] = $pengunjung->uuid;
 
             if ($request->tipe == 'user') {
@@ -147,6 +145,24 @@ class PengunjungController extends Controller
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil dihapus!');
         } catch (\Exception $e) {
             return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal dihapus!');
+        }
+    }
+
+    /**
+     * Store a newly created resource only guest in storage.
+     */
+    public function storeGuest(StorePengunjungGuestRequest $request)
+    {
+        try {
+            $data = $request->all();
+            $pengunjung = $this->pengunjungService->createPengunjung($data);
+            $data['pengunjung_uuid'] = $pengunjung->uuid;
+            $this->guestService->createGuest($data);
+
+            return redirect()->route('transaksi.create')->with('success', 'Data pengunjung berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return redirect()->route('transaksi.create')->with('error', 'Data pengunjung gagal ditambahkan!');
         }
     }
 }

@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get('tiket', [TiketController::class, 'displayTiket'])->name(('home.tiket'));
 Route::post('/add-item', [TransaksiOnlineController::class, 'addItem'])->name('add-item');
 
+Route::post('/proses-pembayaran', [TransaksiOnlineController::class, 'prosesPembayaran'])->name('proses-pembayaran');
+
 Route::get('tentang', function () {
     return view('tentang', ['title' => 'Tentang - Pantai Goa Petapa']);
 });
@@ -57,8 +59,9 @@ Route::group([
     Route::get('riwayat-pemesanan', [HistoryOrderController::class, 'index'])->name('history-order');
     Route::get('riwayat-pemesanan/{transaksiId}', [HistoryOrderController::class, 'show'])->name('history-order.show');
     Route::get('transaksi', [TransaksiOnlineController::class, 'showTransaksi'])->name('order');
-    Route::get('konfirmasi-pembayaran', [TransaksiOnlineController::class, 'showKonfirmasiTransaksi'])->name('confirmation-order');
-    Route::get('pembayaran', [TransaksiOnlineController::class, 'showPembayaran'])->name('payment');
+    // Route::get('konfirmasi-pembayaran/{transaksiUuid}', [TransaksiOnlineController::class, 'showKonfirmasiTransaksi'])->name('confirmation-order');
+    Route::get('transaksi/{transaksiUuid}', [TransaksiOnlineController::class, 'showPembayaran'])->name('payment');
+    Route::get('transaksi/{transaksiUuid}/sukses', [TransaksiOnlineController::class, 'transaksiSukses'])->name('payment-success');
 });
 
 // Admin routes

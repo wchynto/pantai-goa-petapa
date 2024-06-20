@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Services\PengunjungService;
 use App\Services\TiketService;
 use App\Services\TransaksiService;
-use ErrorException;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -53,20 +52,20 @@ class TransaksiController extends Controller
     }
   }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        try {
-            $this->transaksiService->createTransaksi($request->all());
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request)
+  {
+    try {
+      $this->transaksiService->createTransaksi($request->all());
 
-            return redirect()->route('transaksi.index')->with('success', 'Berhasil menambahkan transaksi baru.');
-        } catch (\Exception $e) {
-            // return back()->with('error', 'Gagal menambahkan transaksi baru.');
-            throw $e;
-        }
+      return redirect()->route('transaksi.index')->with('success', 'Berhasil menambahkan transaksi baru.');
+    } catch (\Exception $e) {
+      // return back()->with('error', 'Gagal menambahkan transaksi baru.');
+      throw $e;
     }
+  }
 
   /**
    * Display the specified resource.

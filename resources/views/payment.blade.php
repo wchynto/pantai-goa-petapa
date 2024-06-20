@@ -12,24 +12,25 @@
 
                 <hr class="w-12 h-1 my-4 bg-gray-700 border-0 rounded md:my-10">
 
-                <a href="{{ route('user.confirmation-order', auth()->user()->uuid) }}">
-                    <div
-                        class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
-                        <span class="text-2xl font-semibold text-white dark:text-blue-900">2</span>
-                    </div>
-                </a>
+                <div
+                    class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-900 rounded-full">
+                    <span class="text-2xl font-semibold text-white">2</span>
+                </div>
 
                 <hr class="w-12 h-1 my-4 bg-gray-700 border-0 rounded md:my-10">
 
-                <div
-                    class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-900 rounded-full">
-                    <span class="text-2xl font-semibold text-white">3</span>
-                </div>
+                <a href="">
+                    <div
+                        class="relative inline-flex items-center justify-center w-16 h-16 overflow-hidden bg-blue-100 rounded-full">
+                        <span class="text-2xl font-semibold text-white dark:text-blue-900">3</span>
+                    </div>
+                </a>
+
             </div>
             <div class="flex items-center justify-center mx-auto dark:text-white">
-                <h1 class="text-l px-14">Pesan</h1>
-                <h1 class="text-l">Konfirmasi</h1>
-                <h1 class="text-l px-8 font-bold">Pembayaran</h1>
+                <h1 class="text-l px-16">Pesan</h1>
+                <h1 class="text-l">Pembayaran</h1>
+                <h1 class="text-l px-16 font-bold">Selesai</h1>
             </div>
             <div class="flex flex-col sm:flex-row pt-20 gap-10">
                 {{-- KONFIRMASI PESANAN --}}
@@ -48,32 +49,30 @@
                         <div
                             class="flex flex-col items-center justify-center mx-auto text-l font-light dark:text-white">
                             <h1 class="font-bold">Menunggu Pembayaran</h1>
-                            <h1>Mohon lakukan pembayaran sebelum 3 June 2024 23.59 WIB</h1>
+                            <h1>Mohon lakukan pembayaran sebelum</h1>
                             <h1>untuk menyelesaikan pemesanan</h1>
                         </div>
                         <div class="flex flex-row pt-20 gap-10 dark:text-white mx-4 lg:mx-0">
                             {{-- KONFIRMASI PESANAN --}}
                             <div class="w-1/2 mb-8 text-sm  font-bold lg:text-base lg:w-full">
+                                <h1 class="mb-3">Nomor Transaksi</h1>
                                 <h1 class="mb-3">Total Pembayaran</h1>
-                                <h1 class="mb-3">Metode Pembayaran</h1>
-                                <h1 class="mb-3">Nomor Pembayaran</h1>
                                 <h1 class="mb-3">Nama Pemesan</h1>
                                 <h1 class="mb-3">Nomor Telepon</h1>
                             </div>
                             <div class="w-1/2 lg:w-full mb-8 text-end font-light text-sm lg:text-base">
-                                <h1 class="mb-3">Rp16.000</h1>
-                                <h1 class="mb-3">Dana</h1>
-                                <h1 class="mb-3">12345678</h1>
-                                <h1 class="mb-3">Nurul Rizka</h1>
-                                <h1 class="mb-3">085894214236</h1>
+                                <h1 class="mb-3">#{{ $transaksi->no_transaksi }}</h1>
+                                <h1 class="mb-3">Rp.
+                                    {{ number_format($transaksi->total_harga, 0, ',', '.') }}</h1>
+                                <h1 class="mb-3">{{ $transaksi->pengunjung->nama }}</h1>
+                                <h1 class="mb-3">{{ $transaksi->pengunjung->user->no_telepon }}</h1>
                             </div>
                         </div>
 
                         {{-- GO BACK --}}
-                        <div class="mt-10 flex flex-row mx-4 lg:mx-0">
+                        <div class="mt-10 flex mx-4 lg:mx-0 justify-between">
                             <div class="w-1/2 flex items-center">
-                                <a href="{{ route('user.confirmation-order', auth()->user()->uuid) }}"
-                                    class="flex items-center">
+                                <a href="" class="flex items-center">
                                     <svg class="w-5 h-5 lg:w-5 lg:h-5 text-gray-900 dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10">
                                         <path stroke="currentColor" stroke-linecap="round"
@@ -84,10 +83,40 @@
                                         Kembali</h1>
                                 </a>
                             </div>
+                            <div class="flex items-center">
+                                <button id="pay-button"
+                                    class="w-full text-white hover bg-blue-900 shadow border-blue-900 hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 p-3 text-center dark:bg-blue-900 dark:text-white  dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">Bayar
+                                    Sekarang</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
+    <script>
+        document.getElementById('pay-button').addEventListener('click', function() {
+            // SnapToken acquired from previous step
+            snap.pay('{{ $transaksi->snap_token }}', {
+                // Optional
+                onSuccess: function(result) {
+                    window.location.href =
+                        "{{ route('user.payment-success', ['id' => auth()->user()->uuid, 'transaksiUuid' => $transaksi->uuid]) }}";
+                },
+                // Optional
+                onPending: function(result) {
+                    /* You may add your own js here, this is just example */
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result,
+                        null, 2);
+                },
+                // Optional
+                onError: function(result) {
+                    /* You may add your own js here, this is just example */
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result,
+                        null, 2);
+                }
+            });
+        });
+    </script>
 </x-layout>

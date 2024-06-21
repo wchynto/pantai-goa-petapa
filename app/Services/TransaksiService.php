@@ -38,13 +38,24 @@ class TransaksiService
 
     public function createTransaksi($data)
     {
+        $total_harga = 0;
+
+        for ($i = 0; $i < count($data['tiket']); $i++) {
+            $tiket = $this->tiketRepository->getTiketByUuid($data['tiket'][$i]);
+            $total_harga += $tiket->harga * $data['jumlah'][$i];
+        }
+
+        $data['pengunjung_uuid'] = $data['pengunjung_uuid'] ?? auth()->user()->pengunjung->uuid;
+        $data['total_harga'] = $total_harga;
+        $data['tanggal_transaksi'] = now();
+
         $transaksi = $this->transaksiRepository->createTransaksi($data);
 
-        foreach ($data['tiket'] as $tiket) {
-            $transaksi->tiket()->attach($data['tiket_uuid'], [
-                'jumlah' => $data['jumlah'],
+        for ($i = 0; $i < count($data['tiket']); $i++) {
+            $transaksi->tiket()->attach($data['tiket'][$i], [
+                'jumlah' => $data['jumlah'][$i],
                 'transaksi_uuid' => $transaksi->uuid,
-                'tiket_uuid' => $tiket
+                'tiket_uuid' => $data['tiket'][$i]
             ]);
         }
 

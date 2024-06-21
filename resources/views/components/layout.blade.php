@@ -22,13 +22,13 @@
 </head>
 
 <body>
-  <x-navbar></x-navbar>
+    <x-navbar></x-navbar>
 
-  <div class="min-h-screen flex flex-col dark:bg-gray-900">
-    {{ $slot }}
-  </div>
+    <div class="min-h-screen flex flex-col dark:bg-gray-900">
+        {{ $slot }}
+    </div>
 
-  <x-footer></x-footer>
+    <x-footer></x-footer>
 </body>
 
 </html>

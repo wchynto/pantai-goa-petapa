@@ -11,7 +11,6 @@
         <a href="transaksi">
           <button type="button"
             class="relative text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-            {{-- KERANJANG --}}
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rounded fill-gray-500 dark:fill-gray-400"
               fill="currentColor" viewBox="0 0 15 15">
               <path
@@ -20,7 +19,8 @@
             </svg>
             <span
               class="absolute top-0 left-7 transform -translate-y-1/2 w-5 h-5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full flex items-center justify-center">
-              <p class="text-white lg:text-xs" id="cartCount">0</p>
+              <p class="text-white lg:text-xs" id="cartCount">
+                {{ session()->has('cart') ? count(session()->get('cart')) : 0 }}</p>
             </span>
           </button>
         </a>

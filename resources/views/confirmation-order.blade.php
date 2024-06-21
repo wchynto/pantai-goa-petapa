@@ -69,7 +69,8 @@
 
                             <div class="md:w-1/2 w-full lg:w-2/3 flex flex-col">
                                 {{-- INFO AKUN --}}
-                                <h1 class="lg:text-lg text-sm my-4 md:mt-0 font-semibold mx-0 lg:mx-0 dark:text-white">Informasi
+                                <h1 class="lg:text-lg text-sm my-4 md:mt-0 font-semibold mx-0 lg:mx-0 dark:text-white">
+                                    Informasi
                                     Pembeli
                                 </h1>
                                 {{-- Name --}}
@@ -92,7 +93,9 @@
                                         placeholder="Masukkan Nomor Telepon" required="">
                                 </div>
 
-                                <h1 class="lg:text-lg text-sm my-4 md:my-3 lg:my-2 font-semibold mx-0 md:mt-2 lg:mx-0 dark:text-white">Informasi
+                                <h1
+                                    class="lg:text-lg text-sm my-4 md:my-3 lg:my-2 font-semibold mx-0 md:mt-2 lg:mx-0 dark:text-white">
+                                    Informasi
                                     Pembayaran
                                 </h1>
                                 <div class="w-full rounded-lg">
@@ -105,7 +108,7 @@
                                         class="bg-white shadow border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:text-base"
                                         placeholder="Masukkan Nama Pengguna Dana" required="">
                                 </div>
-                                
+
                             </div>
                         </div>
 

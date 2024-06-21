@@ -41,7 +41,7 @@
                       class="bg-red-100 text-red-800 text-sm px-2.5 py-0.5 rounded-md border border-red-100 dark:border-red-400 dark:bg-gray-700 dark:text-red-400">Dibatalkan</span>
                   @elseif($transaksi->status == 'expired')
                     <span
-                      class="bg-orange-100 text-orange-800 text-sm px-2.5 py-0.5 rounded-md border border-orange-100 dark:bg-gray-700 dark:border-orange-300 dark:text-orange-300">Expired</span>
+                      class="bg-orange-100 text-orange-800 text-sm px-2.5 py-0.5 rounded-md border border-orange-100 dark:bg-gray-700 dark:border-orange-300 dark:text-orange-300">Kadaluarsa</span>
                   @endif
                 </h4>
               </div>
@@ -126,5 +126,6 @@
         </a>
       </div>
     </div>
-  </div>
+
+    <x-admin.add-visitor-modal></x-admin.add-visitor-modal>
 </x-admin.layout>

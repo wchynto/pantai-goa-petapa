@@ -1,3 +1,4 @@
+
 <form action="{{ route('transaksi.store') }}" method="POST">
   <div class="flex flex-col gap-4">
     <div class="grid grid-cols-1">

@@ -94,6 +94,9 @@
           <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
         </li>
         <li>
+          <x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link>
+        </li>
+        <li>
           <x-nav-link href="/tiket" :active="request()->is('tiket')">Tiket</x-nav-link>
         </li>
         <li>

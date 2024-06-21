@@ -110,13 +110,15 @@
                                             </button>
                                         </div>
                                     </td>
-                                    {{-- PILIH --}}
-                                    <td class="px-6 py-4 text-xs md:text-base">
-                                        <button type="submit"
-                                            class="border border-gray-500 w-full text-white hover bg-blue-900 shadow hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 py-2 px-6 text-center dark:bg-blue-900 dark:text-white dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">
-                                            Tambah ke Keranjang
-                                        </button>
-                                    </td>
+                                    @if (auth()->check())
+                                        {{-- PILIH --}}
+                                        <td class="px-6 py-4 text-xs md:text-base">
+                                            <button type="submit"
+                                                class="border border-gray-500 w-full text-white hover bg-blue-900 shadow hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 py-2 px-6 text-center dark:bg-blue-900 dark:text-white dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">
+                                                Tambah ke Keranjang
+                                            </button>
+                                        </td>
+                                    @endif
                                 </tr>
                             </form>
                             <?php $i += 1; ?>

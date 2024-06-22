@@ -47,6 +47,7 @@ class TransaksiOnlineController extends Controller
                     'jumlah' => $request->jumlah,
                     'keterangan' => $request->keterangan,
                     'harga' => $request->harga,
+                    'thumbnail' => $request->thumbnail,
                 ];
             }
 

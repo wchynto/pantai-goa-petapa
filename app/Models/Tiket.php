@@ -38,6 +38,7 @@ class Tiket extends Model
    */
   protected $fillable = [
     'keterangan',
+    'thumbnail',
     'harga',
     'kendaraan_uuid',
   ];

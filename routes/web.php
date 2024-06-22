@@ -48,6 +48,7 @@ Route::group([
   'middleware' => ['user'],
 ], function () {
     Route::get('profil', [UserSessionController::class, 'profil'])->name('profil');
+    Route::post('profil-update', [UserSessionController::class, 'updateProfil'])->name('profil.update');
     Route::get('riwayat-pemesanan', [HistoryOrderController::class, 'index'])->name('history-order');
     Route::get('riwayat-pemesanan/{transaksiId}', [HistoryOrderController::class, 'show'])->name('history-order.show');
     Route::get('transaksi', [TransaksiOnlineController::class, 'showTransaksi'])->name('order');

@@ -42,6 +42,7 @@ class User extends Authenticatable
     'no_telepon',
     'email',
     'password',
+    'foto',
     'pengunjung_uuid'
   ];
 

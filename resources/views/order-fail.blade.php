@@ -35,17 +35,17 @@
                     <div
                         class="w-full bg-blue-100 border border-gray-200 shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-600 my-4 rounded-lg py-4">
                         <div class="flex justify-center">
-                            <svg class="my-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                width="80" height="80" fill="none" viewBox="0 0 24 24">
+                            <svg class="my-2 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none"
+                                viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    stroke-width="2" d="M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                             </svg>
                         </div>
                         <div
                             class="flex flex-col items-center justify-center mx-auto text-l font-light dark:text-white">
-                            <h1 class="font-bold">Pembayaran Berhasil</h1>
-                            <h1>Silahkan download dan tunjukkan tiket ketika memasuki tempat wisata.</h1>
-                            <h1>Tiket akan dikirimkan melalui email.</h1>
+                            <h1 class="font-bold">Pembayaran Gagal</h1>
+                            <h1>Silahkan kembali dan lakukan pembayaran ulang</h1>
                         </div>
 
                         <div class="flex flex-row pt-20 gap-10 dark:text-white mx-4 lg:mx-0">
@@ -79,17 +79,10 @@
                                         Kembali</h1>
                                 </a>
                             </div>
-                            <div>
-                                <div class="flex items-center">
-                                    {{-- <a href="{{ route('user.history-order', ['id' => auth()->user()->uuid]) }}"
-                                        class="w-full mr-4 text-white hover bg-blue-900 shadow border-blue-900 hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 p-3 text-center dark:bg-blue-900 dark:text-white  dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">Riwayat
-                                        Pemesanan</a> --}}
-                                    <a href="{{ route('user.print-tiket', ['id' => auth()->user()->uuid, 'transaksiUuid' => $transaksi->uuid]) }}"
-                                        target="_blank"
-                                        class="w-full text-white hover bg-blue-900 shadow border-blue-900 hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 p-3 text-center dark:bg-blue-900 dark:text-white  dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">Print
-                                        Tiket
-                                    </a>
-                                </div>
+                            <div class="flex items-center">
+                                <a href="{{ route('user.history-order', ['id' => auth()->user()->uuid]) }}"
+                                    class="w-full text-white hover bg-blue-900 shadow border-blue-900 hover:bg-blue-600 block focus:outline-none font-bold rounded-lg text-xs lg:px-5 lg:p-2.5 p-3 text-center dark:bg-blue-900 dark:text-white  dark:hover:bg-blue-600 dark:hover:text-white hover:text-white md:text-base">Riwayat
+                                    Pemesanan</a>
                             </div>
                         </div>
                     </div>

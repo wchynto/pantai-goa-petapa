@@ -56,17 +56,20 @@ class UserSessionController extends Controller
   {
     try {
       $data = $request->all();
+      $user_id = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->uuid;
+
       if ($request->hasFile('foto')) {
         $foto = $request->file('foto');
         $fotoName = time() . '.' . Str::lower(str_replace(' ', '', $data['nama'])) . '.' . $foto->getClientOriginalExtension();
         $path = Storage::putFileAs('public/images/users', $foto, $fotoName);
         $data['foto'] = $path;
+
+        $foto = $this->userService->getUserByUuid($user_id)->foto;
+        if ($foto) {
+          Storage::delete($foto);
+        }
       }
-      $user_id = $this->userService->getUserWhere('pengunjung_uuid', $id)->first()->uuid;
-      $foto = $this->userService->getUserByUuid($user_id)->foto;
-      if ($foto) {
-        Storage::delete($foto);
-      }
+
       $this->userService->updateUser($data, $user_id);
       $this->pengunjungService->updatePengunjung($data, $id);
       return redirect()->route('user.profil', $user_id)->with('success', 'Profil berhasil diperbarui!');

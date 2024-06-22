@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Services\TransaksiService;
+use function Spatie\LaravelPdf\Support\pdf;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
+use Resend\Laravel\Facades\Resend;
 
 class TransaksiOnlineController extends Controller
 {
@@ -25,6 +27,10 @@ class TransaksiOnlineController extends Controller
         try {
             $cart = [];
             $canAdd = true;
+
+            if (!auth()->check()) {
+                return back()->with('error', 'Anda harus login terlebih dahulu');
+            }
 
             if ($request->jumlah == 0) {
                 return back()->with('error', 'Minimal jumlah item adalah satu');
@@ -57,13 +63,6 @@ class TransaksiOnlineController extends Controller
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    public function showKonfirmasiTransaksi($id, $transaksiUuid)
-    {
-        $transaksi = $this->transaksiService->getTransaksiByUuid($transaksiUuid);
-
-        return view('confirmation-order', ['title' => 'Konfirmasi Transaksi - Pantai Goa Petapa', 'transaksi' => $transaksi]);
     }
 
     public function showPembayaran($id, $transaksiUuid)
@@ -114,9 +113,47 @@ class TransaksiOnlineController extends Controller
         }
 
         $transaksi = $this->transaksiService->getTransaksiByUuid($transaksiUuid);
+
+        pdf('pdf.tiket', ['transaksi' => $transaksi])->save(storage_path('app/public/tiket/' . $transaksi->uuid . '.pdf'));
+
+        Resend::emails()->send([
+            'from' => 'onboarding@resend.dev',
+            'to' => 'wchynto.dev@gmail.com',
+            'subject' => 'Tiket Pantai Goa Petapa Anda Telah Tersedia!',
+            'text' => 'Rasakan sensasi petualangan di Pantai Goa Petapa, pantai bersejarah dengan pesona alam yang memukau! Tiket Anda untuk menjelajahi keindahan pantai ini sudah tersedia dan siap untuk diunduh.',
+            'attachments' => [
+                [
+                    'filename' => $transaksi->uuid . '.pdf',
+                    'content' => chunk_split(base64_encode(file_get_contents(storage_path('app/public/tiket/' . $transaksi->uuid . '.pdf')))),
+                ],
+            ],
+        ]);
+
+        Storage::delete('public/tiket/' . $transaksi->uuid . '.pdf');
+
+
+        $transaksi = $this->transaksiService->getTransaksiByUuid($transaksiUuid);
+
+        $transaksi = $this->transaksiService->getTransaksiByUuid($transaksiUuid);
         $transaksi->status = 'success';
         $transaksi->save();
 
         return view('order-success', ['title' => 'Transaksi Berhasil - Pantai Goa Petapa', 'transaksi' => $transaksi]);
+    }
+
+    public function transaksiGagal($id, $transaksiUuid)
+    {
+        $transaksi = $this->transaksiService->getTransaksiByUuid($transaksiUuid);
+        $transaksi->status = 'failed';
+        $transaksi->save();
+
+        return view('order-failed', ['title' => 'Transaksi Gagal - Pantai Goa Petapa', 'transaksi' => $transaksi]);
+    }
+
+    public function printTiket($id, $transaksiUuid)
+    {
+        $transaksi = $this->transaksiService->getTransaksiByUuid($transaksiUuid);
+
+        return pdf('pdf.tiket', ['transaksi' => $transaksi]);
     }
 }

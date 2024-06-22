@@ -33,7 +33,7 @@ class TransaksiRepository extends BaseRepository implements TransaksiRepositoryI
 
     public function getTransaksiWhere($column, $value)
     {
-        return $this->model->where($column, $value)->get();
+        return $this->model->where($column, $value)->latest()->get();
     }
 
     public function createTransaksi($data)

@@ -102,6 +102,9 @@
         <li>
           <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
         </li>
+        <li>
+          <x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link>
+        </li>
       </ul>
     </div>
   </div>

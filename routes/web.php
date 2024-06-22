@@ -30,19 +30,11 @@ Route::get('kontak', function () {
   return view('kontak', ['title' => 'Kontak - Pantai Goa Petapa']);
 });
 
-Route::get('posting-user', function () {
-  return view('posting-user', ['title' => 'Postingan User - Pantai Goa Petapa']);
-});
-
-Route::get('detail-posting', function () {
-  return view('detail-posting', ['title' => 'Detail Posting - Pantai Goa Petapa']);
-});
-
 Route::get('blog', function () {
   return view('blog', ['title' => 'Blog - Pantai Goa Petapa']);
 });
 
-Route::get('detail-blog', function () {
+Route::get('blog/{id}', function () {
   return view('detail-blog', ['title' => 'Detail Blog - Pantai Goa Petapa']);
 });
 
@@ -55,7 +47,7 @@ Route::group([
   'as' => 'user.',
   'middleware' => ['user'],
 ], function () {
-    Route::get('/', [UserSessionController::class, 'profil'])->name('profil');
+    Route::get('profil', [UserSessionController::class, 'profil'])->name('profil');
     Route::get('riwayat-pemesanan', [HistoryOrderController::class, 'index'])->name('history-order');
     Route::get('riwayat-pemesanan/{transaksiId}', [HistoryOrderController::class, 'show'])->name('history-order.show');
     Route::get('transaksi', [TransaksiOnlineController::class, 'showTransaksi'])->name('order');

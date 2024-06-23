@@ -41,7 +41,7 @@
 
         <div class="grid grid-cols-2 gap-4">
           <div class="col-span-2 md:col-span-1">
-            <x-admin.visitor-analytics></x-admin.visitor-analytics>
+            <x-admin.visitor-analytics :totalMember="$totalMember" :totalGuest="$totalGuest"></x-admin.visitor-analytics>
           </div>
 
           <div class="col-span-2 md:col-span-1">

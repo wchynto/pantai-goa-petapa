@@ -1,18 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TiketController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostinganController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\UserSessionController;
 use App\Http\Controllers\AdminSessionController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HistoryOrderController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\PostinganController;
-use App\Http\Controllers\TiketController;
-use App\Http\Controllers\TransaksiOnlineController;
 use App\Http\Controllers\TransaksiTiketController;
+use App\Http\Controllers\TransaksiOnlineController;
 
 // User routes
 Route::get('/', function () {
@@ -76,9 +77,7 @@ Route::group([
     Route::resource('kategori', KategoriController::class);
     Route::resource('postingan', PostinganController::class);
 
-    Route::get('laporan', function () {
-        return view('/admin/laporan', ['title' => 'Laporan - Admin Pantai Goa Petapa']);
-    })->name('admin.laporan');
+    Route::get('laporan', [LaporanController::class, 'index'])->name('admin.laporan');
 });
 
 // Auth User

@@ -34,7 +34,7 @@
                       class="w-full h-44 md:h-24 rounded-lg object-cover shadow-lg" alt="Photo">
                   </div>
                   <span class="text-sm font-semibold"><a
-                      href="{{ url('/blog/' . 'lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-asperiores-enim') }}"
+                      href="{{ url('/blog/' . $rb->uuid) }}"
                       class="hover:underline">{{ $rb->judul }}</a></span>
                 </div>
               @endforeach

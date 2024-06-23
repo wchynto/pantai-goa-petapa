@@ -4,7 +4,7 @@
         <div class="absolute inset-0 bg-black opacity-25 rounded-t-lg"></div>
     </div>
     <div class="px-4 py-6">
-        <h5 class="dark:text-gray-200 sm:text-sm font-bold mb-2"><a href="{{ url('/blog/' . $item['uuid']) }}"
+        <h5 class="dark:text-gray-200 sm:text-sm font-bold mb-2"><a href="{{ url('/blog/' . $item->uuid) }}"
                 class="hover:underline">{{ $item->judul }}</a></h5>
         <p class="text-sm sm:text-xs text-gray-600 mb-4 dark:text-gray-300">
             {{ Str::limit(strip_tags($item->body), 100, '...') }}</p>

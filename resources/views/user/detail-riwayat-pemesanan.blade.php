@@ -63,23 +63,41 @@
                   </div>
                 </div>
                 <div class="col-span-4 flex flex-col gap-2">
-                  @foreach ($transaksi->transaksiTiket as $item)
+                  @foreach ($transaksi->tiket()->get() as $item)
                     <div
-                      class="grid grid-cols-6 items-center p-4 md:p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-800 dark:hover:bg-gray-800">
+                      class="grid grid-cols-6 items-center p-4 md:p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                      <div class="col-span-6 flex justify-between">
+                        <h5 class="text-lg lg:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                          #{{ $item->pivot->no_tiket }}</h5>
+                        <p class="text-gray-800 dark:text-gray-400 font-medium">
+                          Status:
+                          @if ($item->pivot->status == 'active')
+                            <span
+                              class="bg-blue-100 text-blue-800 text-sm px-2.5 py-0.5 rounded-md border border-blue-100 dark:bg-gray-700 dark:text-blue-400 dark:border-blue-400">Aktif</span>
+                          @elseif ($item->pivot->status == 'expired')
+                            <span
+                              class="bg-orange-100 text-orange-800 text-sm px-2.5 py-0.5 rounded-md border border-orange-100 dark:bg-gray-700 dark:text-orange-300 dark:border-orange-300">Kadaluarsa</span>
+                          @elseif ($item->pivot->status == 'canceled')
+                            <span
+                              class="bg-red-100 text-red-800 text-sm px-2.5 py-0.5 rounded-md border border-red-100 dark:bg-gray-700 dark:text-red-400 dark:border-red-400">Dibatalkan</span>
+                          @elseif ($item->pivot->status == 'used')
+                            <span
+                              class="bg-green-100 text-green-800 text-sm px-2.5 py-0.5 rounded-md border border-green-100 dark:bg-gray-700 dark:text-green-400 dark:border-green-500">Digunakan</span>
+                          @endif
+                        </p>
+                      </div>
                       <div class="col-span-2 sm:col-span-3">
                         <h5 class="text-lg lg:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                          {{ $item->tiket->kendaraan->jenis_kendaraan }}</h5>
+                          {{ $item->kendaraan->jenis_kendaraan }}</h5>
                         <p class="text-gray-800 dark:text-gray-400">
-                          Rp{{ number_format($item->tiket->harga, 0, ',', '.') }}
+                          Rp{{ number_format($item->harga, 0, ',', '.') }}
                         </p>
                       </div>
                       <div class="col-span-4 sm:col-span-3 flex justify-between">
                         <p class="font-semibold text-gray-800 dark:text-gray-400">Jumlah:
-                          {{ $item->jumlah }}
-                        </p>
+                          {{ $item->pivot->jumlah }}</p>
                         <p class="font-semibold text-gray-800 dark:text-gray-400">
-                          Rp{{ number_format($item->tiket->harga * $item->jumlah, 0, ',', '.') }}
-                        </p>
+                          Rp{{ number_format($item->pivot->jumlah * $item->harga, 0, ',', '.') }}</p>
                       </div>
                     </div>
                   @endforeach
@@ -102,13 +120,13 @@
                       <h4 class="lg:text-lg font-semibold text-gray-800 dark:text-gray-200">Total
                         Bayar</h4>
                       <h4 class="lg:text-lg font-semibold text-gray-800 dark:text-gray-200">
-                        Rp{{ number_format($transaksi->total_bayar, 0, ',', '.') }}</h4>
+                        Rp{{ $transaksi->snap_token ? number_format($transaksi->total_harga, 0, ',', '.') : number_format($transaksi->total_bayar, 0, ',', '.') }}
                     </div>
                     <div class="flex justify-between items-center">
                       <h4 class="lg:text-lg font-semibold text-gray-800 dark:text-gray-200">
                         Kembali</h4>
                       <h4 class="lg:text-lg font-semibold text-gray-800 dark:text-gray-200">
-                        Rp{{ number_format($transaksi->total_bayar - $transaksi->total_harga, 0, ',', '.') }}
+                        Rp{{ $transaksi->snap_token ? number_format(0, 0, ',', '.') : number_format($transaksi->total_bayar - $transaksi->total_harga, 0, ',', '.') }}
                       </h4>
                     </div>
                   </div>

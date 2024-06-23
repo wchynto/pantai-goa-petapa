@@ -96,7 +96,7 @@
                             </path>
                           </svg>
                           <h3 class="mt-5 mb-6 text-lg text-gray-500 dark:text-gray-400 whitespace-normal">
-                            Apakah Anda yakin ingin menghapus ticket ini?
+                            Apakah Anda yakin ingin menghapus tiket ini?
                           </h3>
                           <button type="submit"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2 dark:focus:ring-red-800">

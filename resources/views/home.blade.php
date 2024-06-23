@@ -85,7 +85,7 @@
           <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             Keindahan Pantai Goa Petapa
           </h2>
-          <p class="mb-6 font-medium text-gray-500 md:text-lg dark:text-gray-400">
+          <p class="mb-6 font-medium text-gray-500 md:text-lg dark:text-gray-400 text-justify">
             Pantai Goa Petapa adalah tempat wisata yang sangat cocok untuk menikmati keindahan alam dan suara ombak yang
             menenangkan jiwa. Pantai ini memiliki pasir putih yang lembut dan air laut yang jernih. Pantai ini juga
             dilengkapi dengan fasilitas yang memadai seperti tempat parkir, toilet, playground, dan perahu.

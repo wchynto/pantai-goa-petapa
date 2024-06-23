@@ -8,6 +8,7 @@ use App\Services\UserService;
 use App\Http\Requests\LoginRequest;
 use App\Services\PengunjungService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateProfileRequest;
 
@@ -37,6 +38,20 @@ class UserSessionController extends Controller
       return view('register', ['title' => 'Register - Pantai Goa Petapa']);
     } catch (\Exception $e) {
       abort(500);
+    }
+  }
+
+  public function register(RegisterRequest $request)
+  {
+    try {
+      $data = $request->all();
+      $pengunjung = $this->pengunjungService->createPengunjung($data);
+      $data['pengunjung_uuid'] = $pengunjung->uuid;
+      $this->userService->createUser($data);
+
+      return redirect()->route('login')->with('success', 'Akun berhasil dibuat!');
+    } catch (\Exception $e) {
+      return back()->with('error', $e->getMessage())->with($request->only('nama', 'email'));
     }
   }
 

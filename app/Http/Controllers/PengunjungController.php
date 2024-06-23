@@ -58,13 +58,9 @@ class PengunjungController extends Controller
     public function store(StorePengunjungRequest $request)
     {
         try {
-
-            dd($request->all());
-
             $data = $request->all();
             $pengunjung = $this->pengunjungService->createPengunjung($data);
             $data['pengunjung_uuid'] = $pengunjung->uuid;
-
 
             if ($request->tipe == 'user') {
                 $this->userService->createUser($data);
@@ -75,7 +71,7 @@ class PengunjungController extends Controller
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
             throw $e;
-            // return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal ditambahkan!');
+            return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal ditambahkan!');
         }
     }
 

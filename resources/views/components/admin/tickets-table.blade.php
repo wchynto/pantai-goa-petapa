@@ -30,7 +30,7 @@
           @foreach ($items as $item)
             <tr>
               <td class="p-4 dark:text-white flex justify-end">
-                <img src="{{ Storage::url($item->thumbnail) }}" alt="{{ $item->kendaraan->jenis_kendaraan }}"
+                <img src="{{ strpos($item->thumbnail, 'tiket/thumbnails') ? Storage::url($item->thumbnail) : asset($item->thumbnail) }}" alt="{{ $item->kendaraan->jenis_kendaraan }}"
                   class="w-10 h-10 object-cover rounded-lg">
               </td>
               <td class="p-4 text-sm font-normal text-gray-900 dark:text-white">

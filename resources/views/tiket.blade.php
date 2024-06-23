@@ -64,7 +64,8 @@
                 <tr
                   class="bg-white border-b dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600">
                   <td class="px-6 py-4">
-                    <img src="{{ Storage::url($t->thumbnail) }}" alt="{{ $t->kendaraan->jenis_kendaraan }}">
+                    <img src="{{ strpos($t->thumbnail, 'tiket/thumbnails') ? Storage::url($t->thumbnail) : asset($t->thumbnail) }}"
+                    alt="{{ $t->kendaraan->jenis_kendaraan }}">
                   </td>
                   <th scope="row"
                     class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap dark:text-white md:text-base">

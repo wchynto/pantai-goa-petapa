@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTransaksiRequest;
 use App\Services\PengunjungService;
 use App\Services\TiketService;
 use App\Services\TransaksiService;
@@ -55,7 +56,7 @@ class TransaksiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTransaksiRequest $request)
     {
         try {
             $this->transaksiService->createTransaksi($request->all());

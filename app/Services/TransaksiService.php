@@ -45,7 +45,6 @@ class TransaksiService
             $total_harga += $tiket->harga * $data['jumlah'][$i];
         }
 
-        $data['pengunjung_uuid'] = $data['pengunjung_uuid'] ?? auth()->user()->pengunjung->uuid;
         $data['total_harga'] = $total_harga;
         $data['tanggal_transaksi'] = now();
 

@@ -26,7 +26,19 @@ class StoreTransaksiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            ''
+            'pengunjung_uuid' => 'required',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'pengunjung_uuid.required' => 'Nama pengunjung harus diisi.',
         ];
     }
 }

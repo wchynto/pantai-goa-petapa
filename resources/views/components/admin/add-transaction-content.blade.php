@@ -1,4 +1,5 @@
 <form action="{{ route('transaksi.store') }}" method="POST">
+    @csrf
     <div class="flex flex-col gap-4">
         <div class="grid grid-cols-1">
             <div>
@@ -7,13 +8,16 @@
             </div>
             <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-10">
-                    <select id="nama" name="nama" style="width: 100%" required>
+                    <select id="nama" name="pengunjung_uuid" style="width: 100%" required>
                         <option value="" selected="">Pilih pengunjung</option>
                         @foreach ($pengunjung as $p)
                             <option value="{{ $p->uuid }}">{{ $p->nama }} -
                                 {{ $p->user->no_telepon ?? $p->guest->no_telepon }}</option>
                         @endforeach
                     </select>
+                    @error('pengunjung_uuid')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-span-2">
                     <button type="button"
@@ -39,7 +43,7 @@
                             required>
                             <option value="" selected="">Pilih tiket</option>
                             @foreach ($tiket as $t)
-                                <option value="{{ $t->id }}" data-harga="{{ $t->harga }}">
+                                <option value="{{ $t->uuid }}" data-harga="{{ $t->harga }}">
                                     {{ $t->keterangan }} -
                                     Rp{{ number_format($t->harga, 0, ',', '.') }}
                                 </option>

@@ -48,7 +48,6 @@ class PostinganService
   public function updatePostingan($data, $uuid, $updateThumbnail)
   {
     $postingan = $this->postinganRepository->getPostinganByUuid($uuid);
-    dd($data);
     if ($updateThumbnail) {
       if ($postingan->thumbnail) {
         Storage::delete($postingan->thumbnail);

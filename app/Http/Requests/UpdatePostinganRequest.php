@@ -29,6 +29,7 @@ class UpdatePostinganRequest extends FormRequest
       'judul' => 'required',
       'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
       'body' => 'required',
+      'kategori_uuid' => 'required'
     ];
   }
 
@@ -40,6 +41,7 @@ class UpdatePostinganRequest extends FormRequest
       'thumbnail.mimes' => 'Thumbnail harus berupa gambar dengan format jpeg, png, atau jpg',
       'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB',
       'body.required' => 'Body harus diisi',
+      'kategori_uuid.required' => 'Kategori harus diisi'
     ];
   }
 }

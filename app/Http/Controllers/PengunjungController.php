@@ -38,19 +38,19 @@ class PengunjungController extends Controller
         }
     }
 
-  /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
-  {
-    try {
-      return view('admin.pengunjung.create', [
-        'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
-      ]);
-    } catch (\Exception $e) {
-      abort(500);
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        try {
+            return view('admin.pengunjung.create', [
+                'title' => 'Tambah Pengunjung - Admin Pantai Goa Petapa'
+            ]);
+        } catch (\Exception $e) {
+            abort(500);
+        }
     }
-  }
 
     /**
      * Store a newly created resource in storage.
@@ -58,9 +58,13 @@ class PengunjungController extends Controller
     public function store(StorePengunjungRequest $request)
     {
         try {
+
+            dd($request->all());
+
             $data = $request->all();
             $pengunjung = $this->pengunjungService->createPengunjung($data);
             $data['pengunjung_uuid'] = $pengunjung->uuid;
+
 
             if ($request->tipe == 'user') {
                 $this->userService->createUser($data);
@@ -70,7 +74,8 @@ class PengunjungController extends Controller
 
             return redirect()->route('pengunjung.index')->with('success', 'Data pengunjung berhasil ditambahkan!');
         } catch (\Exception $e) {
-            return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal ditambahkan!');
+            throw $e;
+            // return redirect()->route('pengunjung.index')->with('error', 'Data pengunjung gagal ditambahkan!');
         }
     }
 

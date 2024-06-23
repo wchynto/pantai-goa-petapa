@@ -64,6 +64,7 @@ Route::group([
 
 // Admin routes
 Route::get('admin/login', [AdminSessionController::class, 'viewLogin'])->name('admin.viewLogin');
+Route::post('pengunjung', [PengunjungController::class, 'store'])->name('pengunjung.store');
 
 Route::group([
     'prefix' => 'admin',
@@ -74,7 +75,7 @@ Route::group([
     Route::post('transaksi-tiket/verifikasi', [TransaksiTiketController::class, 'verifikasi'])->name('transaksi-tiket.verifikasi');
     Route::resource('transaksi', TransaksiController::class);
     Route::resource('tiket', TiketController::class);
-    Route::resource('pengunjung', PengunjungController::class);
+    Route::resource('pengunjung', PengunjungController::class)->except(['store']);
     Route::post('pengunjung-guest', [PengunjungController::class, 'storeGuest'])->name('storeGuest');
     Route::resource('kategori', KategoriController::class);
     Route::resource('postingan', PostinganController::class);

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid()->primary();
             $table->string('no_transaksi', 10)->unique();
             $table->bigInteger('total_harga');
-            $table->bigInteger('total_bayar');
+            $table->bigInteger('total_bayar')->nullable();
             $table->date('tanggal_transaksi');
             $table->string('snap_token', 100)->nullable();
             $table->enum('status', ['pending', 'success', 'expired', 'canceled'])->default('pending');

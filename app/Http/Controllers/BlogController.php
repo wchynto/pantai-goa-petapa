@@ -37,4 +37,24 @@ class BlogController extends Controller
             throw $e;
         }
     }
+
+    public function show(string $id)
+    {
+        try {
+            $blog = $this->postinganService->getPostinganByUuid($id);
+            $recentBlogs = collect($this->postinganService->getPostinganAll())->sortByDesc('created_at')->take(5);
+            $allkategori = $this->kategoriService->getKategoriAll();
+
+            return view('detail-blog', [
+                'title' => 'Detail Blog - Pantai Goa Petapa',
+                'blog' => $blog,
+                'recentBlogs' => $recentBlogs,
+                'kategori' => $this->kategoriService->getKategoriAll(),
+                'allkategori' => $allkategori
+            ]);
+        } catch (\Exception $e) {
+            //   abort(500);
+            throw $e;
+        }
+    }
 }

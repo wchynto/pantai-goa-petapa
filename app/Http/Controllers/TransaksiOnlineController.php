@@ -137,10 +137,6 @@ class TransaksiOnlineController extends Controller
         $transaksi->status = 'success';
         $transaksi->save();
 
-        foreach ($transaksi->tiket()->get() as $tiket) {
-            $tiket->status = 'success';
-            $tiket->save();
-        }
         return view('order-success', ['title' => 'Transaksi Berhasil - Pantai Goa Petapa', 'transaksi' => $transaksi]);
     }
 

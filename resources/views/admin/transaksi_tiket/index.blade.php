@@ -31,9 +31,9 @@
             no_tiket: decodedText
           },
           success: function(response) {
-            setTimeout(() => {
-              alert(response.message)
-            }, 3000);
+            alert(response.message)
+
+            window.location.reload()
           },
           error: function(xhr) {
             setTimeout(() => {

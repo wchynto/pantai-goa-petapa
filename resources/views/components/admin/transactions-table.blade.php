@@ -126,7 +126,10 @@
                                                 </button>
                                             </div>
                                             <!-- Modal body -->
-                                            <form class="p-4 md:p-5" method="POST">
+                                            <form class="p-4 md:p-5" method="POST"
+                                                action="{{ route('transaksi.destroy', $item->uuid) }}">
+                                                @csrf
+                                                @method('DELETE')
                                                 <input type="hidden" name="transaksi_id"
                                                     value="{{ $item['transaksi_id'] }}">
                                                 <div class="p-6 pt-0 text-center">

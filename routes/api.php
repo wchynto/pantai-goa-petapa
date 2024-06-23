@@ -1,11 +1,7 @@
 <?php
 
-use App\Http\Controllers\TransaksiOnlineController;
+use App\Http\Controllers\TransaksiTiketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
-
-// Route::post('/add-item', [TransaksiOnlineController::class, 'addItem'])->name('add-item');
+Route::post('transaksi-tiket/scan', [TransaksiTiketController::class, 'scan'])->name('transaksi-tiket.scan');

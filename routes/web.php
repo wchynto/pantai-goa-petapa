@@ -11,6 +11,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PostinganController;
 use App\Http\Controllers\TiketController;
 use App\Http\Controllers\TransaksiOnlineController;
+use App\Http\Controllers\TransaksiTiketController;
 
 // User routes
 Route::get('/', function () {
@@ -34,7 +35,7 @@ Route::get('blog', function () {
 });
 
 Route::get('blog/{id}', function () {
-  return view('detail-blog', ['title' => 'Detail Blog - Pantai Goa Petapa']);
+    return view('detail-blog', ['title' => 'Detail Blog - Pantai Goa Petapa']);
 });
 
 Route::get('login', [UserSessionController::class, 'viewLogin'])->name('login');
@@ -69,6 +70,8 @@ Route::group([
     'middleware' => ['admin']
 ], function () {
     Route::get('dashboard', DashboardController::class)->name('admin.dashboard');
+    Route::resource('transaksi-tiket', TransaksiTiketController::class);
+    Route::post('transaksi-tiket/verifikasi', [TransaksiTiketController::class, 'verifikasi'])->name('transaksi-tiket.verifikasi');
     Route::resource('transaksi', TransaksiController::class);
     Route::resource('tiket', TiketController::class);
     Route::resource('pengunjung', PengunjungController::class);

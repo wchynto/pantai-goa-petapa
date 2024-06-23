@@ -131,13 +131,16 @@ class TransaksiOnlineController extends Controller
 
         Storage::delete('public/tiket/' . $transaksi->uuid . '.pdf');
 
-
         $transaksi = $this->transaksiService->getTransaksiByUuid($transaksiUuid);
 
         $transaksi = $this->transaksiService->getTransaksiByUuid($transaksiUuid);
         $transaksi->status = 'success';
         $transaksi->save();
 
+        foreach ($transaksi->tiket()->get() as $tiket) {
+            $tiket->status = 'success';
+            $tiket->save();
+        }
         return view('order-success', ['title' => 'Transaksi Berhasil - Pantai Goa Petapa', 'transaksi' => $transaksi]);
     }
 

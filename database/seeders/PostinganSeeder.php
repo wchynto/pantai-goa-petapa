@@ -16,6 +16,10 @@ class PostinganSeeder extends Seeder
   public function run(): void
   {
     $faker = Faker::create();
+    $dir = 'public/storage/images/postingan/thumbnails';
+    if (!is_dir($dir)) {
+      mkdir($dir, 0755, true);
+    }
     $kategori = Kategori::all();
     $thumbnail = 'public/images/postingan/thumbnails/' . $faker->image('public/storage/images/postingan/thumbnails', 640, 480, null, false);
 

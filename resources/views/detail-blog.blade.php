@@ -8,7 +8,7 @@
       <div class="flex flex-col gap-x-4">
         <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 lg:gap-16">
           <section class="sm:flex-row sm:flex-wrap md:w-2/3">
-            <x-detail-blog-card></x-detail-blog-card>
+            <x-detail-blog-card :item="$blog"></x-detail-blog-card>
           </section>
 
           <section class="lg:mb-16 md:my-0 md:w-1/3">
@@ -17,31 +17,30 @@
                 Post</span>
             </div>
             <div class="grid grid-cols-2 gap-4">
-              @for ($i = 0; $i < 5; $i++)
-                <div class="mb-2 {{ $i == 0 ? 'col-span-2' : '' }}">
+              @foreach ($recentBlogs as $rb)            
+                <div class="mb-2 {{ $loop->index == 0 ? 'col-span-2' : '' }}">
                   <div class="mb-2 rounded-lg bg-white shadow-lg hover:bg-primary-100">
-                    <img src="{{ asset('images/background-jumbotron.png') }}"
+                    <img src="{{ Storage::url($rb->thumbnail) }}"
                       class="w-full h-44 md:h-24 rounded-lg object-cover shadow-lg" alt="Photo">
                   </div>
                   <span class="text-sm font-semibold"><a
-                      href="{{ url('/blog/' . 'lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-asperiores-enim') }}"
-                      class="hover:underline">Lorem
-                      ipsum dolor sit amet consectetur adipisicing elit. Asperiores, enim.</a></span>
+                      href="{{ url('/blog/' . $rb->uuid) }}"
+                      class="hover:underline">{{ $rb->judul }}</a></span>
                 </div>
-              @endfor
+              @endforeach
             </div>
             <div class="sm:flex sm:gap-4 md:block">
               <div class="mb-6 md:mb-8 w-full md:w-full">
                 <span
                   class="text-3xl lg:text-xl font-bold block md:text-2xl text-center lg:text-center md:text-center mt-8 mb-4">Kategori</span>
-                @for ($i = 0; $i < 4; $i++)
-                  <div class="flex gap-4 mb-2">
-                    <img src="{{ asset('images/circle.svg') }}" alt="Icon" class="w-3 h-3 mt-1">
-                    <div class="flex flex-col">
-                      <span class="lg:text-sm font-semibold text-base"><a href="#" class="hover:underline">Lorem.</a></span>
-                    </div>
+                @foreach ($allkategori as $ak)
+                <div class="flex gap-4 mb-2">
+                  <img src="{{ asset('images/circle.svg') }}" alt="Icon" class="w-3 h-3 mt-1">
+                  <div class="flex flex-col">
+                    <span class="lg:text-sm font-semibold text-base"><a href="#" class="hover:underline">{{ $ak->keterangan }}</a></span>
                   </div>
-                @endfor
+                </div>
+                @endforeach
               </div>
             </div>
           </section>

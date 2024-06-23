@@ -41,10 +41,10 @@ class UserService
 
     public function updateUser($data, $uuid)
     {
-        dd(!$data['password']);
-
-        if (!$data['password']) {
-            $data->password = $this->getUserByUuid($uuid)->password;
+        if (!isset($data['password'])) {
+            $data['password'] = $this->getUserByUuid($uuid)->password;
+        } else {
+            $data['password'] = bcrypt($data['password']);
         }
 
         return $this->userRepository->updateUser($data, $uuid);

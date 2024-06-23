@@ -7,7 +7,9 @@
           <div
             class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
             <div class="flex flex-col items-center justify-center gap-2 text-center">
-              <img class="w-24 h-24 rounded-full" src="{{ asset('images/default-profile.png') }}" alt="User Avatar">
+              <img class="w-24 h-24 rounded-full shadow-lg"
+                src="{{ auth()->user()->foto ? Storage::url(auth()->user()->foto) : asset('images/default-profile.png') }}"
+                alt="User Photo">
               <h1 class="text-xl font-bold text-gray-800 dark:text-gray-200">
                 {{ auth()->user()->pengunjung->nama }}</h1>
               <p class="text-sm text-gray-500 dark:text-gray-400">{{ auth()->user()->email }}</p>

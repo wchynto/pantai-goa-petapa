@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('tiket.store') }}">
+<form method="POST" action="{{ route('tiket.store') }}" enctype="multipart/form-data">
   @csrf
   <div class="grid gap-4 mb-4 grid-cols-2">
     <div class="col-span-2 sm:col-span-1">
@@ -20,7 +20,7 @@
         <span class="text-red-500 text-sm">{{ $message }}</span>
       @enderror
     </div>
-    <div class="col-span-2">
+    <div class="col-span-2 sm:col-span-1">
       <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
       <input type="text" name="keterangan" id="keterangan"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -29,6 +29,14 @@
         <span class="text-red-500 text-sm">{{ $message }}</span>
       @enderror
     </div>
+    <div class="col-span-2 sm:col-span-1">
+      <label for="thumbnail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Thumbnail</label>
+      <input type="file" name="thumbnail" id="thumbnail"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+        required>
+      @error('thumbnail')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+      @enderror
   </div>
 
   <x-admin.submit-cancel-button submit="Tambah" url="{{ route('tiket.index') }}"></x-admin.submit-cancel-button>

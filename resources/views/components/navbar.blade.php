@@ -45,7 +45,9 @@
           id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
           data-dropdown-placement="bottom">
           <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 rounded-full" src="{{ asset('images/default-profile.png') }}" alt="User Photo">
+          <img class="w-8 h-8 rounded-full shadow-lg"
+            src="{{ auth()->user()->foto ? Storage::url(auth()->user()->foto) : asset('images/default-profile.png') }}"
+            alt="User Photo">
         </button>
         <!-- Dropdown menu -->
         <div
@@ -89,7 +91,7 @@
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
       <ul
-        class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-6 lg:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
           <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
         </li>

@@ -6,6 +6,10 @@
           <tr>
             <th scope="col"
               class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+              THUMBNAIL
+            </th>
+            <th scope="col"
+              class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
               KENDARAAN
             </th>
             <th scope="col"
@@ -25,6 +29,10 @@
         <tbody class="bg-white dark:bg-gray-800">
           @foreach ($items as $item)
             <tr>
+              <td class="p-4 dark:text-white flex justify-end">
+                <img src="{{ strpos($item->thumbnail, 'tiket/thumbnails') ? Storage::url($item->thumbnail) : asset($item->thumbnail) }}" alt="{{ $item->kendaraan->jenis_kendaraan }}"
+                  class="w-10 h-10 object-cover rounded-lg">
+              </td>
               <td class="p-4 text-sm font-normal text-gray-900 dark:text-white">
                 {{ $item->kendaraan->jenis_kendaraan }}
               </td>

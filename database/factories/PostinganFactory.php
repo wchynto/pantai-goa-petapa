@@ -18,7 +18,6 @@ class PostinganFactory extends Factory
     {
         return [
             'judul' => $this->faker->sentence(1),
-            'thumbnail' => 'default.jpg',
             'body' => $this->faker->paragraph(5),
         ];
     }

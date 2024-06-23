@@ -26,19 +26,23 @@ class UpdateTiketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'keterangan' => 'required',
-            'harga' => 'required|numeric',
-            'jenis_kendaraan' => 'required',
+          'keterangan' => 'required',
+          'harga' => 'required|numeric',
+          'jenis_kendaraan' => 'required',
+          'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'keterangan.required' => 'Keterangan harus diisi',
-            'harga.required' => 'Harga harus diisi',
-            'harga.numeric' => 'Harga harus berupa angka',
-            'jenis_kendaraan.required' => 'Jenis kendaraan harus diisi',
+          'keterangan.required' => 'Keterangan harus diisi',
+          'harga.required' => 'Harga harus diisi',
+          'harga.numeric' => 'Harga harus berupa angka',
+          'jenis_kendaraan.required' => 'Jenis kendaraan harus diisi',
+          'thumbnail.image' => 'Thumbnail harus berupa gambar',
+          'thumbnail.mimes' => 'Thumbnail harus berupa gambar dengan format jpeg, png, atau jpg',
+          'thumbnail.max' => 'Ukuran thumbnail maksimal 2MB',
         ];
     }
 }

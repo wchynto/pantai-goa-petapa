@@ -29,7 +29,7 @@
         <tbody class="bg-white dark:bg-gray-800">
           @foreach ($postingan as $p)
             <tr>
-              <td class="p-4 text-sm font-normal text-gray-500 dark:text-white">
+              <td class="p-4 dark:text-white flex justify-end">
                 <img src="{{ Storage::url($p->thumbnail) }}" alt="{{ $p->thumbnail }}"
                   class="w-10 h-10 object-cover rounded-lg">
               </td>

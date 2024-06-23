@@ -43,14 +43,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        try {
-            return view('user/profil', [
-                'user' => $this->userService->getUserByUuid($id),
-                'title' => 'Profil - Pantai Goa Petapa'
-            ]);
-        } catch (\Exception $e) {
-            abort(500);
-        }
+        //
     }
 
     /**

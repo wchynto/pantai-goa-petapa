@@ -106,6 +106,9 @@ class TransaksiController extends Controller
     public function update(Request $request, string $id)
     {
         try {
+            $this->transaksiService->updateTransaksi($request->all(), $id);
+
+            return redirect()->route('transaksi.index')->with('success', 'Berhasil mengubah transaksi.');
         } catch (\Exception $e) {
         }
     }

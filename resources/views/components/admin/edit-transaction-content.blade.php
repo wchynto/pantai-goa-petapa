@@ -9,7 +9,7 @@
             </div>
             <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-12">
-                    <select id="nama" name="nama" style="width: 100%" required>
+                    <select id="nama" name="transaksi_uuid" style="width: 100%" required>
                         <option value="" selected="">Pilih pengunjung</option>
                         @foreach ($pengunjung as $p)
                             <option value="{{ $p->uuid }}" @if ($p->uuid == $item->pengunjung->uuid) selected @endif>

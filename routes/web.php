@@ -6,6 +6,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\UserSessionController;
 use App\Http\Controllers\AdminSessionController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HistoryOrderController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PostinganController;
@@ -30,13 +31,9 @@ Route::get('kontak', function () {
   return view('kontak', ['title' => 'Kontak - Pantai Goa Petapa']);
 });
 
-Route::get('blog', function () {
-  return view('blog', ['title' => 'Blog - Pantai Goa Petapa']);
-});
+Route::get('blog', [BlogController::class, 'index'])->name('blog');
 
-Route::get('blog/{id}', function () {
-  return view('detail-blog', ['title' => 'Detail Blog - Pantai Goa Petapa']);
-});
+Route::get('blog/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('login', [UserSessionController::class, 'viewLogin'])->name('login');
 

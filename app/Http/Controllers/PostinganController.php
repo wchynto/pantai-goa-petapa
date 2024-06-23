@@ -103,7 +103,15 @@ class PostinganController extends Controller
   public function update(UpdatePostinganRequest $request, string $id)
   {
     try {
-      $this->postinganService->updatePostingan($request->all(), $id);
+      $validatedData = $request->validated();
+
+      if ($request->hasFile('thumbnail')) {
+        $validatedData['thumbnail'] = $request->file('thumbnail');
+        $updateThumbnail = true;
+      } else {
+        $updateThumbnail = false;
+      }
+      $this->postinganService->updatePostingan($validatedData, $id, $updateThumbnail);
 
       return redirect()->route('postingan.index')->with('success', 'Data Postingan berhasil diperbarui!');
     } catch (\Exception $e) {

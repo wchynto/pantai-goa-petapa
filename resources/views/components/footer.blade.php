@@ -1,5 +1,57 @@
 <footer class="bg-slate-100 shadow dark:bg-gray-800 border-t-2 flex justify-center">
   <div class="container xl:max-w-screen-xl">
+    <div class="sm:flex sm:items-center sm:justify-between p-4">
+      <div class="mb-6 md:mb-0">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="{{ asset('images/logo-navbar.png') }}" class="h-8" alt="Pantai Goa Petapa Logo" />
+          <span class="self-center text-lg sm:text-xl md:text-2xl font-semibold whitespace-nowrap dark:text-white">Pantai
+            Goa
+            Petapa</span>
+        </a>
+      </div>
+      <div class="grid grid-cols-2 gap-8 sm:gap-24">
+        <div>
+          <h2 class="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+            <li class="mb-2">
+              <a href="/" class="hover:underline">Home</a>
+            </li>
+            <li class="mb-2">
+              <a href="/tiket" class="hover:underline">Tiket</a>
+            </li>
+            <li class="mb-2">
+              <a href="/tentang" class="hover:underline">Tentang</a>
+            </li>
+            <li class="mb-2">
+              <a href="/kontak" class="hover:underline">Kontak</a>
+            </li>
+            <li>
+              <a href="/blog" class="hover:underline">Blog</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+            <li class="mb-2">
+              <a href="#" class="hover:underline">Instagram</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="hover:underline">Twitter</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="hover:underline">Github</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-2 border-gray-200 sm:mx-auto dark:border-gray-700" />
+
     <div class="sm:flex sm:items-center sm:justify-between p-4 antialiased">
       <p class="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
         &copy; {{ date('Y') }} <a href="/" class="hover:underline" target="_blank">Pantai Goa Petapa</a>. All
